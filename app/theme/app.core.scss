@@ -1,0 +1,46 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+
+@import "../pages/list/list";
+@import "../pages/app-map/app-map";
+@import "../pages/app-map-detail/app-map-detail";
+@import "../pages/home/home";
+@import "../pages/login/login";
+@import "../pages/signup/signup";
+@import "../pages/reset-password/reset-password";
+@import "../pages/intro/intro";
+@import "../pages/search/search";
+@import "../pages/college/college";
+@import "../pages/profile/profile";
+@import "../pages/squad/squad";
+
+ion-content {
+  background-color: #E6E6E6;
+}
+
+.nav-logo {
+  max-height: 30px;
+}
+
+ion-navbar {
+  max-height: 36px;
+}
+
+ion-navbar ion-buttons {
+  min-width: 70px;
+}
+
+.dob-modal {
+  text-align: center;
+  padding-top: 40px !important;
+
+  button {
+    margin-top: 32px !important;
+  }
+}

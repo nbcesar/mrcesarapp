@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{todo.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="app-map-detail">
+  <ion-card class="todo-header">
+    <ion-row>
+      <ion-col>
+        <h2>{{todo.title}}</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>{{todo.description}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card class="progress-bar">
+    <progress max="100" [value]="progress"></progress> <span>{{completedSteps.length}} / {{steps.length}}</span>
+  </ion-card>
+
+  <ion-card class="todo-body">
+    <ion-card-header>
+      <h3>Steps to take</h3>
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item text-wrap *ngFor="let step of steps">
+        <ion-icon *ngIf="step.completed" ios="md-checkbox-outline" md="md-checkbox-outline"
+          item-left (click)="clearCompleteStep(todo.category, todo.id, step.id, step)"></ion-icon>
+        <ion-icon *ngIf="!step.completed" ios="md-square-outline" md="md-square-outline"
+          item-left (click)="completeStep(todo.category, todo.id, step.id, step)"></ion-icon>
+        <p>{{step.name}}</p>
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+
+</ion-content>

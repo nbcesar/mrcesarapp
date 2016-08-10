@@ -1,0 +1,55 @@
+.app-map-detail {
+
+  .progress-bar {
+    padding: 8px;
+    progress {
+      width: 85%;
+      margin-right: 6px;
+      margin-top: 2px;
+    }
+    span {
+      margin-right: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .todo-header {
+    background-color: #C8D6AF;
+
+    h2 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.25em;
+      color: #000000;
+    }
+
+  }
+
+  .todo-body {
+
+    ion-card-header {
+      background-color: #222;
+      h3 {
+        font-size: 1.25em;
+        font-weight: bold;
+        color: #FFFFFF;
+      }
+    }
+
+    ion-list {
+      p {
+        font-size: 1.15em;
+        color: #373D3F;
+      }
+    }
+
+    ion-item:nth-child(odd) {
+      //background-color: #FFECCC;
+    }
+
+  }
+
+}

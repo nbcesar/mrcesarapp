@@ -1,0 +1,260 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title><img src="img/logo-txt.png" class="nav-logo"></ion-title>
+    <ion-buttons end>
+      <button (click)="goToSearch()"><ion-icon name="search"></ion-icon></button>
+      <button (click)="goToProfile()"><ion-icon name="person"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+
+  <ion-card class="office-welcome" scroll>
+
+    <ion-row>
+      <ion-col width-20 center>
+        <img src="img/mr-cesar-face.png" class="welcome-face">
+      </ion-col>
+      <ion-col class="welcome-text" center>
+        <h2>Welcome back {{userProfile?.firstName}} </h2>
+        <p *ngIf="profileProgress < 100">
+          Use the button below to add
+          <span *ngIf="!userProfile?.firstName">
+            your first name.
+          </span>
+          <span *ngIf="userProfile?.firstName && !userProfile?.birthDate">
+            your birth date.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && !userProfile?.highSchool">
+            your high school.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && !userProfile?.gpaScale">
+            the GPA scale you used.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && !userProfile?.gpaScore">
+            your GPA score.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && !userProfile?.testType">
+            which standarized test you took.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType == 'act'
+            && !userProfile?.actCompositeScore">
+            your ACT Composite Score.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType == 'sat'
+            && !userProfile?.satMath">
+            your SAT Math Score.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType == 'sat'
+            && userProfile?.satMath && !userProfile?.satVerbal">
+            your SAT Verbal Score.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
+            && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))">
+            your ethnicity.
+          </span>
+        </p>
+        <p *ngIf="profileProgress == 100 && listProgress < 100">
+          Finish creating a balanced school list by clicking below.
+        </p>
+        <p *ngIf="profileProgress == 100 && listProgress == 100">
+          Go to App Map and complete the missing items.
+        </p>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-card  class="profile-card">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-33>My Profile</ion-col>
+          <ion-col width-67>
+            <progress max="100" [value]="profileProgress"></progress> <span>{{profileProgress}}%</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-list>
+
+      <ion-item *ngIf="profileProgress == 100">
+        <ion-icon secondary name="checkmark-circle" item-right
+          class="complete-icon"></ion-icon>
+        Profile Complete
+      </ion-item>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.firstName">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Enter your name
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.birthDate">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Date of Birth
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.highSchool">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        High School
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.gpaScale">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        GPA Scale
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.gpaScore">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        GPA Score
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.testType">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Standardized Test
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="userProfile?.testType == 'act' && !userProfile?.actCompositeScore">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        ACT Comp. Score
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="userProfile?.testType == 'sat' && !userProfile?.satMath">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        SAT Math
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="userProfile?.testType == 'sat' && !userProfile?.satVerbal">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        SAT Verbal
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.race">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Race Ethnicity
+      </button>
+
+    </ion-list>
+  </ion-card>
+
+  <ion-card class="list-card">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-33>School List</ion-col>
+          <ion-col width-67>
+            <progress max="100" [value]="listProgress"></progress> <span>{{listProgress}}%</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-list>
+
+      <ion-item *ngIf="listProgress == 100">
+        <ion-icon secondary name="checkmark-circle" item-right
+          class="complete-icon"></ion-icon>
+        School List Complete
+      </ion-item>
+
+      <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber < 1">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Moonshot - You need to pick {{1 - moonshotCollegeNumber}} school
+      </ion-item>
+
+      <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber < 3">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Reach - You need to pick {{3 - reachCollegeNumber}} more schools
+      </ion-item>
+
+      <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber < 3">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Target - You need to pick {{3 - targetCollegeNumber}} more schools
+      </ion-item>
+
+      <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber < 2">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Safety - You need to pick {{2 - safetyCollegeNumber}} more schools
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card class="app-map-card">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-25>App Map</ion-col>
+          <ion-col width-75>
+            <progress max="100"
+              [value]="((generalCompletedSteps + applyCompletedSteps + aidCompletedSteps)/(generalSteps + applySteps + aidSteps) * 100) || 0"></progress> <span>{{generalCompletedSteps + applyCompletedSteps + aidCompletedSteps}} / {{generalSteps + applySteps + aidSteps}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <!-- <ion-list>
+
+      <ion-item text-wrap>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-33>General</ion-col>
+            <ion-col width-67>
+              <progress max="100" [value]="generalProgress || 0"></progress>
+              <span>{{generalProgress?.toFixed(1) || 0}}%</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-33>Apply</ion-col>
+            <ion-col width-67>
+              <progress max="100" [value]="applyProgress || 0"></progress>
+              <span>{{applyProgress?.toFixed(1) || 0}}%</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-33>Fin Aid</ion-col>
+            <ion-col width-67>
+              <progress max="100" [value]="aidProgress || 0"></progress>
+              <span>{{aidProgress?.toFixed(1) || 0}}%</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+
+    </ion-list> -->
+  </ion-card>
+
+
+</ion-content>
+<!-- <ion-col width-67>
+  <progress max="100" [value]="listProgress"></progress> <span>{{listProgress}}%</span>
+</ion-col> -->

@@ -1,0 +1,77 @@
+.search .virtual-position {
+  width: 100% !important;
+}
+
+.search ion-row {
+  width: 100% !important;
+}
+
+.search ion-col {
+  padding: 0 !important;
+}
+
+.search ion-item {
+  padding: 0 !important;
+}
+
+.search .inner-item {
+  padding: 0 !important;
+}
+
+.search ion-thumbnail {
+  margin: 0 8px 0 0 !important;
+}
+
+.search p {
+
+}
+
+.college-stats {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.college-stats h2 {
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.college-info {
+  margin-left: 10px !important;
+}
+
+// Styles for the talking avatar
+.search .mr-cesar-college {
+  margin-top: 32px !important;
+}
+
+.search .mr-cesar-college p {
+  text-align: center;
+  font-size: 1.25em;
+  margin: 0 4px;
+  padding: 12px 0;
+}
+
+.search .mr-cesar-college img {
+  width: 40% !important;
+  margin: 16px 30% 0 30% !important;
+}
+
+.search {
+  ion-item:nth-child(odd) {
+    background-color: #C8D6AF;
+    color: black;
+  }
+
+  ion-item:nth-child(even) {
+    background-color: #FFECCC;
+  }
+}
+.college-info h2 {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.college-info p {
+  font-size: 1em;
+}

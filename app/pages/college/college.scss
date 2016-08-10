@@ -1,0 +1,43 @@
+.college-header {
+
+  background-color: #C8D6AF;
+  position: relative;
+  text-align: center;
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1.25em;
+    color: #000000;
+  }
+}
+
+.college-stats {
+
+  ion-card-header {
+    background-color: #222;
+    h2 {
+      font-size: 1.75em !important;
+      color: #FFFFFF !important;
+    }
+  }
+
+  ion-card-content {
+    h3 {
+      font-size: 1.75em;
+      font-weight: bold;
+    }
+    h4 {
+      font-size: 1.25em;
+    }
+    h5 {
+      font-weight: bold;
+    }
+    p {
+      color: #808080;
+    }
+  }
+
+}

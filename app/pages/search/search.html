@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>College Search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="search">
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)"
+    [hideCancelButton]="true" (ionCancel)="initializeItems()" (ionClear)="initializeItems()"></ion-searchbar>
+
+    <ion-list *ngIf="showList">
+      <ion-item-sliding #slidingItem *ngFor="let college of collegeList">
+
+        <ion-item text-wrap >
+
+          <!--<ion-thumbnail item-right (click)="addCollegeAsFavorite(college)">
+            <img src="img/icon.png">
+          </ion-thumbnail>-->
+
+          <ion-grid (click)="goToCollege(college.id, college.admissibility, college.favorite)">
+            <ion-row>
+              <ion-col width-75 center class="college-info">
+                <h2>{{ college.displayName }}</h2>
+                <p>{{ college.subHeading }} </p>
+                <p>{{ college.city }}, {{ college.state }}</p>
+              </ion-col>
+              <ion-col center>
+                <img src="img/college_building.png">
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="college-stats">
+
+              <ion-col width-33>
+                <h2>{{ college.gradRate | percent:'1.0-0' }}</h2>
+                <p>Grad Rate</p>
+              </ion-col>
+
+              <ion-col width-33>
+                <h2>{{ college.retentionRate | percent:'1.0-0' }}</h2>
+                <p>Retention</p>
+              </ion-col>
+
+              <ion-col width-33 *ngIf='college.admitRate'>
+                <h2>{{ college.admitRate | percent:'1.0-0' }}</h2>
+                <p>Admit Rate</p>
+              </ion-col>
+
+            </ion-row>
+
+          </ion-grid>
+
+        </ion-item>
+        <ion-item-options side="right">
+          <button *ngIf="college.favorite" danger large (click)="removeCollegeAsFavorite(college, slidingItem)">
+            <ion-icon name="trash"></ion-icon>
+            Remove
+          </button>
+          <button *ngIf="!college.favorite" favorite large (click)="addCollegeAsFavorite(college, slidingItem)">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            Add
+          </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
+
+    <div class="mr-cesar-college" *ngIf="!showList">
+      <p>
+        Interested in a school, search for it above
+      </p>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+    </div>
+
+
+</ion-content>

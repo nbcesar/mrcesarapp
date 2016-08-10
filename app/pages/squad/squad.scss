@@ -1,0 +1,48 @@
+.squad {
+  height: 100% !important;
+  .progress-update {
+    margin-top: 42px !important;
+    margin-bottom: 63px !important;
+  }
+
+  .chat {
+    margin-top: 42px !important;
+    margin-bottom: 63px !important;
+    .self {
+      text-align: right !important;
+    }
+  }
+
+  .create-squad {
+    text-align: center;
+    ion-item {
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+    }
+
+    button {
+      margin-top: 32px !important;
+    }
+
+  }
+
+  .fixed-segment {
+    position: fixed !important;
+    z-index: 1 !important;
+    background-color: #FFFFFF;
+    top: 44px;
+  }
+
+  .fixed-segment-android {
+    top: 125px !important;
+  }
+
+}
+
+.squad-footer {
+  border-top: 2px #CECECE solid !important;
+  background-color: #FFFFFF;
+  ion-input {
+    border-bottom: 1px #CECECE solid !important;
+  }
+}

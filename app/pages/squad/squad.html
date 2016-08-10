@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title><img src="img/logo-txt.png" class="nav-logo"></ion-title>
+    <ion-buttons end>
+      <button (click)="goToSearch()"><ion-icon name="search"></ion-icon></button>
+      <button (click)="goToProfile()"><ion-icon name="person"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="squad">
+  <div *ngIf="userProfile?.squad">
+    <ion-segment [(ngModel)]="squadAction" (ionChange)="onSegmentChanged($event)" class="fixed-segment" [class.fixed-segment-android]="isAndroid">
+      <ion-segment-button value="progressUpdate">
+        Progress Updates
+      </ion-segment-button>
+      <ion-segment-button value="chat">
+        Chat
+      </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="squadAction">
+      <ion-list no-lines class="progress-update" *ngSwitchCase="'progressUpdate'">
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="img/mr-cesar-face.png">
+          </ion-avatar>
+          <progress max="100" value="53"></progress>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="img/mr-cesar-face.png">
+          </ion-avatar>
+          <progress max="100" value="32"></progress>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="img/mr-cesar-face.png">
+          </ion-avatar>
+          <progress max="100" value="75"></progress>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="img/mr-cesar-face.png">
+          </ion-avatar>
+          <progress max="100" value="15"></progress>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="img/mr-cesar-face.png">
+          </ion-avatar>
+          <progress max="100" value="26"></progress>
+        </ion-item>
+      </ion-list>
+
+      <ion-list no-lines *ngSwitchCase="'chat'" class="chat">
+        <ion-item *ngFor="let message of messageList" [class.self]="userProfile.id == message.sender">
+          <h3>
+            {{message.senderName}}
+          </h3>
+          <span>{{message.message}}</span>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+  <div class="create-squad" *ngIf="!userProfile?.squad">
+    <ion-item>
+      <ion-label stacked>Squad Name</ion-label>
+      <ion-input [(ngModel)]="squadName" type="text"></ion-input>
+    </ion-item>
+    <button primary (click)="createSquad(squadName)">
+      Create Your Squad
+    </button>
+  </div>
+
+</ion-content>
+
+<ion-footer class="squad-footer">
+  <ion-grid *ngIf="userProfile?.squad && squadAction == 'chat'">
+    <ion-row>
+      <ion-col width-80>
+        <ion-input [(ngModel)]="messageToSend" type="text"></ion-input>
+      </ion-col>
+      <ion-col width-20>
+        <button primary small (click)="sendMessage(messageToSend, userProfile.squad, userProfile.firstName)">
+          Send
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

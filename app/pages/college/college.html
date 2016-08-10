@@ -1,0 +1,368 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{ college?.displayName }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="college">
+
+  <ion-card class="college-header">
+
+
+    <ion-row>
+      <ion-col width-25 center>
+        <img src="img/college_building.png">
+      </ion-col>
+
+      <ion-col center>
+        <h2> {{college?.displayName}} </h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-20 center>
+        <img src="img/{{admissibility}}_green.png" *ngIf="admissibility">
+      </ion-col>
+      <ion-col width-60 center>
+        <p> {{college?.city}}, {{college?.state}} </p>
+      </ion-col>
+      <ion-col width-20 center>
+        <ion-toggle [checked]="favoriteCollege" (ionChange)="toggleFavorite($event)"></ion-toggle>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-card class="college-stats">
+
+    <ion-card-header>
+
+      <ion-row>
+
+        <ion-col width-10 center>
+          <img src="img/outcomes_white.png">
+        </ion-col>
+
+        <ion-col center>
+          <h2>Outcomes</h2>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-row>
+        <ion-col width-20 center>
+          <img src="img/graduationRate.png">
+        </ion-col>
+
+        <ion-col center>
+          <h4>Graduation Rate</h4>
+        </ion-col>
+
+        <ion-col width-20 center>
+          <h3>{{college?.grad_rate_4yr_150nt_pooled | percent:'1.0-0'}}</h3>
+        </ion-col>
+      </ion-row>
+      <hr>
+
+      <ion-row>
+        <ion-col>
+          <h5>By Race</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.grad_rate_4yr_150_white | percent:'1.0-0'}}</h4>
+          <p>White</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.grad_rate_4yr_150_asian | percent:'1.0-0'}}</h4>
+          <p>Asian</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.grad_rate_4yr_150_black | percent:'1.0-0'}}</h4>
+          <p>Black</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.grad_rate_4yr_150_hispanic | percent:'1.0-0'}}</h4>
+          <p>Latino</p>
+        </ion-col>
+      </ion-row>
+
+      <br>
+
+      <ion-row>
+        <ion-col width-20 center>
+          <img src="img/average-income.png">
+        </ion-col>
+
+        <ion-col center>
+          <h4>Average Income</h4>
+        </ion-col>
+
+        <ion-col width-20 center>
+        </ion-col>
+
+      </ion-row>
+
+      <hr>
+
+      <ion-row>
+        <ion-col>
+          <h3>{{college?.after_entry_median_10_yrs | currency:'USD':true:'1.0-0'}}</h3>
+          <p>Average Income after 10 yrs</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.median_debt_suppressed_completers_overall | currency:'USD':true:'1.0-0'}}</h4>
+          <p>Average Debt</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.median_debt_suppressed_completers_monthly_payments | currency:'USD':true:'1.0-0'}}</h4>
+          <p>Avg Monthly Payment</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card class="college-stats">
+
+    <ion-card-header>
+      <ion-row>
+
+        <ion-col width-10 center>
+          <img src="img/demo.png">
+        </ion-col>
+
+        <ion-col center>
+          <h2>Student Body</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-row>
+
+        <ion-col width-67 center>
+          <h4># of Students</h4>
+        </ion-col>
+
+        <ion-col width-33 center>
+          <h3>{{college?.size | number}}</h3>
+        </ion-col>
+
+      </ion-row>
+
+      <hr>
+
+      <ion-row>
+        <ion-col>
+          <h5>By Race</h5>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.demographics_race_ethnicity_white | percent:'1.0-0'}}</h4>
+          <p>White</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.demographics_race_ethnicity_asian | percent:'1.0-0'}}</h4>
+          <p>Asian</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.demographics_race_ethnicity_black | percent:'1.0-0'}}</h4>
+          <p>Black</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.demographics_race_ethnicity_hispanic | percent:'1.0-0'}}</h4>
+          <p>Latino</p>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <ion-card class="college-stats">
+
+    <ion-card-header>
+      <ion-row>
+
+        <ion-col width-10 center>
+          <img src="img/academics.png">
+        </ion-col>
+
+        <ion-col center>
+          <h2>Academics</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row>
+
+        <ion-col center>
+          <h4>Most Popular Majors</h4>
+        </ion-col>
+
+      </ion-row>
+
+      <hr>
+
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.popularMajors?.one?.major}}</h4>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.popularMajors?.one?.percent | percent:'1.0-0'}}</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.popularMajors?.two?.major}}</h4>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.popularMajors?.two?.percent | percent:'1.0-0'}}</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.popularMajors?.three?.major}}</h4>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.popularMajors?.three?.percent | percent:'1.0-0'}}</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.popularMajors?.four?.major}}</h4>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.popularMajors?.four?.percent | percent:'1.0-0'}}</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.popularMajors?.five?.major}}</h4>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.popularMajors?.five?.percent | percent:'1.0-0'}}</h4>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <ion-card class="college-stats">
+
+    <ion-card-header>
+      <ion-row>
+
+        <ion-col width-10 center>
+          <img src="img/financial_aid.png">
+        </ion-col>
+
+        <ion-col center>
+          <h2>Financial Aid</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row>
+
+        <ion-col width-67 center>
+          <h4>% Pell Eligible </h4>
+        </ion-col>
+
+        <ion-col width-33 center>
+          <h3>{{college?.pell_grant_rate | percent:'1.0-0'}}</h3>
+        </ion-col>
+
+      </ion-row>
+
+      <hr>
+
+      <ion-row>
+        <ion-col>
+          <h5>Cost by Household Income</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.netPrice?.netPrice1 | currency:'USD':'1.0-0'}}</h4>
+          <p>$0-30,000</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.netPrice?.netPrice2 | currency:'USD':'1.0-0'}}</h4>
+          <p>$30k-$48k</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h4>{{college?.netPrice?.netPrice3 | currency:'USD':'1.0-0'}}</h4>
+          <p>$48k-$75k</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.netPrice?.netPrice4 | currency:'USD':'1.0-0'}}</h4>
+          <p>$75k-$110k</p>
+        </ion-col>
+        <ion-col>
+          <h4>{{college?.netPrice?.netPrice5 | currency:'USD':'1.0-0'}}</h4>
+          <p>> $110k</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card class="college-stats">
+
+    <ion-card-header>
+      <ion-row>
+
+        <ion-col width-10 center>
+          <img src="img/admissions.png">
+        </ion-col>
+
+        <ion-col center>
+          <h2>Admissions</h2>
+        </ion-col>
+
+      </ion-row>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row>
+
+        <ion-col width-67 center>
+          <h4>Admit Rate</h4>
+        </ion-col>
+
+        <ion-col width-33 center>
+          <h3>{{college?.admission_rate_overall | percent:'1.0-0'}}</h3>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

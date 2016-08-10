@@ -1,0 +1,47 @@
+.list {
+
+
+
+  ion-item {
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+  }
+
+  ion-list {
+    margin-top: 1px !important;
+  }
+
+  .fixed-segment {
+    position: fixed !important;
+    z-index: 1 !important;
+    background-color: #FFFFFF;
+    top: 48px;
+  }
+
+  .fixed-segment-windows {
+    top: 115px !important;
+  }
+
+  .list-div {
+    height: 100%;
+    margin-top: 42px;
+  }
+
+  ion-list {
+    height: 100%;
+  }
+
+  ion-item {
+    height: 20%;
+    text-align: center;
+  }
+
+  ion-item-sliding:nth-child(even) {
+    background-color: #FFECCC;
+  }
+
+  ion-item-sliding:nth-child(odd) {
+    background-color: #C8D6AF;
+  }
+
+}

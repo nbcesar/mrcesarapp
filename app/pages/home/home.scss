@@ -1,0 +1,64 @@
+.home {
+  ion-icon {
+    color: #CECECE;
+  }
+
+  .complete-icon {
+    color: #00AA00;
+  }
+
+  progress {
+    width: 75% !important;
+  }
+
+  progress::-webkit-progress-bar {
+    background-color: #434343;
+  }
+
+  progress::-webkit-progress-value {
+    background-color: #FFFFFF;
+  }
+
+  ion-card-header {
+    padding: 6px 8px !important;
+    color: #FFFFFF;
+  }
+
+  .profile-card {
+    background-color: #2196F3;
+  }
+
+  .list-card {
+    background-color: #FE5722;
+  }
+
+  .app-map-card {
+    background-color: #2196F3;
+  }
+
+  .office-welcome {
+
+    background-color: #FE5722;
+  }
+
+  .welcome-face {
+
+  }
+
+  .welcome-text {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin: 5px;
+    border: 2px black solid;
+  }
+
+  .welcome-text p {
+    color: black;
+  }
+
+  .welcome-text h2 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+}

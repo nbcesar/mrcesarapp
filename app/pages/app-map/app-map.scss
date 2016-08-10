@@ -1,0 +1,73 @@
+.app-map {
+
+
+  ion-col {
+    h2 {
+      font-size: 18px !important;
+    }
+  }
+
+  ion-icon::before {
+    font-size: 36px;
+  }
+
+
+  .fixed-segment {
+    position: fixed !important;
+    z-index: 1 !important;
+    background-color: #FFFFFF;
+    top: 48px;
+  }
+
+  .fixed-segment-windows {
+    top: 115px !important;
+  }
+
+  .app-map-div {
+    height: 100%;
+    margin-top: 42px;
+
+  }
+
+  ion-list {
+    height: 100%;
+  }
+
+  ion-item {
+    height: 15%;
+    text-align: center;
+  }
+
+  /*
+  ion-item h1 {
+    font-size: 2em;
+  }
+
+  ion-item h2 {
+    font-size: 3em;
+  }
+*/
+  /*
+  ion-item:nth-child(3n) {
+    //background-color: #bc5a45;
+    background-color: #F2D0A4;
+  }
+  */
+  ion-item:nth-child(odd) { //3n+1
+    //background-color: #f4e1d2;
+
+    background-color: #C8D6AF;
+    color: black;
+  }
+
+  ion-item:nth-child(even) { //3n+2
+    /*background-color: #f18973;*/
+    background-color: #FFECCC;
+  }
+/*
+  ion-item:nth-child(4n+4) {
+    background-color: #daebe8;
+  }
+*/
+
+}

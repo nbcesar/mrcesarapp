@@ -1,0 +1,101 @@
+ion-slide {
+  background-color: #FF6700;
+}
+
+ion-slide .slide-zoom {
+  height: 85vh !important;
+  width: 100% !important;
+}
+
+ion-slide .intro-text {
+  background-color: #FFFFFF;
+  width: 90%;
+  height: 300px;
+  margin: 16px auto;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.intro-text h1 {
+  padding-top: 16px;
+  font-size: 2.25em;
+  margin: 0 0 12px 0;
+}
+
+.intro-text h2 {
+  padding-top: 16px;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.intro-text p {
+  font-size: 1.15em;
+  padding: 0 8px;
+  margin: 32px;
+}
+
+.intro-text p span {
+  font-size: 0.75em;
+}
+
+ion-slide .mr-cesar-avatar {
+  width: 120px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 315px;
+}
+
+.radio-button-list {
+  margin: 0;
+}
+
+.radio-button-list ion-list-header {
+  border: none;
+  padding: none !important;
+}
+
+.radio-button-list ion-grid {
+  padding: 0;
+}
+
+.intro .item-inner {
+  border: none !important;
+}
+
+.centered-input {
+  width: 50%;
+  margin: auto;
+}
+
+.intro ion-item {
+  width: 80%;
+  margin: auto;
+  padding: 0;
+}
+
+.intro ion-range {
+  padding: 0;
+}
+
+.no-margin {
+  margin: 0 0 10px 0 !important;
+}
+
+.intro-button {
+  font-size: 0.90em;
+  min-width: 40px !important;
+}
+
+.intro .small-col {
+  padding: 43px 0 0 0 !important;
+}
+
+.intro ion-grid {
+  padding: 0 !important;
+}
+
+.academic-test {
+  padding: 2px 16px 0 16px !important;
+}

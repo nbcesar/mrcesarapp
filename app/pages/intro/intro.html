@@ -1,0 +1,218 @@
+<ion-header>
+  <ion-navbar favorite>
+    <ion-title>
+      <img src="img/logo-txt.png" class="nav-logo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="intro">
+  <ion-slides #introSlider>
+    <ion-slide class="slide">
+      <div class="intro-text">
+        <h1>
+          Hi!
+        </h1>
+        <p>
+          I'm Mr. Cesar <br />
+          I am here to guide you through the college application process <br />
+          <span>Let's get to know eachother.</span>
+        </p>
+        <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+
+      </div>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+    </ion-slide>
+
+    <ion-slide class="slide">
+      <div class="intro-text">
+        <h2>
+          To get started, what's your name?
+        </h2>
+
+        <ion-item>
+          <ion-label floating> First Name </ion-label>
+          <ion-input type="text" [(ngModel)]="firstName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating> Last Name </ion-label>
+          <ion-input type="text" [(ngModel)]="lastName"></ion-input>
+        </ion-item>
+
+      </div>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+
+      <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+    <ion-slide class="slide">
+      <div class="intro-text">
+        <h2>
+          Academics
+        </h2>
+
+        <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list">
+          <ion-list-header>GPA Scale</ion-list-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label>100</ion-label>
+                  <ion-radio value="100" ></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>4.0</ion-label>
+                  <ion-radio value="4" ></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-list>
+
+        <ion-item *ngIf="gpaScale == '4'">
+          <ion-label> GPA Score </ion-label>
+          <ion-range min="1" max="4" pin="true" step="0.1" [(ngModel)]="gpaScore" secondary>
+            <ion-icon range-left small name="arrow-back"></ion-icon>
+            <ion-icon range-right name="arrow-forward"></ion-icon>
+          </ion-range>
+        </ion-item>
+
+        <ion-item *ngIf="gpaScale == '100'">
+          <ion-label> GPA Score </ion-label>
+          <ion-range min="50" max="100" pin="true" step="1" [(ngModel)]="gpaScore" secondary>
+            <ion-icon range-left small name="arrow-back"></ion-icon>
+            <ion-icon range-right name="arrow-forward"></ion-icon>
+          </ion-range>
+        </ion-item>
+      <span>{{gpaScore}}</span>
+
+      </div>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+
+      <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+    <ion-slide class="slide">
+      <div class="intro-text">
+        <h2>
+          Academics
+        </h2>
+
+        <ion-list radio-group [(ngModel)]="testType" class="radio-button-list">
+          <ion-list-header class="academic-test">What test did you take?</ion-list-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label>ACT</ion-label>
+                  <ion-radio value="act" ></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>SAT</ion-label>
+                  <ion-radio value="sat" ></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-list>
+
+        <ion-grid *ngIf="testType == 'act'">
+          <ion-row>
+            <ion-col width-80>
+              <ion-item>
+                <ion-label class="no-margin"> ACT Composite Score </ion-label>
+                <ion-range min="1" max="36" pin="true" step="1" [(ngModel)]="actCompositeScore" secondary>
+                  <ion-icon range-left small name="arrow-back"></ion-icon>
+                  <ion-icon range-right name="arrow-forward"></ion-icon>
+                </ion-range>
+              </ion-item>
+            </ion-col>
+
+            <ion-col width-20 class="small-col">
+              <span>{{actCompositeScore}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid *ngIf="testType == 'sat'">
+          <ion-row>
+            <ion-col width-80>
+              <ion-item>
+                <ion-label class="no-margin"> Verbal Score </ion-label>
+                <ion-range min="200" max="800" pin="true" step="10" [(ngModel)]="satVerbal" secondary>
+                  <ion-icon range-left small name="arrow-back"></ion-icon>
+                  <ion-icon range-right name="arrow-forward"></ion-icon>
+                </ion-range>
+              </ion-item>
+            </ion-col>
+
+            <ion-col width-20 class="small-col">
+              <span>{{satVerbal}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid *ngIf="testType == 'sat'">
+          <ion-row>
+            <ion-col width-80>
+              <ion-item *ngIf="testType == 'sat'">
+                <ion-label class="no-margin"> Math Score </ion-label>
+                <ion-range min="200" max="800" pin="true" step="10" [(ngModel)]="satMath" secondary>
+                  <ion-icon range-left small name="arrow-back"></ion-icon>
+                  <ion-icon range-right name="arrow-forward"></ion-icon>
+                </ion-range>
+              </ion-item>
+            </ion-col>
+
+            <ion-col width-20 class="small-col">
+              <span>{{satMath}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+
+      </div>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+
+      <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+    <ion-slide class="slide">
+      <div class="intro-text">
+        <h2>
+          Nice to meet you <br /> {{firstName}}!
+        </h2>
+        <p>
+          Let's get started
+        </p>
+        <button favorite (click)="createProfile()">
+          Start Now
+        </button>
+      </div>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+    </ion-slide>
+
+
+  </ion-slides>
+
+
+
+</ion-content>
