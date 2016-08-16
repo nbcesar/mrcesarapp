@@ -15,16 +15,24 @@
     position: fixed !important;
     z-index: 1 !important;
     background-color: #FFFFFF;
-    top: 48px;
+    top: 64px !important;
   }
 
   .fixed-segment-windows {
     top: 115px !important;
   }
 
+  .fixed-segment-android {
+    top: 55px !important;
+  }
+
   .list-div {
     height: 100%;
-    margin-top: 42px;
+    margin-top: 32px;
+  }
+
+  .list-div-android {
+    margin-top: 40px !important;
   }
 
   ion-list {
