@@ -10,7 +10,7 @@
 <ion-content class="profile">
   <ion-row>
     <ion-col class="profile_img">
-      <img [src]="base64Image" (click)="takeSelfie()">
+      <img [src]="profileImage || mrCesarLogo" (click)="takeSelfie()">
     </ion-col>
   </ion-row>
 

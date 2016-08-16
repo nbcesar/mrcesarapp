@@ -38,7 +38,7 @@ export class LoginPage {
         if (introShown) {
           this.nav.setRoot(TabsPage);
         } else {
-          this.profileData.getProfile(authData.uid).on('value', profile => {
+          this.profileData.getProfile(authData.uid).once('value', profile => {
             if (profile.val().firstName || profile.val().lastName){
               this.nav.setRoot(TabsPage);
             } else {

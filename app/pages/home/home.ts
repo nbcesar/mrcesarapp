@@ -28,10 +28,6 @@ export class HomePage {
   constructor(public nav: NavController, public profileData: ProfileData,
     public collegeData: CollegeData, public appMapData: AppMapData) {
 
-    this.nav = nav;
-    this.profileData = profileData;
-    this.collegeData = collegeData;
-
   }
 
   ionViewDidEnter(){

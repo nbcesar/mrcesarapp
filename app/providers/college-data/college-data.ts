@@ -19,22 +19,22 @@ export class CollegeData {
 
   getMoonshotList(): any {
     return this.userProfile.child(this.currentUser.uid).child('colleges').orderByChild('admissibility')
-      .equalTo('Moonshot');
+      .equalTo('moonshot');
   }
 
   getReachList(): any {
     return this.userProfile.child(this.currentUser.uid).child('colleges').orderByChild('admissibility')
-      .equalTo('Reach');
+      .equalTo('reach');
   }
 
   getTargetList(): any {
     return this.userProfile.child(this.currentUser.uid).child('colleges')
-      .orderByChild('admissibility').equalTo("Target");
+      .orderByChild('admissibility').equalTo("target");
   }
 
   getSafetyList(): any {
     return this.userProfile.child(this.currentUser.uid).child('colleges').orderByChild('admissibility')
-      .equalTo('Safety');
+      .equalTo('safety');
   }
 
   getOtherCollegeList(): any {

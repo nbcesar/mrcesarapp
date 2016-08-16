@@ -14,18 +14,20 @@ export class ProfilePage {
   public userProfile: any;
   public birthDate: string;
   public graduationDate: string;
-  public base64Image: string;
+  public profileImage: string;
+  public mrCesarLogo: string;
 
   constructor(public nav: NavController, public profileData: ProfileData,
     public authData: AuthData, public alertCtrl: AlertController) {
-    this.base64Image = "img/mr-cesar-face.png";
+    this.profileImage = "img/mr-cesar-face.png";
+    this.mrCesarLogo = "img/mr-cesar-face.png";
 
     this.profileData.getUserProfile().on('value', (data) => {
       this.userProfile = data.val();
       this.birthDate = this.userProfile.birthDate;
       this.graduationDate = this.userProfile.graduationDate;
       if (this.userProfile.profileSelfie) {
-        this.base64Image = this.userProfile.profileSelfie;
+        this.profileImage = this.userProfile.profileSelfie;
       }
     });
 

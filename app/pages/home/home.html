@@ -202,59 +202,17 @@
     <ion-card-header>
       <ion-grid>
         <ion-row>
-          <ion-col width-25>App Map</ion-col>
-          <ion-col width-75>
+          <ion-col width-33>App Map</ion-col>
+          <ion-col width-67>
             <progress max="100"
-              [value]="((generalCompletedSteps + applyCompletedSteps + aidCompletedSteps)/(generalSteps + applySteps + aidSteps) * 100) || 0"></progress> <span>{{generalCompletedSteps + applyCompletedSteps + aidCompletedSteps}} / {{generalSteps + applySteps + aidSteps}}</span>
+              [value]="((generalCompletedSteps + applyCompletedSteps + aidCompletedSteps)/(generalSteps + applySteps + aidSteps) * 100) || 0"></progress>
+              <span>{{(((generalCompletedSteps + applyCompletedSteps + aidCompletedSteps) / (generalSteps + applySteps + aidSteps)) * 100).toFixed(0)}}%</span>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-header>
 
-    <!-- <ion-list>
-
-      <ion-item text-wrap>
-        <ion-grid>
-          <ion-row>
-            <ion-col width-33>General</ion-col>
-            <ion-col width-67>
-              <progress max="100" [value]="generalProgress || 0"></progress>
-              <span>{{generalProgress?.toFixed(1) || 0}}%</span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-      <ion-item text-wrap>
-        <ion-grid>
-          <ion-row>
-            <ion-col width-33>Apply</ion-col>
-            <ion-col width-67>
-              <progress max="100" [value]="applyProgress || 0"></progress>
-              <span>{{applyProgress?.toFixed(1) || 0}}%</span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-      <ion-item text-wrap>
-        <ion-grid>
-          <ion-row>
-            <ion-col width-33>Fin Aid</ion-col>
-            <ion-col width-67>
-              <progress max="100" [value]="aidProgress || 0"></progress>
-              <span>{{aidProgress?.toFixed(1) || 0}}%</span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-
-    </ion-list> -->
   </ion-card>
 
 
 </ion-content>
-<!-- <ion-col width-67>
-  <progress max="100" [value]="listProgress"></progress> <span>{{listProgress}}%</span>
-</ion-col> -->
