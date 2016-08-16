@@ -6,10 +6,25 @@
       <button (click)="goToProfile()"><ion-icon name="person"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
+
+  <ion-toolbar no-border light>
+    <ion-segment [(ngModel)]="todoCategory" class="segment">
+      <ion-segment-button value="general">
+        General
+      </ion-segment-button>
+      <ion-segment-button value="apply">
+        Apply
+      </ion-segment-button>
+      <ion-segment-button value="finAid">
+        Fin Aid
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content class="app-map">
-
+<!--
   <div class="app-map-segment md">
     <ion-segment [(ngModel)]="todoCategory" class="fixed-segment" [class.fixed-segment-android]="isAndroid" [class.fixed-segment-windows]="isWindows">
       <ion-segment-button value="general">
@@ -23,7 +38,7 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-
+-->
 
   <div [ngSwitch]="todoCategory" class="app-map-div" [class.app-map-div-android]="isAndroid">
     <ion-list *ngSwitchCase="'general'">
