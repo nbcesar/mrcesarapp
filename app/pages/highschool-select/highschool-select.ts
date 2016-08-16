@@ -9,10 +9,13 @@ import { ProfileData } from '../../providers/profile-data/profile-data';
 })
 export class HighschoolSelectPage {
   public userProfile: any;
+  public state: string;
+  public cityList: any;
   public schoolList: any;
   public loadedSchoolList: any;
   public showList: boolean = false;
   public showSearch: boolean = false;
+  public pickCity: boolean = false;
 
   constructor(private nav: NavController, private highschoolData: HighschoolData,
     private profileData: ProfileData) {
@@ -23,8 +26,23 @@ export class HighschoolSelectPage {
 
   }
 
-  getSchoolList(schoolState){
-    this.highschoolData.getSchoolList(schoolState).on('value', snapshot => {
+  getCityList(state){
+    this.state = state;
+    this.pickCity = true;
+    this.highschoolData.getCityList(state).on('value', snapshot => {
+      let cities = [];
+      snapshot.forEach( snap => {
+        cities.push({
+          id: snap.key,
+          name: snap.val().name
+        });
+      });
+      this.cityList = cities;
+    });
+  }
+
+  getSchoolList(city){
+    this.highschoolData.getSchoolList(this.state, city).on('value', snapshot => {
       let schools = [];
       snapshot.forEach( snap => {
         schools.push({

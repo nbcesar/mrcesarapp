@@ -17,8 +17,12 @@ export class HighschoolData {
     return this.fireSchool;
   }
 
-  getSchoolList(state): any {
+  getCityList(state): any {
     return this.fireSchool.child(state);
+  }
+
+  getSchoolList(state, city): any {
+    return this.fireSchool.child(state).child(city).child('schoolList');
   }
 
   addSchool(state, city, schoolName, schoolId): any {
