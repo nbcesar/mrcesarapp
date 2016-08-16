@@ -10,16 +10,28 @@
   <ion-toolbar>
     <ion-segment [(ngModel)]="collegeCategory">
       <ion-segment-button value="moonshot">
-        Moonshot
+        <!--Moonshot-->
+        <ion-avatar>
+          <img src="img/moonshot_green.png" />
+        </ion-avatar>
       </ion-segment-button>
       <ion-segment-button value="reach">
-        Reach
+        <!--Reach-->
+        <ion-avatar>
+          <img src="img/reach_green.png" />
+        </ion-avatar>
       </ion-segment-button>
       <ion-segment-button value="target">
-        Target
+        <!--Target-->
+        <ion-avatar>
+          <img src="img/target_green.png" />
+        </ion-avatar>
       </ion-segment-button>
       <ion-segment-button value="safety">
-        Safety
+        <!--Safety-->
+        <ion-avatar>
+          <img src="img/safety_green.png" />
+        </ion-avatar>
       </ion-segment-button>
       <ion-segment-button value="other">
         Other
@@ -31,27 +43,6 @@
 
 <ion-content class="list">
 
-  <!--
-  <div class="list-segment">
-    <ion-segment [(ngModel)]="collegeCategory" class="fixed-segment" [class.fixed-segment-android]="isAndroid" [class.fixed-segment-windows]="isWindows">
-      <ion-segment-button value="moonshot">
-        Moonshot
-      </ion-segment-button>
-      <ion-segment-button value="reach">
-        Reach
-      </ion-segment-button>
-      <ion-segment-button value="target">
-        Target
-      </ion-segment-button>
-      <ion-segment-button value="safety">
-        Safety
-      </ion-segment-button>
-      <ion-segment-button value="other">
-        Other
-      </ion-segment-button>
-    </ion-segment>
-  </div>
--->
   <div [ngSwitch]="collegeCategory" class="list-div" [class.list-div-android]="isAndroid">
     <ion-list *ngSwitchCase="'moonshot'">
       <ion-item-sliding #slidingItem *ngFor="let college of moonshotList let index=index">
