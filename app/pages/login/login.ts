@@ -2,6 +2,7 @@ import { NavController, LoadingController, AlertController, Storage, LocalStorag
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/common';
 import { AuthData } from '../../providers/auth-data/auth-data';
+import { ProfileData } from '../../providers/profile-data/profile-data';
 import { SignupPage } from '../signup/signup';
 import { ResetPasswordPage } from '../reset-password/reset-password';
 import { TabsPage } from '../tabs/tabs';
@@ -9,15 +10,17 @@ import { IntroPage } from '../intro/intro';
 
 @Component({
   templateUrl: 'build/pages/login/login.html',
-  providers: [AuthData]
+  providers: [AuthData, ProfileData]
 })
 export class LoginPage {
   public loginForm: any;
+  public userProfile: any;
   local: Storage;
 
 
   constructor(public nav: NavController, public authData: AuthData, public formBuilder: FormBuilder,
-    public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    public alertCtrl: AlertController, public loadingCtrl: LoadingController,
+    public profileData: ProfileData) {
 
     this.loginForm = formBuilder.group({
       email: ['', Validators.required],
@@ -35,7 +38,13 @@ export class LoginPage {
         if (introShown) {
           this.nav.setRoot(TabsPage);
         } else {
-          this.nav.setRoot(IntroPage);
+          this.profileData.getProfile(authData.uid).on('value', profile => {
+            if (profile.val().firstName || profile.val().lastName){
+              this.nav.setRoot(TabsPage);
+            } else {
+              this.nav.setRoot(IntroPage);
+            }
+          });
         }
       });
     }, (error) => {

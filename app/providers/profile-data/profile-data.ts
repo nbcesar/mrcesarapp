@@ -6,7 +6,6 @@ import * as firebase from 'firebase';
 export class ProfileData {
   public userProfile: any;
   public currentUser: any;
-  public getProfile: any;
   storageRef: any;
 
 
@@ -31,6 +30,10 @@ export class ProfileData {
       satVerbal: satVerbal,
       satMath: satMath,
     });
+  }
+
+  getProfile(userId): any {
+    return this.userProfile.child(userId);
   }
 
   getUserProfile(): any {
