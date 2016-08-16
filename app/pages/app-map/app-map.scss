@@ -13,32 +13,6 @@
     font-size: 36px;
   }
 
-
-/*
-  .fixed-segment {
-    position: fixed !important;
-    z-index: 1 !important;
-    background-color: #FFFFFF;
-    top: 64px !important;
-  }
-
-  .fixed-segment-windows {
-    top: 115px !important;
-  }
-
-  .fixed-segment-android {
-    top: 55px !important;
-  }
-
-  .app-map-div {
-    height: 100%;
-    margin-top: 32px;
-  }
-
-  .app-map-div-android {
-    margin-top: 40px !important;
-  }
-*/
   ion-list {
     height: 100%;
   }
@@ -48,36 +22,13 @@
     text-align: center;
   }
 
-  /*
-  ion-item h1 {
-    font-size: 2em;
-  }
-
-  ion-item h2 {
-    font-size: 3em;
-  }
-*/
-  /*
-  ion-item:nth-child(3n) {
-    //background-color: #bc5a45;
-    background-color: #F2D0A4;
-  }
-  */
-  ion-item:nth-child(odd) { //3n+1
-    //background-color: #f4e1d2;
-
+  ion-item:nth-child(odd) {
     background-color: #C8D6AF;
     color: black;
   }
 
-  ion-item:nth-child(even) { //3n+2
-    /*background-color: #f18973;*/
+  ion-item:nth-child(even) {
     background-color: #FFECCC;
   }
-/*
-  ion-item:nth-child(4n+4) {
-    background-color: #daebe8;
-  }
-*/
 
 }
