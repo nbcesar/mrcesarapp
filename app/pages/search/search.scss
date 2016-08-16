@@ -1,3 +1,15 @@
+.search {
+  ion-item:nth-child(even) {
+    background-color: #FFECCC !important;
+  }
+
+  ion-item:nth-child(odd) {
+    background-color: #C8D6AF !important;
+    color: black;
+  }
+
+}
+
 .search .virtual-position {
   width: 100% !important;
 }
@@ -57,16 +69,7 @@
   margin: 16px 30% 0 30% !important;
 }
 
-.search {
-  ion-item:nth-child(odd) {
-    background-color: #C8D6AF;
-    color: black;
-  }
 
-  ion-item:nth-child(even) {
-    background-color: #FFECCC;
-  }
-}
 .college-info h2 {
   font-size: 1.25em;
   font-weight: bold;
