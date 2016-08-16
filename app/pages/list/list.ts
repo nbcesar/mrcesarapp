@@ -38,10 +38,10 @@ export class ListPage {
       let safetyList = [];
       let otherList = [];
       favoriteCollegeList.forEach( college => {
-        if (college.val().admissibility == 'Moonshot') moonshotList.push(college.val());
-        else if (college.val().admissibility == 'Reach') reachList.push(college.val());
-        else if (college.val().admissibility == 'Target') targetList.push(college.val());
-        else if (college.val().admissibility == 'Safety') safetyList.push(college.val());
+        if (college.val().admissibility == 'moonshot') moonshotList.push(college.val());
+        else if (college.val().admissibility == 'reach') reachList.push(college.val());
+        else if (college.val().admissibility == 'target') targetList.push(college.val());
+        else if (college.val().admissibility == 'safety') safetyList.push(college.val());
         else otherList.push(college.val());
       });
       this.moonshotList = moonshotList;

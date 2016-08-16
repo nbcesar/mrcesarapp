@@ -48,7 +48,7 @@
       <ion-item-sliding #slidingItem *ngFor="let college of moonshotList let index=index">
 
         <ion-item text-wrap no-lines>
-          <ion-grid (click)="goToCollegeDetail(college.key, 'moonshot')">
+          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
             <ion-row>
 
               <ion-col width-10 center >
@@ -78,7 +78,7 @@
       <ion-item-sliding #slidingItem *ngFor="let college of reachList let index=index">
 
         <ion-item text-wrap no-lines>
-          <ion-grid (click)="goToCollegeDetail(college.key, 'reach')">
+          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
             <ion-row>
 
               <ion-col width-10 center >
@@ -108,7 +108,7 @@
       <ion-item-sliding #slidingItem *ngFor="let college of targetList let index=index">
 
         <ion-item text-wrap no-lines>
-          <ion-grid (click)="goToCollegeDetail(college.key, 'target')">
+          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
             <ion-row>
 
               <ion-col width-10 center >
@@ -138,7 +138,7 @@
       <ion-item-sliding #slidingItem *ngFor="let college of safetyList let index=index">
 
         <ion-item text-wrap no-lines>
-          <ion-grid (click)="goToCollegeDetail(college.key, 'safety')">
+          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
             <ion-row>
 
               <ion-col width-10 center >
