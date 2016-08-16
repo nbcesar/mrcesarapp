@@ -10,8 +10,8 @@
 
 <ion-content class="list">
 
-  <div class="list-segment md">
-    <ion-segment [(ngModel)]="collegeCategory" class="fixed-segment" [class.fixed-segment-windows]="isWindows">
+  <div class="list-segment">
+    <ion-segment [(ngModel)]="collegeCategory" class="fixed-segment" [class.fixed-segment-android]="isAndroid" [class.fixed-segment-windows]="isWindows">
       <ion-segment-button value="moonshot">
         Moonshot
       </ion-segment-button>
@@ -30,7 +30,7 @@
     </ion-segment>
   </div>
 
-  <div [ngSwitch]="collegeCategory" class="list-div">
+  <div [ngSwitch]="collegeCategory" class="list-div" [class.list-div-android]="isAndroid">
     <ion-list *ngSwitchCase="'moonshot'">
       <ion-item-sliding #slidingItem *ngFor="let college of moonshotList let index=index">
 

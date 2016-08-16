@@ -11,7 +11,7 @@
 <ion-content class="app-map">
 
   <div class="app-map-segment md">
-    <ion-segment [(ngModel)]="todoCategory" class="fixed-segment" [class.fixed-segment-windows]="isWindows">
+    <ion-segment [(ngModel)]="todoCategory" class="fixed-segment" [class.fixed-segment-android]="isAndroid" [class.fixed-segment-windows]="isWindows">
       <ion-segment-button value="general">
         General
       </ion-segment-button>
@@ -25,7 +25,7 @@
   </div>
 
 
-  <div [ngSwitch]="todoCategory" class="app-map-div">
+  <div [ngSwitch]="todoCategory" class="app-map-div" [class.app-map-div-android]="isAndroid">
     <ion-list *ngSwitchCase="'general'">
       <ion-item text-wrap *ngFor="let todo of generalList" (click)="goToDetail(todo)"
          no-lines>
