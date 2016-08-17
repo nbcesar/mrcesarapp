@@ -75,9 +75,13 @@ export class ProfileData {
   }
 
   updateProfileSelfie(imageURL: string = null): any {
-    return this.userProfile.child(this.currentUser.uid).update({
-      profileSelfie: imageURL,
-    });
+    return this.storageRef.child('profileSelfies').child(this.currentUser.uid)
+      .child('profilePicture.png').putString(imageURL, 'base64', {contentType: 'image/png'})
+        .then( snapshot => {
+        this.userProfile.child(this.currentUser.uid).update({
+          profileSelfie: snapshot.downloadURL,
+        });
+      });
   }
 
   updateGraduationDate(graduationDate: string = null): any {

@@ -36,7 +36,7 @@ export class ProfilePage {
   takeSelfie(){
     Camera.getPicture({
       quality : 95,
-      destinationType : Camera.DestinationType.FILE_URI,
+      destinationType : Camera.DestinationType.DATA_URL,
       sourceType : Camera.PictureSourceType.CAMERA,
       allowEdit : true,
       encodingType: Camera.EncodingType.PNG,
