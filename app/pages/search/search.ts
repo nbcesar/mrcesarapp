@@ -192,28 +192,17 @@ export class SearchPage {
 
   goToCollege(collegeId, admissibility, favoriteCollege) {
     let canUpdate;
-    let collegeAdmissibility;
     if (typeof admissibility == 'undefined'){
       canUpdate = false;
     } else {
       canUpdate = true
     }
 
-    if (admissibility == 'Moonshot'){
-      collegeAdmissibility = 'moonshot';
-    } else if (admissibility == 'Reach'){
-      collegeAdmissibility = 'reach';
-    } else if (admissibility == 'Target'){
-      collegeAdmissibility = 'target';
-    } else if (admissibility == 'Safety') {
-      collegeAdmissibility = 'safety';
-    }
-
     this.nav.push(CollegePage, {
       collegeId: collegeId,
       canUpdate: canUpdate,
       favoriteCollege: favoriteCollege,
-      admissibility: collegeAdmissibility
+      admissibility: admissibility
     });
   }
 
