@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
   template: '<ion-nav [root]="rootPage"></ion-nav>',
 })
 export class MyApp {
-  rootPage: any = TabsPage;
+  rootPage: any;
 
   constructor(platform: Platform) {
     var config = {
@@ -24,6 +24,8 @@ export class MyApp {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
         this.rootPage = LoginPage;
+      } else {
+        this.rootPage = TabsPage;
       }
     });
 
