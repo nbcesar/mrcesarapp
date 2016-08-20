@@ -15,12 +15,18 @@ export class AuthData {
     return this.fireAuth.signInWithEmailAndPassword(email, password);
   }
 
-  signupUser(email, password): any {
-    return this.fireAuth.createUserWithEmailAndPassword(email, password).then((newUser) => {
-      this.fireAuth.signInWithEmailAndPassword(email, password).then((authenticatedUser) => {
-        this.userProfile.child(authenticatedUser.uid).set({
-          email: email
-        });
+  createAnonymousUser(gpaScale: string, gpaScore: number, testType: string,
+    actCompositeScore: number = null, satVerbal: number = null, satMath: number = null, race: string): any {
+    return this.fireAuth.signInAnonymously().then((anonymousUser) => {
+      this.userProfile.child(anonymousUser.uid).set({
+        id: anonymousUser.uid,
+        gpaScale: gpaScale,
+        gpaScore: gpaScore,
+        testType: testType,
+        actCompositeScore: actCompositeScore,
+        satVerbal: satVerbal,
+        satMath: satMath,
+        race: race
       });
     });
   }

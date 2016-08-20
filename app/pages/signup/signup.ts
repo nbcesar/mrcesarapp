@@ -20,40 +20,40 @@ export class SignupPage {
     })
   }
 
-  signupUser(event){
-    event.preventDefault();
-    this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
-      this.nav.setRoot(IntroPage);
-    }, (error) => {
-      var errorMessage: string;
-      switch (error.code) {
-        case "auth/email-already-in-use":
-          errorMessage = "There's an account with that email address";
-          break;
-        case "auth/invalid-email":
-          errorMessage = "You'll need to write a valid email address";
-          break;
-        case "auth/operation-not-allowed":
-          errorMessage = "You can't use this signup method, try social?";
-          break;
-        case "auth/weak-password":
-          errorMessage = "You need a stronger password, don't get hacked!";
-          break;
-        default:
-          errorMessage = error.message;
-      }
-
-        let alert = this.alertCtrl.create({
-          message: errorMessage,
-          buttons: [{text: "Ok"}]
-        });
-        alert.present();
-    });
-
-
-    let loading = this.loadingCtrl.create({
-      dismissOnPageChange: true,
-    });
-    loading.present();
-  }
+  // signupUser(event){
+  //   event.preventDefault();
+  //   this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
+  //     this.nav.setRoot(IntroPage);
+  //   }, (error) => {
+  //     var errorMessage: string;
+  //     switch (error.code) {
+  //       case "auth/email-already-in-use":
+  //         errorMessage = "There's an account with that email address";
+  //         break;
+  //       case "auth/invalid-email":
+  //         errorMessage = "You'll need to write a valid email address";
+  //         break;
+  //       case "auth/operation-not-allowed":
+  //         errorMessage = "You can't use this signup method, try social?";
+  //         break;
+  //       case "auth/weak-password":
+  //         errorMessage = "You need a stronger password, don't get hacked!";
+  //         break;
+  //       default:
+  //         errorMessage = error.message;
+  //     }
+  //
+  //       let alert = this.alertCtrl.create({
+  //         message: errorMessage,
+  //         buttons: [{text: "Ok"}]
+  //       });
+  //       alert.present();
+  //   });
+  //
+  //
+  //   let loading = this.loadingCtrl.create({
+  //     dismissOnPageChange: true,
+  //   });
+  //   loading.present();
+  // }
 }

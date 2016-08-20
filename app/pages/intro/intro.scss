@@ -10,22 +10,16 @@ ion-slide .slide-zoom {
 ion-slide .intro-text {
   background-color: #FFFFFF;
   width: 90%;
-  height: 300px;
+  height: 380px;
   margin: 16px auto;
   border-radius: 10px;
   text-align: center;
 }
 
-.intro-text h1 {
-  padding-top: 16px;
-  font-size: 2.25em;
-  margin: 0 0 12px 0;
-}
-
-.intro-text h2 {
+.intro-text h3 {
   padding-top: 16px;
   font-size: 1.5em;
-  margin: 0;
+  margin: 0 16px;
 }
 
 .intro-text p {
@@ -34,21 +28,26 @@ ion-slide .intro-text {
   margin: 32px;
 }
 
-.intro-text p span {
+.intro-text span {
   font-size: 0.75em;
 }
 
 ion-slide .mr-cesar-avatar {
-  width: 120px;
+  width: 90px;
   position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
-  top: 315px;
+  top: 380px;
 }
 
 .radio-button-list {
-  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.act-score {
+  margin-top: 36px;
 }
 
 .radio-button-list ion-list-header {
@@ -98,4 +97,13 @@ ion-slide .mr-cesar-avatar {
 
 .academic-test {
   padding: 2px 16px 0 16px !important;
+}
+
+.race-list {
+  margin-top: 32px;
+  ion-item {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 95%;
+  }
 }

@@ -1,62 +1,51 @@
-import {NavController, LoadingController, Slides, Storage, LocalStorage} from 'ionic-angular';
+import {NavController, LoadingController, Slides} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
-import {TabsPage} from '../tabs/tabs';
+import {AnonymousSearchPage} from '../anonymous-search/anonymous-search';
 import {FormBuilder, Validators} from '@angular/common';
-import {ProfileData} from '../../providers/profile-data/profile-data';
+import {AuthData} from '../../providers/auth-data/auth-data';
 import * as firebase from 'firebase';
 
 @Component({
   templateUrl: 'build/pages/intro/intro.html',
-  providers: [ProfileData]
+  providers: [AuthData]
 })
 export class IntroPage {
   @ViewChild('introSlider') slider: Slides;
 
-  userProfile: any;
-  local: Storage;
-  public firstName: string = null;
-  public lastName: string = null;
-  public gpaScale: string = null;
-  public gpaScore: number = null;
-  public testType: string = null;
-  public actCompositeScore: number = null;
-  public satVerbal: number = null;
-  public satMath: number = null;
+  public isAnonymous: boolean = false;
+  public gpaScale: string;
+  public gpaScore: number;
+  public testType: string;
+  public actCompositeScore: number;
+  public satVerbal: number;
+  public satMath: number;
+  public race: string;
 
-  constructor(public nav: NavController, public profileData: ProfileData,
+  constructor(public nav: NavController, public authData: AuthData,
     public loadingCtrl: LoadingController) {
-    this.local = new Storage(LocalStorage);
-
-    this.profileData.getUserProfile().on('value', profile => {
-      this.userProfile = profile.val();
-    });
 
   }
 
   nextSlide(){
-    this.slider.update();
+    // this.slider.update();
     this.slider.slideNext();
   }
 
-  createProfile(event){
-    if (this.userProfile.firstName || this.userProfile.lastName || this.userProfile.gpaScale
-      || this.userProfile.testType){
-        this.local.set('introShown', true);
-        this.nav.setRoot(TabsPage);
-    } else {
-      this.profileData.createProfile(this.firstName, this.lastName, this.gpaScale, this.gpaScore,
-        this.testType, this.actCompositeScore, this.satVerbal, this.satMath).then((profile) => {
-          this.local.set('introShown', true);
-          this.nav.setRoot(TabsPage);
-        }, (error) => {
-          console.log(error);
-        });
+  createAnonymousUser(){
+    this.nextSlide();
 
-        let loading = this.loadingCtrl.create({
-          dismissOnPageChange: true,
-        });
-        loading.present();
-    }
+    this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
+      this.actCompositeScore, this.satVerbal, this.satMath, this.race)
+      .then(() => {
+        this.nav.setRoot(AnonymousSearchPage);
+      }, (error) => {
+        console.log(error);
+      });
+
+    let loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+    });
+    loading.present();
   }
 
 }

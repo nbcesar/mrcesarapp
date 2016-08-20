@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {ionicBootstrap, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import {LoginPage} from './pages/login/login';
+import {LandingPage} from './pages/landing/landing';
+import {AnonymousSearchPage} from './pages/anonymous-search/anonymous-search';
 import * as firebase from 'firebase';
 
 @Component({
@@ -23,8 +24,10 @@ export class MyApp {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
-        this.rootPage = LoginPage;
-      } else {
+        this.rootPage = LandingPage;
+      } else if (user.isAnonymous == true) {
+        this.rootPage = AnonymousSearchPage;
+      } else if (user.isAnonymous == false) {
         this.rootPage = TabsPage;
       }
     });

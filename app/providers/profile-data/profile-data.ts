@@ -17,12 +17,10 @@ export class ProfileData {
 
   }
 
-  createProfile(firstName: string, lastName: string, gpaScale: string, gpaScore: number,
+  createProfile(gpaScale: string, gpaScore: number,
     testType: string, actCompositeScore: number, satVerbal: number, satMath: number): any {
     return this.userProfile.child(this.currentUser.uid).update({
       id: this.currentUser.uid,
-      firstName: firstName,
-      lastName: lastName,
       gpaScale: gpaScale,
       gpaScore: gpaScore,
       testType: testType,

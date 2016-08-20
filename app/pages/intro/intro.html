@@ -10,51 +10,9 @@
   <ion-slides #introSlider>
     <ion-slide class="slide">
       <div class="intro-text">
-        <h1>
-          Hi!
-        </h1>
-        <p>
-          I'm Mr. Cesar <br />
-          I am here to guide you through the college application process <br />
-          <span>Let's get to know eachother.</span>
-        </p>
-        <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
-          <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-
-      </div>
-      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
-    </ion-slide>
-
-    <ion-slide class="slide">
-      <div class="intro-text">
-        <h2>
-          To get started, what's your name?
-        </h2>
-
-        <ion-item>
-          <ion-label floating> First Name </ion-label>
-          <ion-input type="text" [(ngModel)]="firstName"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label floating> Last Name </ion-label>
-          <ion-input type="text" [(ngModel)]="lastName"></ion-input>
-        </ion-item>
-
-      </div>
-      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
-
-      <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>
-    </ion-slide>
-
-    <ion-slide class="slide">
-      <div class="intro-text">
-        <h2>
-          Academics
-        </h2>
+        <h3>
+          First, what's <br />your GPA?
+        </h3>
 
         <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list">
           <ion-list-header>GPA Scale</ion-list-header>
@@ -105,12 +63,12 @@
 
     <ion-slide class="slide">
       <div class="intro-text">
-        <h2>
-          Academics
-        </h2>
+        <h3>
+          Next, tell me your highest test score
+        </h3>
 
         <ion-list radio-group [(ngModel)]="testType" class="radio-button-list">
-          <ion-list-header class="academic-test">What test did you take?</ion-list-header>
+          <ion-list-header class="academic-test">Test</ion-list-header>
 
           <ion-grid>
             <ion-row>
@@ -131,7 +89,7 @@
 
         </ion-list>
 
-        <ion-grid *ngIf="testType == 'act'">
+        <ion-grid *ngIf="testType == 'act'" class="act-score">
           <ion-row>
             <ion-col width-80>
               <ion-item>
@@ -197,15 +155,77 @@
 
     <ion-slide class="slide">
       <div class="intro-text">
-        <h2>
-          Nice to meet you <br /> {{firstName}}!
-        </h2>
-        <p>
-          Let's get started
-        </p>
-        <button favorite (click)="createProfile()">
-          Start Now
-        </button>
+        <h3>
+          Finally, select your race
+        </h3>
+
+        <ion-list radio-group no-lines [(ngModel)]="race" class="race-list">
+          <ion-item>
+            <ion-label>Hispanic/Latino</ion-label>
+            <ion-radio checked="true" value="latino"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Black/African American</ion-label>
+            <ion-radio value="black"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Asian/Pacific Islander</ion-label>
+            <ion-radio value="asian"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Native American/First Nations</ion-label>
+            <ion-radio value="nativeAmerican"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </div>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+
+      <button light fab fab-bottom fab-right clear
+        (click)="createAnonymousUser(gpaScale, gpaScore, testType, actCompositeScore, satVerbal,
+          satMath, race)" class="intro-button">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+    <ion-slide class="slide">
+      <div class="intro-text">
+        <h3>
+          Calculating Odds...
+        </h3>
+
+        <ion-list no-lines class="admissibility-list">
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="img/moonshot_green.png">
+            </ion-avatar>
+            <h2>Moonshot</h2>
+          </ion-item>
+
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="img/reach_green.png">
+            </ion-avatar>
+            <h2>Reach</h2>
+          </ion-item>
+
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="img/target_green.png">
+            </ion-avatar>
+            <h2>Target</h2>
+          </ion-item>
+
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="img/safety_green.png">
+            </ion-avatar>
+            <h2>Safety</h2>
+          </ion-item>
+        </ion-list>
+
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
     </ion-slide>
