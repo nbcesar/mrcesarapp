@@ -32,20 +32,22 @@ export class IntroPage {
   }
 
   createAnonymousUser(){
-    this.nextSlide();
-
     this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
       this.actCompositeScore, this.satVerbal, this.satMath, this.race)
-      .then(() => {
-        this.nav.setRoot(AnonymousSearchPage);
+      .then((authData) => {
+        console.log(authData)
       }, (error) => {
         console.log(error);
       });
 
     let loading = this.loadingCtrl.create({
-      dismissOnPageChange: true,
+      duration: 3000
     });
     loading.present();
+    loading.onDidDismiss(() => {
+      console.log("Dismiss Loading");
+      this.nextSlide();
+    });
   }
 
 }

@@ -22,15 +22,24 @@ export class MyApp {
 
     firebase.initializeApp(config);
 
-    firebase.auth().onAuthStateChanged((user) => {
+    var unsubscribe = firebase.auth().onAuthStateChanged( (user) => {
       if (!user) {
+        console.log("No currentUser");
         this.rootPage = LandingPage;
+        unsubscribe();
       } else if (user.isAnonymous == true) {
+        console.log("Anonymous User");
+        unsubscribe();
         this.rootPage = AnonymousSearchPage;
       } else if (user.isAnonymous == false) {
+        console.log("Confirmed User");
+        unsubscribe();
         this.rootPage = TabsPage;
       }
     });
+
+
+
 
     platform.ready().then(() => {
 
