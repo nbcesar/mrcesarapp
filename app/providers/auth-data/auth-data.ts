@@ -31,6 +31,17 @@ export class AuthData {
     });
   }
 
+  linkAccount(email, password): any {
+    var credential = (<any> firebase.auth.EmailAuthProvider).credential(email, password);
+    return this.fireAuth.currentUser.link(credential).then( (user) => {
+      this.userProfile.child(user.uid).set({
+        email: email,
+      });
+    }, function(error) {
+      console.log("Account linking error", error);
+    });
+  }
+
   resetPassword(email): any {
     return this.fireAuth.sendPasswordResetEmail(email);
   }

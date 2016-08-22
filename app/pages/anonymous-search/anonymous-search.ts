@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, AlertController} from 'ionic-angular';
 import {CollegePage} from '../college/college';
+import { SignupPage } from '../signup/signup';
 import {CollegeData} from '../../providers/college-data/college-data';
 
 @Component({
@@ -17,13 +18,6 @@ export class AnonymousSearchPage {
     public navParams: NavParams, public alertCtrl: AlertController) {
 
       this.searchQuery = '';
-
-      if (this.navParams.get('showList') == true) {
-        this.showList = true;
-      } else {
-        this.showList = false;
-      }
-
 
       if (typeof this.navParams.get('admissibility') == 'undefined') {
         this.collegeData.getCollegeList().once('value').then(collegeList => {
@@ -66,6 +60,7 @@ export class AnonymousSearchPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
+          this.showList = true;
         });
       } else if (this.navParams.get('admissibility') == 'reach') {
         this.collegeData.getReachList().once('value').then(collegeList => {
@@ -87,6 +82,7 @@ export class AnonymousSearchPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
+          this.showList = true;
         });
       } else if (this.navParams.get('admissibility') == 'target') {
         this.collegeData.getTargetList().once('value').then(collegeList => {
@@ -108,6 +104,7 @@ export class AnonymousSearchPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
+          this.showList = true;
         });
       } else if (this.navParams.get('admissibility') == 'safety') {
         this.collegeData.getSafetyList().once('value').then(collegeList => {
@@ -129,6 +126,7 @@ export class AnonymousSearchPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
+          this.showList = true;
         });
       }
 
@@ -166,7 +164,25 @@ export class AnonymousSearchPage {
   }
 
   goToCollege() {
-    console.log("Nice try");
+    let alert = this.alertCtrl.create({
+      message: "If you want to continue you'll need to provide an email and create a password",
+      buttons: [
+        { text: "Cancel" },
+        {
+          text: "OK",
+          handler: data => {
+            this.nav.push(SignupPage);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  goToFilteredList(admissibility){
+    this.nav.push(AnonymousSearchPage, {
+      admissibility: admissibility
+    });
   }
 
 }

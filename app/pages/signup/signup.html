@@ -9,11 +9,11 @@
 
 <ion-content padding class="signup">
   <img src="img/logo.png" class="auth-img">
-  <form [formGroup]="signupForm" (submit)="signupUser($event)">
+  <form [formGroup]="signupForm" (submit)="signupUser()">
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email" placeholder="Your email address"></ion-input>
+      <ion-input formControlName="email" type="email" placeholder="Your best email"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -22,7 +22,7 @@
     </ion-item>
 
     <button block type="submit">
-      Create an Account
+      I'm ready!
     </button>
 
   </form>

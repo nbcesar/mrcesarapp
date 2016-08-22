@@ -2,7 +2,6 @@ import { NavController, LoadingController, AlertController } from 'ionic-angular
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/common';
 import { AuthData } from '../../providers/auth-data/auth-data';
-import { SignupPage } from '../signup/signup';
 import { ResetPasswordPage } from '../reset-password/reset-password';
 import { TabsPage } from '../tabs/tabs';
 
@@ -60,10 +59,6 @@ export class LoginPage {
       dismissOnPageChange: true,
     });
     this.loading.present();
-  }
-
-  goToSignup(){
-    this.nav.push(SignupPage);
   }
 
   goToResetPassword(){
