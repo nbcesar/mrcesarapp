@@ -48,7 +48,7 @@
       <img src="img/mr-cesar-face.png">
     </div>
 
-    <ion-list padding class="admissibility-list">
+    <ion-list padding class="admissibility-list" *ngIf="!showList">
       <ion-item (click)="goToFilteredList('moonshot')">
         <ion-avatar item-left>
           <img src="img/moonshot_green.png">

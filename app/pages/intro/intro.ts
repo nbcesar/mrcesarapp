@@ -22,9 +22,7 @@ export class IntroPage {
   public race: string;
 
   constructor(public nav: NavController, public authData: AuthData,
-    public loadingCtrl: LoadingController) {
-
-  }
+    public loadingCtrl: LoadingController) {}
 
   nextSlide(){
     // this.slider.update();
@@ -35,19 +33,19 @@ export class IntroPage {
     this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
       this.actCompositeScore, this.satVerbal, this.satMath, this.race)
       .then((authData) => {
-        console.log(authData)
+        loading.dismiss(() => {
+          this.nextSlide();
+        });
       }, (error) => {
         console.log(error);
       });
 
-    let loading = this.loadingCtrl.create({
-      duration: 3000
-    });
+    let loading = this.loadingCtrl.create();
     loading.present();
-    loading.onDidDismiss(() => {
-      console.log("Dismiss Loading");
-      this.nextSlide();
-    });
+  }
+
+  goToAnonymousSearch(){
+    this.nav.setRoot(AnonymousSearchPage);
   }
 
 }
