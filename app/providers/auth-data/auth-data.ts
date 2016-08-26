@@ -15,6 +15,10 @@ export class AuthData {
     return this.fireAuth.signInWithEmailAndPassword(email, password);
   }
 
+  currentUser(){
+    return this.fireAuth.currentUser;
+  }
+
   createAnonymousUser(gpaScale: string, gpaScore: number, testType: string,
     actCompositeScore: number = null, satVerbal: number = null, satMath: number = null, race: string): any {
     return this.fireAuth.signInAnonymously().then((anonymousUser) => {

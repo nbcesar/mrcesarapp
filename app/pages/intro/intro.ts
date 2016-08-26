@@ -30,18 +30,23 @@ export class IntroPage {
   }
 
   createAnonymousUser(){
-    this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
-      this.actCompositeScore, this.satVerbal, this.satMath, this.race)
-      .then((authData) => {
-        loading.dismiss(() => {
-          this.nextSlide();
+    let nextSlide = this.slider.slideNext();
+    if (this.authData.currentUser()){
+      nextSlide;
+    } else {
+      this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
+        this.actCompositeScore, this.satVerbal, this.satMath, this.race).then((authData) => {
+          loading.dismiss(() => {
+            nextSlide;
+          });
+        }, (error) => {
+          console.log(error);
         });
-      }, (error) => {
-        console.log(error);
-      });
 
-    let loading = this.loadingCtrl.create();
-    loading.present();
+        let loading = this.loadingCtrl.create();
+        loading.present();
+    }
+
   }
 
   goToAnonymousSearch(){
