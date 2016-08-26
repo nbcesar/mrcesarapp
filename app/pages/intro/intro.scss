@@ -108,10 +108,36 @@ ion-slide .mr-cesar-avatar {
   }
 }
 
-.intro .final-button {
-  min-width: 120px;
-  padding-right: 16px;
-  bottom: 5px;
-  right: 0;
+.odds-slide {
+  .intro-text {
+    height: 310px;
+    margin-top: 0;
+
+    h3 {
+      padding-top: 8px;
+      font-size: 1.3em;
+    }
+
+    ion-item {
+      ion-avatar {
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .mr-cesar-avatar-odds {
+    width: 80px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 300px;
+  }
+
+  .final-button {
+    min-width: 120px;
+
+  }
 
 }

@@ -1,9 +1,9 @@
-import { NavController, AlertController } from 'ionic-angular';
+import { App, NavController, AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { ProfileData } from '../../providers/profile-data/profile-data';
 import { AuthData } from '../../providers/auth-data/auth-data';
 import { HighschoolSelectPage } from '../highschool-select/highschool-select';
-import { LoginPage } from '../login/login';
+import { LandingPage } from '../landing/landing';
 import { Camera } from 'ionic-native';
 
 @Component({
@@ -18,7 +18,7 @@ export class ProfilePage {
   public mrCesarLogo: string;
 
   constructor(public nav: NavController, public profileData: ProfileData,
-    public authData: AuthData, public alertCtrl: AlertController) {
+    public authData: AuthData, public alertCtrl: AlertController, private app: App) {
     this.profileImage = "img/mr-cesar-face.png";
     this.mrCesarLogo = "img/mr-cesar-face.png";
 
@@ -60,7 +60,7 @@ export class ProfilePage {
 
   logOut(){
     this.authData.logoutUser().then(() => {
-      this.nav.setRoot(LoginPage);
+      this.app.getRootNav().setRoot( LandingPage );
     });
   }
 
