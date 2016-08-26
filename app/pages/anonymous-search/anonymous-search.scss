@@ -1,4 +1,15 @@
 .anonymous-search {
+  ion-list {
+    ion-item:nth-child(even) {
+      background-color: #FFECCC !important;
+    }
+
+    ion-item:nth-child(odd) {
+      background-color: #C8D6AF !important;
+      color: black;
+    }
+  }
+  
   .mr-cesar-college {
     margin-top: 32px;
     text-align: center;
@@ -11,5 +22,7 @@
   .admissibility-list {
     margin-top: 32px;
   }
+
+
 
 }
