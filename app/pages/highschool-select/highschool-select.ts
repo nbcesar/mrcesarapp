@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { HighschoolData } from '../../providers/highschool-data/highschool-data';
 import { ProfileData } from '../../providers/profile-data/profile-data';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   templateUrl: 'build/pages/highschool-select/highschool-select.html',
@@ -17,8 +18,8 @@ export class HighschoolSelectPage {
   public showSearch: boolean = false;
   public pickCity: boolean = false;
 
-  constructor(private nav: NavController, private highschoolData: HighschoolData,
-    private profileData: ProfileData) {
+  constructor(public navCtrl: NavController, public highschoolData: HighschoolData,
+    public profileData: ProfileData, public loadingCtrl: LoadingController) {
 
     this.profileData.getUserProfile().on('value', profile => {
       this.userProfile = profile.val();
@@ -90,8 +91,15 @@ export class HighschoolSelectPage {
 
   addSchool(state, city, schoolName, schoolId){
     this.highschoolData.addSchool(state, city, schoolName, schoolId).then(() => {
-      this.nav.pop();
+      loading.dismiss().then( () => {
+        this.navCtrl.pop().then( () => {
+          this.navCtrl.pop();
+        });
+      });
     });
+
+    let loading = this.loadingCtrl.create();
+    loading.present();
   }
 
 }
