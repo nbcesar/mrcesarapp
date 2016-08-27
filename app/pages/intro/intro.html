@@ -15,7 +15,7 @@
         </h3>
 
         <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list">
-          <ion-list-header>GPA Scale</ion-list-header>
+          <ion-list-header>Select a GPA Scale</ion-list-header>
 
           <ion-grid>
             <ion-row>
@@ -36,6 +36,7 @@
 
         </ion-list>
 
+        <span>{{gpaScore}}</span>
         <ion-item *ngIf="gpaScale == '4'">
           <ion-label> GPA Score </ion-label>
           <ion-range min="1" max="4" pin="true" step="0.1" [(ngModel)]="gpaScore" secondary>
@@ -51,7 +52,6 @@
             <ion-icon range-right name="arrow-forward"></ion-icon>
           </ion-range>
         </ion-item>
-      <span>{{gpaScore}}</span>
 
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
