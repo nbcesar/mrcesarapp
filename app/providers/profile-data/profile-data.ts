@@ -151,47 +151,47 @@ export class ProfileData {
     });
   }
 
+  updateEmail(newEmail: string, userPassword: string): any {
+    var credential = ( <any> firebase.auth.EmailAuthProvider).credential(this.currentUser.email, userPassword);
+    this.currentUser.reauthenticate(credential).then(() => {
+       this.currentUser.updateEmail(newEmail).then(() => {
+        this.userProfile.child(this.currentUser.uid).update({
+          email: newEmail
+        });
+      }, (error) => {
+        console.log(error);
+      });
+    });
+  }
+
   // updateEmail(newEmail: string, userPassword: string): any {
-  //   var credential = firebase.auth.EmailAuthProvider.credential(this.currentUser.email, userPassword);
-  //   this.currentUser.reauthenticate(credential).then(() => {
-  //      this.currentUser.updateEmail(newEmail).then(() => {
-  //       this.userProfile.child(this.currentUser.uid).update({
-  //         email: newEmail
-  //       });
-  //     }, (error) => {
-  //       console.log(error);
+  //   this.currentUser.updateEmail(newEmail).then(() => {
+  //     this.userProfile.child(this.currentUser.uid).update({
+  //       email: newEmail
   //     });
+  //   }, (error) => {
+  //     console.log(error);
   //   });
   // }
 
-  updateEmail(newEmail: string, userPassword: string): any {
-    this.currentUser.updateEmail(newEmail).then(() => {
-      this.userProfile.child(this.currentUser.uid).update({
-        email: newEmail
+  updatePassword(newPassword: string, oldPassword: string): any {
+    var credential = ( <any> firebase.auth.EmailAuthProvider).credential(this.currentUser.email, oldPassword);
+    this.currentUser.reauthenticate(credential).then(() => {
+      this.currentUser.updatePassword(newPassword).then(() => {
+        console.log("Password Changed");
+      }, (error) => {
+        console.log(error);
       });
-    }, (error) => {
-      console.log(error);
     });
   }
 
   // updatePassword(newPassword: string, oldPassword: string): any {
-  //   var credential = firebase.auth.EmailAuthProvider.credential(this.currentUser.email, oldPassword);
-  //   this.currentUser.reauthenticate(credential).then(() => {
-  //     this.currentUser.updatePassword(newPassword).then(() => {
-  //       console.log("Password Changed");
-  //     }, (error) => {
-  //       console.log(error);
-  //     });
+  //   this.currentUser.updatePassword(newPassword).then(() => {
+  //     console.log("Password Changed");
+  //   }, (error) => {
+  //     console.log(error);
   //   });
   // }
-  //
-  updatePassword(newPassword: string, oldPassword: string): any {
-    this.currentUser.updatePassword(newPassword).then(() => {
-      console.log("Password Changed");
-    }, (error) => {
-      console.log(error);
-    });
-  }
 
   updateRace(race: string = null): any {
     this.userProfile.child(this.currentUser.uid).update({
