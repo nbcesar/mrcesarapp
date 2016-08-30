@@ -19,14 +19,11 @@ export class CollegePage {
     this.admissibility = this.navParams.get('admissibility');
     this.favoriteCollege = this.navParams.get('favoriteCollege');
     this.canUpdate = this.navParams.get('canUpdate');
-    this.getCollegeDetail(this.collegeId);
 
-  }
-
-  getCollegeDetail(collegeId){
-    this.collegeData.getCollegeDetail(collegeId).on('value', collegeDetail => {
+    this.collegeData.getCollegeDetail(this.navParams.get('collegeId')).on('value', collegeDetail => {
       this.college = collegeDetail.val();
     });
+
   }
 
   toggleFavorite(event){

@@ -1,11 +1,11 @@
 .signup  {
-
-}
-
-.signup form {
-  margin-bottom: 32px;
-}
-
-.signup form button {
-  margin-top: 20px;
+  scroll-content {
+    margin-top: 56px !important;
+  }
+  form {
+    margin-bottom: 32px;
+    button {
+      margin-top: 20px;
+    }
+  }
 }
