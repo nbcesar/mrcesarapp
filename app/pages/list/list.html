@@ -9,29 +9,37 @@
 
   <ion-toolbar>
     <ion-segment [(ngModel)]="collegeCategory">
-      <ion-segment-button value="moonshot">
-        Moonshot
-       <!--<ion-avatar>
+      <ion-segment-button value="moonshot" *ngIf="isAndroid">
+        <ion-avatar>
           <img src="img/moonshot_green.png" />
-        </ion-avatar>-->
+        </ion-avatar>
       </ion-segment-button>
-      <ion-segment-button value="reach">
+      <ion-segment-button value="moonshot" *ngIf!="isAndroid">
+        Moonshot
+      </ion-segment-button>
+      <ion-segment-button value="reach" *ngIf!="isAndroid">
         Reach
-        <!--<ion-avatar>
+      </ion-segment-button>
+      <ion-segment-button value="reach" *ngIf="isAndroid">
+        <ion-avatar>
           <img src="img/reach_green.png" />
-        </ion-avatar>-->
+        </ion-avatar>
       </ion-segment-button>
-      <ion-segment-button value="target">
+      <ion-segment-button value="target" *ngIf!="isAndroid">
         Target
-        <!--<ion-avatar>
-          <img src="img/target_green.png" />
-        </ion-avatar>-->
       </ion-segment-button>
-      <ion-segment-button value="safety">
+      <ion-segment-button value="target" *ngIf="isAndroid">
+        <ion-avatar>
+          <img src="img/target_green.png" />
+        </ion-avatar>
+      </ion-segment-button>
+      <ion-segment-button value="safety" *ngIf!="isAndroid">
         Safety
-        <!--<ion-avatar>
+      </ion-segment-button>
+      <ion-segment-button value="safety" *ngIf="isAndroid">
+        <ion-avatar>
           <img src="img/safety_green.png" />
-        </ion-avatar>-->
+        </ion-avatar>
       </ion-segment-button>
       <ion-segment-button value="other">
         Other
@@ -45,69 +53,50 @@
 
   <div [ngSwitch]="collegeCategory" class="list-div" [class.list-div-android]="isAndroid">
     <ion-list *ngSwitchCase="'moonshot'">
-      <ion-item-sliding #slidingItem *ngFor="let college of moonshotList let index=index">
+      <ion-item text-wrap no-lines *ngFor="let college of moonshotList let index=index">
 
-        <ion-item text-wrap no-lines>
-          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
-            <ion-row>
+        <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
+          <ion-row>
 
-              <ion-col width-10 center >
-                <h2>{{ index + 1}}</h2>
-              </ion-col>
-              <ion-col width-20>
-                <img src="img/moonshot_green.png">
-              </ion-col>
-              <ion-col center>
-                <h2>{{college.displayName}}</h2>
-                <p>{{college.city}}, {{college.state}}</p>
-              </ion-col>
+            <ion-col width-10 center >
+              <h2>{{ index + 1}}</h2>
+            </ion-col>
+            <ion-col width-20>
+              <img src="img/moonshot_green.png">
+            </ion-col>
+            <ion-col center>
+              <h2>{{college.displayName}}</h2>
+              <p>{{college.city}}, {{college.state}}</p>
+            </ion-col>
 
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-        <ion-item-options side="right">
-          <button *ngIf="college.favorite" danger large (click)="removeCollegeAsFavorite(college.key, slidingItem, index)">
-            <ion-icon name="trash"></ion-icon>
-            Remove
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
     </ion-list>
 
     <ion-list *ngSwitchCase="'reach'">
-      <ion-item-sliding #slidingItem *ngFor="let college of reachList let index=index">
+      <ion-item text-wrap no-lines *ngFor="let college of reachList let index=index">
+        <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
+          <ion-row>
 
-        <ion-item text-wrap no-lines>
-          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
-            <ion-row>
+            <ion-col width-10 center >
+              <h2>{{ index + 1}}</h2>
+            </ion-col>
+            <ion-col width-20>
+              <img src="img/reach_green.png">
+            </ion-col>
+            <ion-col center>
+              <h2>{{college.displayName}}</h2>
+              <p>{{college.city}}, {{college.state}}</p>
+            </ion-col>
 
-              <ion-col width-10 center >
-                <h2>{{ index + 1}}</h2>
-              </ion-col>
-              <ion-col width-20>
-                <img src="img/reach_green.png">
-              </ion-col>
-              <ion-col center>
-                <h2>{{college.displayName}}</h2>
-                <p>{{college.city}}, {{college.state}}</p>
-              </ion-col>
-
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-        <ion-item-options side="right">
-          <button *ngIf="college.favorite" danger large (click)="removeCollegeAsFavorite(college.key, slidingItem, index)">
-            <ion-icon name="trash"></ion-icon>
-            Remove
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
     </ion-list>
 
     <ion-list *ngSwitchCase="'target'">
-      <ion-item-sliding #slidingItem *ngFor="let college of targetList let index=index">
-
-        <ion-item text-wrap no-lines>
+        <ion-item text-wrap no-lines *ngFor="let college of targetList let index=index">
           <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
             <ion-row>
 
@@ -125,19 +114,10 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item-options side="right">
-          <button *ngIf="college.favorite" danger large (click)="removeCollegeAsFavorite(college.key, slidingItem, index)">
-            <ion-icon name="trash"></ion-icon>
-            Remove
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
     </ion-list>
 
     <ion-list *ngSwitchCase="'safety'">
-      <ion-item-sliding #slidingItem *ngFor="let college of safetyList let index=index">
-
-        <ion-item text-wrap no-lines>
+        <ion-item text-wrap no-lines *ngFor="let college of safetyList let index=index">
           <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
             <ion-row>
 
@@ -155,19 +135,10 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item-options side="right">
-          <button *ngIf="college.favorite" danger large (click)="removeCollegeAsFavorite(college.key, slidingItem, index)">
-            <ion-icon name="trash"></ion-icon>
-            Remove
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
     </ion-list>
 
     <ion-list *ngSwitchCase="'other'">
-      <ion-item-sliding #slidingItem *ngFor="let college of otherList let index=index">
-
-        <ion-item text-wrap no-lines>
+        <ion-item text-wrap no-lines *ngFor="let college of otherList let index=index">
           <ion-grid (click)="goToCollegeDetail(college.key)">
             <ion-row>
 
@@ -185,13 +156,6 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-item-options side="right">
-          <button *ngIf="college.favorite" danger large (click)="removeCollegeAsFavorite(college.key, slidingItem, index)">
-            <ion-icon name="trash"></ion-icon>
-            Remove
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
     </ion-list>
 
   </div>
