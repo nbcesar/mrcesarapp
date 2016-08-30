@@ -1,0 +1,12 @@
+.anonymous-search-filtered {
+  ion-list {
+    ion-item:nth-child(even) {
+      background-color: #FFECCC !important;
+    }
+
+    ion-item:nth-child(odd) {
+      background-color: #C8D6AF !important;
+      color: black;
+    }
+  }
+}

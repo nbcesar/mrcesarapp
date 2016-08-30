@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{category}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="anonymous-search-filtered">
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)"
+    [hideCancelButton]="true" (ionCancel)="initializeItems()" (ionClear)="initializeItems()"></ion-searchbar>
+
+    <ion-list *ngIf="showList">
+
+        <ion-item text-wrap *ngFor="let college of collegeList">
+          <ion-grid (click)="goToCollege()">
+            <ion-row>
+              <ion-col width-75 center class="college-info">
+                <h2>{{ college.displayName }}</h2>
+                <p>{{ college.subHeading }} </p>
+                <p>{{ college.city }}, {{ college.state }}</p>
+              </ion-col>
+              <ion-col center>
+                <img src="img/college_building.png">
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="college-stats">
+              <ion-col width-33>
+                <h2>{{ college.gradRate | percent:'1.0-0' }}</h2>
+                <p>Grad Rate</p>
+              </ion-col>
+              <ion-col width-33>
+                <h2>{{ college.retentionRate | percent:'1.0-0' }}</h2>
+                <p>Retention</p>
+              </ion-col>
+              <ion-col width-33 *ngIf='college.admitRate'>
+                <h2>{{ college.admitRate | percent:'1.0-0' }}</h2>
+                <p>Admit Rate</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+    </ion-list>
+</ion-content>

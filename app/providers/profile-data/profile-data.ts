@@ -164,16 +164,6 @@ export class ProfileData {
     });
   }
 
-  // updateEmail(newEmail: string, userPassword: string): any {
-  //   this.currentUser.updateEmail(newEmail).then(() => {
-  //     this.userProfile.child(this.currentUser.uid).update({
-  //       email: newEmail
-  //     });
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
-
   updatePassword(newPassword: string, oldPassword: string): any {
     var credential = ( <any> firebase.auth.EmailAuthProvider).credential(this.currentUser.email, oldPassword);
     this.currentUser.reauthenticate(credential).then(() => {
@@ -184,14 +174,6 @@ export class ProfileData {
       });
     });
   }
-
-  // updatePassword(newPassword: string, oldPassword: string): any {
-  //   this.currentUser.updatePassword(newPassword).then(() => {
-  //     console.log("Password Changed");
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
 
   updateRace(race: string = null): any {
     this.userProfile.child(this.currentUser.uid).update({

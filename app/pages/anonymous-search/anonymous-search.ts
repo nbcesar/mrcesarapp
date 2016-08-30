@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams, AlertController} from 'ionic-angular';
-import {CollegePage} from '../college/college';
+import { Component } from '@angular/core';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { CollegePage } from '../college/college';
 import { SignupPage } from '../signup/signup';
-import {CollegeData} from '../../providers/college-data/college-data';
+import { CollegeData } from '../../providers/college-data/college-data';
+import { AnonymousSearchFilteredPage } from '../anonymous-search-filtered/anonymous-search-filtered';
 
 @Component({
   templateUrl: 'build/pages/anonymous-search/anonymous-search.html',
@@ -18,117 +19,26 @@ export class AnonymousSearchPage {
     public navParams: NavParams, public alertCtrl: AlertController) {
 
       this.searchQuery = '';
-
-      if (typeof this.navParams.get('admissibility') == 'undefined') {
-        this.collegeData.getCollegeList().once('value').then(collegeList => {
-          let colleges = [];
-          collegeList.forEach( college => {
-            colleges.push({
-              id: college.key,
-              name: college.val().name,
-              state: college.val().state,
-              city: college.val().city,
-              displayName: college.val().displayName,
-              subHeading: college.val().subHeading,
-              gradRate: college.val().gradRate,
-              retentionRate: college.val().retentionRate,
-              admitRate: college.val().admitRate,
-              admissibility: college.val().admissibility,
-              favorite: college.val().favorite
-            });
+      this.collegeData.getCollegeList().once('value').then(collegeList => {
+        let colleges = [];
+        collegeList.forEach( college => {
+          colleges.push({
+            id: college.key,
+            name: college.val().name,
+            state: college.val().state,
+            city: college.val().city,
+            displayName: college.val().displayName,
+            subHeading: college.val().subHeading,
+            gradRate: college.val().gradRate,
+            retentionRate: college.val().retentionRate,
+            admitRate: college.val().admitRate,
+            admissibility: college.val().admissibility,
+            favorite: college.val().favorite
           });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
         });
-      } else if (this.navParams.get('admissibility') == 'moonshot') {
-        this.collegeData.getMoonshotList().once('value').then(collegeList => {
-          let colleges = [];
-          collegeList.forEach( college => {
-            colleges.push({
-              id: college.key,
-              name: college.val().name,
-              state: college.val().state,
-              city: college.val().city,
-              displayName: college.val().displayName,
-              subHeading: college.val().subHeading,
-              gradRate: college.val().gradRate,
-              retentionRate: college.val().retentionRate,
-              admitRate: college.val().admitRate,
-              admissibility: college.val().admissibility,
-              favorite: college.val().favorite
-            });
-          });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
-          this.showList = true;
-        });
-      } else if (this.navParams.get('admissibility') == 'reach') {
-        this.collegeData.getReachList().once('value').then(collegeList => {
-          let colleges = [];
-          collegeList.forEach( college => {
-            colleges.push({
-              id: college.key,
-              name: college.val().name,
-              state: college.val().state,
-              city: college.val().city,
-              displayName: college.val().displayName,
-              subHeading: college.val().subHeading,
-              gradRate: college.val().gradRate,
-              retentionRate: college.val().retentionRate,
-              admitRate: college.val().admitRate,
-              admissibility: college.val().admissibility,
-              favorite: college.val().favorite
-            });
-          });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
-          this.showList = true;
-        });
-      } else if (this.navParams.get('admissibility') == 'target') {
-        this.collegeData.getTargetList().once('value').then(collegeList => {
-          let colleges = [];
-          collegeList.forEach( college => {
-            colleges.push({
-              id: college.key,
-              name: college.val().name,
-              state: college.val().state,
-              city: college.val().city,
-              displayName: college.val().displayName,
-              subHeading: college.val().subHeading,
-              gradRate: college.val().gradRate,
-              retentionRate: college.val().retentionRate,
-              admitRate: college.val().admitRate,
-              admissibility: college.val().admissibility,
-              favorite: college.val().favorite
-            });
-          });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
-          this.showList = true;
-        });
-      } else if (this.navParams.get('admissibility') == 'safety') {
-        this.collegeData.getSafetyList().once('value').then(collegeList => {
-          let colleges = [];
-          collegeList.forEach( college => {
-            colleges.push({
-              id: college.key,
-              name: college.val().name,
-              state: college.val().state,
-              city: college.val().city,
-              displayName: college.val().displayName,
-              subHeading: college.val().subHeading,
-              gradRate: college.val().gradRate,
-              retentionRate: college.val().retentionRate,
-              admitRate: college.val().admitRate,
-              admissibility: college.val().admissibility,
-              favorite: college.val().favorite
-            });
-          });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
-          this.showList = true;
-        });
-      }
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
+      });
 
   }
 
@@ -180,7 +90,7 @@ export class AnonymousSearchPage {
   }
 
   goToFilteredList(admissibility){
-    this.nav.push(AnonymousSearchPage, {
+    this.nav.push(AnonymousSearchFilteredPage, {
       admissibility: admissibility
     });
   }
