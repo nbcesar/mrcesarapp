@@ -8,7 +8,7 @@ export class CollegeData {
   public currentUser: any;
 
   constructor() {
-    this.fireCollege = firebase.database().ref('/colleges');
+    this.fireCollege = firebase.database().ref('/updatedColleges');
     this.userProfile = firebase.database().ref('/userProfile');
     this.currentUser = firebase.auth().currentUser;
   }

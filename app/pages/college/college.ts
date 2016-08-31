@@ -21,7 +21,9 @@ export class CollegePage {
     this.canUpdate = this.navParams.get('canUpdate');
 
     this.collegeData.getCollegeDetail(this.navParams.get('collegeId')).on('value', collegeDetail => {
+      console.log('looking for details...');
       this.college = collegeDetail.val();
+      console.log(this.college);
     });
 
   }

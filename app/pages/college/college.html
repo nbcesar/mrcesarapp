@@ -15,7 +15,7 @@
       </ion-col>
 
       <ion-col center>
-        <h2> {{college?.displayName}} </h2>
+        <h2> {{college?.display_name}} </h2>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -62,7 +62,7 @@
         </ion-col>
 
         <ion-col width-20 center>
-          <h3>{{college?.grad_rate_4yr_150nt_pooled | percent:'1.0-0'}}</h3>
+          <h3>{{college?.outcomes?.gradRate | percent:'1.0-0'}}</h3>
         </ion-col>
       </ion-row>
       <hr>
@@ -74,19 +74,19 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <h4>{{college?.grad_rate_4yr_150_white | percent:'1.0-0'}}</h4>
+          <h4>{{college?.outcomes?.gradRateWhite | percent:'1.0-0'}}</h4>
           <p>White</p>
         </ion-col>
         <ion-col>
-          <h4>{{college?.grad_rate_4yr_150_asian | percent:'1.0-0'}}</h4>
+          <h4>{{college?.outcomes?.gradRateAsian | percent:'1.0-0'}}</h4>
           <p>Asian</p>
         </ion-col>
         <ion-col>
-          <h4>{{college?.grad_rate_4yr_150_black | percent:'1.0-0'}}</h4>
+          <h4>{{college?.outcomes?.gradRateBlack | percent:'1.0-0'}}</h4>
           <p>Black</p>
         </ion-col>
         <ion-col>
-          <h4>{{college?.grad_rate_4yr_150_hispanic | percent:'1.0-0'}}</h4>
+          <h4>{{college?.outcomes?.gradRateLatino | percent:'1.0-0'}}</h4>
           <p>Latino</p>
         </ion-col>
       </ion-row>
@@ -111,17 +111,17 @@
 
       <ion-row>
         <ion-col>
-          <h3>{{college?.after_entry_median_10_yrs | currency:'USD':true:'1.0-0'}}</h3>
+          <h3>{{college?.median_income_10_yr | currency:'USD':true:'1.0-0'}}</h3>
           <p>Average Income after 10 yrs</p>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <h4>{{college?.median_debt_suppressed_completers_overall | currency:'USD':true:'1.0-0'}}</h4>
+          <h4>{{college?.median_debt_completers | currency:'USD':true:'1.0-0'}}</h4>
           <p>Average Debt</p>
         </ion-col>
         <ion-col>
-          <h4>{{college?.median_debt_suppressed_completers_monthly_payments | currency:'USD':true:'1.0-0'}}</h4>
+          <h4>{{college?.median_monthly_payments | currency:'USD':true:'1.0-0'}}</h4>
           <p>Avg Monthly Payment</p>
         </ion-col>
       </ion-row>
@@ -169,19 +169,19 @@
 
       <ion-row>
         <ion-col>
-          <h4>{{college?.demographics_race_ethnicity_white | percent:'1.0-0'}}</h4>
+          <h4>{{college?.demographics_white | percent:'1.0-0'}}</h4>
           <p>White</p>
         </ion-col>
         <ion-col>
-          <h4>{{college?.demographics_race_ethnicity_asian | percent:'1.0-0'}}</h4>
+          <h4>{{college?.demographics_asian | percent:'1.0-0'}}</h4>
           <p>Asian</p>
         </ion-col>
         <ion-col>
-          <h4>{{college?.demographics_race_ethnicity_black | percent:'1.0-0'}}</h4>
+          <h4>{{college?.demographics_black | percent:'1.0-0'}}</h4>
           <p>Black</p>
         </ion-col>
         <ion-col>
-          <h4>{{college?.demographics_race_ethnicity_hispanic | percent:'1.0-0'}}</h4>
+          <h4>{{college?.demographics_latino | percent:'1.0-0'}}</h4>
           <p>Latino</p>
         </ion-col>
       </ion-row>
@@ -356,7 +356,7 @@
         </ion-col>
 
         <ion-col width-33 center>
-          <h3>{{college?.admission_rate_overall | percent:'1.0-0'}}</h3>
+          <h3>{{college?.outcomes?.admitRate | percent:'1.0-0'}}</h3>
         </ion-col>
 
       </ion-row>
