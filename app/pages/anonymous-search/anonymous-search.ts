@@ -19,7 +19,7 @@ export class AnonymousSearchPage {
     public navParams: NavParams, public alertCtrl: AlertController) {
 
       this.searchQuery = '';
-      this.collegeData.getCollegeList().once('value').then(collegeList => {
+      this.collegeData.getCollegeList().on('value', collegeList => {
         let colleges = [];
         collegeList.forEach( college => {
           colleges.push({
