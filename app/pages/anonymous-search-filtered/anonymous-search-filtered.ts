@@ -19,11 +19,13 @@ export class AnonymousSearchFilteredPage {
   constructor(public nav: NavController, public collegeData: CollegeData,
     public navParams: NavParams, public alertCtrl: AlertController) {
       this.searchQuery = '';
-
+      console.log("Not yet!");
 
       if (this.navParams.get('admissibility') == 'moonshot') {
+        console.log("Not yet!");
         this.category = 'Moonshot';
         this.collegeData.getMoonshotList().once('value').then(collegeList => {
+          console.log("I'm here!");
           let colleges = [];
           collegeList.forEach( college => {
             colleges.push({
