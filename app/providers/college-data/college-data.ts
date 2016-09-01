@@ -14,7 +14,8 @@ export class CollegeData {
   }
 
   getCollegeList(): any {
-    return this.userProfile.child(this.currentUser.uid).child('colleges');
+    return this.userProfile.child(this.currentUser.uid).child('colleges')
+      .orderByChild('gradRate').limitToFirst(200);
   }
 
   getMoonshotList(): any {
