@@ -96,6 +96,8 @@ export class HighschoolSelectPage {
           this.navCtrl.pop();
         });
       });
+    }, (error) => {
+      console.log(error);
     });
 
     let loading = this.loadingCtrl.create();
