@@ -25,8 +25,10 @@ export class HomePage {
   aidSteps: number;
   aidCompletedSteps: number;
 
-  constructor(public nav: NavController, public profileData: ProfileData,
+
+   constructor(public nav: NavController, public profileData: ProfileData,
     public collegeData: CollegeData, public appMapData: AppMapData) {
+
 
   }
 
@@ -37,22 +39,31 @@ export class HomePage {
       this.userProfile = data.val();
       this.profileProgress = 0;
 
-      if (this.userProfile.firstName) {this.profileProgress += 10;}
-      if (this.userProfile.birthDate) {this.profileProgress += 10;}
-      if (this.userProfile.highSchool) {this.profileProgress += 10;}
-      if (this.userProfile.gpaScale) {this.profileProgress += 15;}
-      if (this.userProfile.gpaScore) {this.profileProgress += 15;}
-      if (this.userProfile.testType) {this.profileProgress += 15;}
+      if (this.userProfile.firstName) {this.profileProgress += 8;}
+      if (this.userProfile.email) {this.profileProgress += 8;}
+      if (this.userProfile.birthDate) {this.profileProgress += 8;}
+      if (this.userProfile.highSchool) {this.profileProgress += 8;}
+      if (this.userProfile.gpaScale) {this.profileProgress += 8;}
+      if (this.userProfile.gpaScore) {this.profileProgress += 8;}
+      if (this.userProfile.testType) {this.profileProgress += 8;}
+
       if (this.userProfile.testType == 'act' && this.userProfile.actCompositeScore) {
-        this.profileProgress += 10;
+        this.profileProgress += 8;
       }
       if (this.userProfile.testType == 'sat' && this.userProfile.satMath) {
-        this.profileProgress += 5;
+        this.profileProgress += 4;
       }
       if (this.userProfile.testType == 'sat' && this.userProfile.satVerbal) {
-        this.profileProgress += 5;
+        this.profileProgress += 4;
       }
-      if (this.userProfile.race) {this.profileProgress += 15;}
+
+      if (this.userProfile.race) {this.profileProgress += 8;}
+
+      if (this.userProfile.counselorEmail) {this.profileProgress += 8;}
+      if (this.userProfile.counselorName) {this.profileProgress += 8;}
+      if (this.userProfile.gender) {this.profileProgress += 4;}
+      if (this.userProfile.graduationDate) {this.profileProgress += 8;}
+
 
     }, (error) => {
       console.log(error);

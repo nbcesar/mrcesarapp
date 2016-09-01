@@ -61,6 +61,32 @@
             && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))">
             your ethnicity.
           </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
+            && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
+            && userProfile?.race">
+            your counselor's name.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
+            && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
+            && userProfile?.race && userProfile?.counselorName">
+            your counselor's email.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
+            && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
+            && userProfile?.race && userProfile?.counselorName && userProfile?.counselorEmail">
+            your graduation date.
+          </span>
+          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
+            && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
+            && userProfile?.race && userProfile?.counselorName && userProfile?.counselorEmail
+            && userProfile?.graduationDate">
+            your gender.
+          </span>
+
         </p>
         <p *ngIf="profileProgress == 100 && listProgress < 100">
           Finish creating a balanced school list by clicking below.
@@ -151,6 +177,30 @@
         *ngIf="!userProfile?.race">
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Race Ethnicity
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.counselorName">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Your Counselor's Name
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.counselorEmail">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Your Counselor's Email
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.graduationDate">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Your Graduation Date
+      </button>
+
+      <button (click)="goToProfile()" ion-item
+        *ngIf="!userProfile?.gender">
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Gender
       </button>
 
     </ion-list>
