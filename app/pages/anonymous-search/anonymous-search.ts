@@ -35,12 +35,10 @@ export class AnonymousSearchPage {
             admissibility: college.val().admissibility,
             favorite: college.val().favorite
           });
-          if (!college.val().retention_rate_4yr || !college.val().admit_rate){
-            console.log(college.key + " " + college.val().name);
-          }
         });
         this.collegeList = colleges;
         this.loadedCollegeList = colleges;
+        console.log(colleges.length);
       });
 
   }

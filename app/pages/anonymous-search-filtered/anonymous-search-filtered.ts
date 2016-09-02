@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { CollegePage } from '../college/college';
 import { SignupPage } from '../signup/signup';
 import { CollegeData } from '../../providers/college-data/college-data';
@@ -12,20 +12,23 @@ export class AnonymousSearchFilteredPage {
   collegeList: any;
   loadedCollegeList: any;
   searchQuery: string;
-  showList: boolean;
+  showList: boolean = true;
   loadingWait: any;
   category: string;
 
   constructor(public nav: NavController, public collegeData: CollegeData,
-    public navParams: NavParams, public alertCtrl: AlertController) {
+    public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+      let loading = this.loadingCtrl.create({
+        duration: 3000,
+        content: "Give me a sec to think about it"
+      });
+      loading.present();
       this.searchQuery = '';
       console.log("Not yet!");
 
       if (this.navParams.get('admissibility') == 'moonshot') {
-        console.log("Not yet!");
         this.category = 'Moonshot';
         this.collegeData.getMoonshotList().once('value').then(collegeList => {
-          console.log("I'm here!");
           let colleges = [];
           collegeList.forEach( college => {
             colleges.unshift({
@@ -44,7 +47,8 @@ export class AnonymousSearchFilteredPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
-          this.showList = true;
+          console.log(colleges.length);
+
         });
       } else if (this.navParams.get('admissibility') == 'reach') {
         this.category = 'Reach';
@@ -65,9 +69,10 @@ export class AnonymousSearchFilteredPage {
               favorite: college.val().favorite
             });
           });
-          this.collegeList = colleges.reverse();
-          this.loadedCollegeList = colleges.reverse();
-          this.showList = true;
+          this.collegeList = colleges;
+          this.loadedCollegeList = colleges;
+          console.log(colleges.length);
+
         });
       } else if (this.navParams.get('admissibility') == 'target') {
         this.category = 'Target';
@@ -88,9 +93,10 @@ export class AnonymousSearchFilteredPage {
               favorite: college.val().favorite
             });
           });
-          this.collegeList = colleges.reverse();
-          this.loadedCollegeList = colleges.reverse();
-          this.showList = true;
+          this.collegeList = colleges;
+          this.loadedCollegeList = colleges;
+          console.log(colleges.length);
+
         });
       } else if (this.navParams.get('admissibility') == 'safety') {
         this.category = 'Safety';
@@ -111,9 +117,10 @@ export class AnonymousSearchFilteredPage {
               favorite: college.val().favorite
             });
           });
-          this.collegeList = colleges.reverse();
-          this.loadedCollegeList = colleges.reverse();
-          this.showList = true;
+          this.collegeList = colleges;
+          this.loadedCollegeList = colleges;
+          console.log(colleges.length);
+
         });
       }
 
@@ -128,12 +135,11 @@ export class AnonymousSearchFilteredPage {
     this.initializeItems();
     // set q to the value of the searchbar
     var q = searchbar.srcElement.value;
-    this.showList = true;
+
 
 
     // if the value is an empty string don't filter the items
     if (!q) {
-      this.showList = false;
       return;
     }
 
