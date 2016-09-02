@@ -38,6 +38,10 @@ export class ProfileData {
     return this.userProfile.child(this.currentUser.uid);
   }
 
+  getUserState(): any {
+    return this.userProfile.child(this.currentUser.uid).child('state');
+  }
+
   updateName(firstName: string, lastName: string): any {
     if (!firstName) { firstName = null }
     if (!lastName) { lastName = null }

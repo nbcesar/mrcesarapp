@@ -37,6 +37,16 @@ export class CollegeData {
       .orderByChild('gradRate');
   }
 
+  getCunyList(): any {
+    return this.userProfile.child(this.currentUser.uid).child('filteredColleges').child('state')
+      .child('NY').orderByChild('subHeading').equalTo('CUNY');
+  }
+
+  getSunyList(): any {
+    return this.userProfile.child(this.currentUser.uid).child('filteredColleges').child('state')
+      .child('NY').orderByChild('subHeading').equalTo('SUNY');
+  }
+
   getOtherCollegeList(): any {
     return this.userProfile.child(this.currentUser.uid).child('colleges').orderByChild('admissibility')
       .equalTo('other');

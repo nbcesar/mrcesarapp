@@ -76,6 +76,20 @@
         </ion-avatar>
         <h2>Safety</h2>
       </ion-item>
+
+      <ion-item (click)="goToFilteredList('CUNY')" *ngIf="userState == 'NY'">
+        <ion-avatar item-left>
+          <img src="img/safety_green.png">
+        </ion-avatar>
+        <h2>CUNY</h2>
+      </ion-item>
+
+      <ion-item (click)="goToFilteredList('SUNY')" *ngIf="userState == 'NY'">
+        <ion-avatar item-left>
+          <img src="img/safety_green.png">
+        </ion-avatar>
+        <h2>SUNY</h2>
+      </ion-item>
     </ion-list>
 
 

@@ -3,20 +3,25 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { CollegePage } from '../college/college';
 import { SignupPage } from '../signup/signup';
 import { CollegeData } from '../../providers/college-data/college-data';
+import { ProfileData } from '../../providers/profile-data/profile-data';
 import { AnonymousSearchFilteredPage } from '../anonymous-search-filtered/anonymous-search-filtered';
 
 @Component({
   templateUrl: 'build/pages/anonymous-search/anonymous-search.html',
-  providers: [CollegeData]
+  providers: [CollegeData, ProfileData]
 })
 export class AnonymousSearchPage {
   collegeList: any;
   loadedCollegeList: any;
   searchQuery: string;
   showList: boolean;
+  userState: string;
 
-  constructor(public nav: NavController, public collegeData: CollegeData,
+  constructor(public nav: NavController, public collegeData: CollegeData, public profileData: ProfileData,
     public navParams: NavParams, public alertCtrl: AlertController) {
+      this.profileData.getUserState().on('value', state => {
+        this.userState = state.val();
+      });
 
       this.searchQuery = '';
       this.collegeData.getCollegeList().on('value', collegeList => {

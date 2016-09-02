@@ -18,6 +18,8 @@ export class HomePage {
   reachCollegeNumber: number;
   targetCollegeNumber: number;
   safetyCollegeNumber: number;
+  cunyCollegeNumber: number;
+  sunyCollegeNumber: number;
   generalSteps: number;
   generalCompletedSteps: number;
   applySteps: number;
@@ -142,6 +144,32 @@ export class HomePage {
       } else if (this.safetyCollegeNumber >= 2) {
         this.listProgress += 25;
       }
+    });
+
+    this.collegeData.getCunyList().once('value').then((collegeList) => {
+      let cunyColleges = [];
+      collegeList.forEach( college => {
+        if (college.val().hasOwnProperty('favorite')) {
+          cunyColleges.push({
+            id: college.key,
+            name: college.val().name,
+          });
+        }
+      });
+      this.cunyCollegeNumber = cunyColleges.length;
+    });
+
+    this.collegeData.getSunyList().once('value').then((collegeList) => {
+      let sunyColleges = [];
+      collegeList.forEach( college => {
+        if (college.val().hasOwnProperty('favorite')) {
+          sunyColleges.push({
+            id: college.key,
+            name: college.val().name,
+          });
+        }
+      });
+      this.sunyCollegeNumber = sunyColleges.length;
     });
 
     this.appMapData.getGeneral().on('value', todoList => {

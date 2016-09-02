@@ -129,6 +129,48 @@ export class SearchPage {
         this.collegeList = colleges;
         this.loadedCollegeList = colleges;
       });
+    } else if (this.navParams.get('admissibility') == 'CUNY') {
+      this.collegeData.getCunyList().once('value').then(collegeList => {
+        let colleges = [];
+        collegeList.forEach( college => {
+          colleges.unshift({
+            id: college.key,
+            name: college.val().name,
+            state: college.val().state,
+            city: college.val().city,
+            displayName: college.val().displayName,
+            subHeading: college.val().subHeading,
+            gradRate: college.val().gradRate,
+            retentionRate: college.val().retentionRate,
+            admitRate: college.val().admitRate,
+            admissibility: college.val().admissibility,
+            favorite: college.val().favorite
+          });
+        });
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
+      });
+    } else if (this.navParams.get('admissibility') == 'SUNY') {
+      this.collegeData.getSunyList().once('value').then(collegeList => {
+        let colleges = [];
+        collegeList.forEach( college => {
+          colleges.unshift({
+            id: college.key,
+            name: college.val().name,
+            state: college.val().state,
+            city: college.val().city,
+            displayName: college.val().displayName,
+            subHeading: college.val().subHeading,
+            gradRate: college.val().gradRate,
+            retentionRate: college.val().retentionRate,
+            admitRate: college.val().admitRate,
+            admissibility: college.val().admissibility,
+            favorite: college.val().favorite
+          });
+        });
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
+      });
     }
 
 
