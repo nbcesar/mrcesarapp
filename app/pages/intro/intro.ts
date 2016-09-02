@@ -36,14 +36,15 @@ export class IntroPage {
     } else {
       this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
         this.actCompositeScore, this.satVerbal, this.satMath, this.race).then((authData) => {
-          loading.dismiss(() => {
-            nextSlide;
-          });
+          nextSlide;
         }, (error) => {
           console.log(error);
         });
 
-        let loading = this.loadingCtrl.create();
+        let loading = this.loadingCtrl.create({
+          content: "Calculating odds...",
+          duration: 4000
+        });
         loading.present();
     }
 
