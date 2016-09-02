@@ -20,6 +20,7 @@ export class IntroPage {
   public satVerbal: number;
   public satMath: number;
   public race: string;
+  public state: string;
 
   constructor(public nav: NavController, public authData: AuthData,
     public loadingCtrl: LoadingController) {}
@@ -35,7 +36,7 @@ export class IntroPage {
       nextSlide;
     } else {
       this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
-        this.actCompositeScore, this.satVerbal, this.satMath, this.race).then((authData) => {
+        this.actCompositeScore, this.satVerbal, this.satMath, this.race, this.state).then((authData) => {
           nextSlide;
         }, (error) => {
           console.log(error);

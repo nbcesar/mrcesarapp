@@ -36,8 +36,8 @@ export class AnonymousSearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges;
-        this.loadedCollegeList = colleges;
+        this.collegeList = colleges.reverse();
+        this.loadedCollegeList = colleges.reverse();
       });
 
   }

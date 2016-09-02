@@ -42,8 +42,8 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges;
-        this.loadedCollegeList = colleges;
+        this.collegeList = colleges.reverse();
+        this.loadedCollegeList = colleges.reverse();
       });
     } else if (this.navParams.get('admissibility') == 'moonshot') {
       this.collegeData.getMoonshotList().once('value').then(collegeList => {
@@ -63,8 +63,8 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges;
-        this.loadedCollegeList = colleges;
+        this.collegeList = colleges.reverse();
+        this.loadedCollegeList = colleges.reverse();
       });
     } else if (this.navParams.get('admissibility') == 'reach') {
       this.collegeData.getReachList().once('value').then(collegeList => {
@@ -84,8 +84,8 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges;
-        this.loadedCollegeList = colleges;
+        this.collegeList = colleges.reverse();
+        this.loadedCollegeList = colleges.reverse();
       });
     } else if (this.navParams.get('admissibility') == 'target') {
       this.collegeData.getTargetList().once('value').then(collegeList => {
@@ -105,8 +105,8 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges;
-        this.loadedCollegeList = colleges;
+        this.collegeList = colleges.reverse();
+        this.loadedCollegeList = colleges.reverse();
       });
     } else if (this.navParams.get('admissibility') == 'safety') {
       this.collegeData.getSafetyList().once('value').then(collegeList => {
@@ -126,8 +126,8 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges;
-        this.loadedCollegeList = colleges;
+        this.collegeList = colleges.reverse();
+        this.loadedCollegeList = colleges.reverse();
       });
     }
 

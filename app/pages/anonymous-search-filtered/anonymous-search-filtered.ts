@@ -42,8 +42,8 @@ export class AnonymousSearchFilteredPage {
               favorite: college.val().favorite
             });
           });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
+          this.collegeList = colleges.reverse();
+          this.loadedCollegeList = colleges.reverse();
           this.showList = true;
         });
       } else if (this.navParams.get('admissibility') == 'reach') {
@@ -65,8 +65,8 @@ export class AnonymousSearchFilteredPage {
               favorite: college.val().favorite
             });
           });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
+          this.collegeList = colleges.reverse();
+          this.loadedCollegeList = colleges.reverse();
           this.showList = true;
         });
       } else if (this.navParams.get('admissibility') == 'target') {
@@ -88,8 +88,8 @@ export class AnonymousSearchFilteredPage {
               favorite: college.val().favorite
             });
           });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
+          this.collegeList = colleges.reverse();
+          this.loadedCollegeList = colleges.reverse();
           this.showList = true;
         });
       } else if (this.navParams.get('admissibility') == 'safety') {
@@ -111,8 +111,8 @@ export class AnonymousSearchFilteredPage {
               favorite: college.val().favorite
             });
           });
-          this.collegeList = colleges;
-          this.loadedCollegeList = colleges;
+          this.collegeList = colleges.reverse();
+          this.loadedCollegeList = colleges.reverse();
           this.showList = true;
         });
       }
