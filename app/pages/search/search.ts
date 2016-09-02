@@ -28,7 +28,7 @@ export class SearchPage {
       this.collegeData.getCollegeList().once('value').then(collegeList => {
         let colleges = [];
         collegeList.forEach( college => {
-          colleges.push({
+          colleges.unshift({
             id: college.key,
             name: college.val().name,
             state: college.val().state,
@@ -42,14 +42,14 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges.reverse();
-        this.loadedCollegeList = colleges.reverse();
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
       });
     } else if (this.navParams.get('admissibility') == 'moonshot') {
       this.collegeData.getMoonshotList().once('value').then(collegeList => {
         let colleges = [];
         collegeList.forEach( college => {
-          colleges.push({
+          colleges.unshift({
             id: college.key,
             name: college.val().name,
             state: college.val().state,
@@ -63,14 +63,14 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges.reverse();
-        this.loadedCollegeList = colleges.reverse();
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
       });
     } else if (this.navParams.get('admissibility') == 'reach') {
       this.collegeData.getReachList().once('value').then(collegeList => {
         let colleges = [];
         collegeList.forEach( college => {
-          colleges.push({
+          colleges.unshift({
             id: college.key,
             name: college.val().name,
             state: college.val().state,
@@ -84,14 +84,14 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges.reverse();
-        this.loadedCollegeList = colleges.reverse();
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
       });
     } else if (this.navParams.get('admissibility') == 'target') {
       this.collegeData.getTargetList().once('value').then(collegeList => {
         let colleges = [];
         collegeList.forEach( college => {
-          colleges.push({
+          colleges.unshift({
             id: college.key,
             name: college.val().name,
             state: college.val().state,
@@ -105,14 +105,14 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges.reverse();
-        this.loadedCollegeList = colleges.reverse();
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
       });
     } else if (this.navParams.get('admissibility') == 'safety') {
       this.collegeData.getSafetyList().once('value').then(collegeList => {
         let colleges = [];
         collegeList.forEach( college => {
-          colleges.push({
+          colleges.unshift({
             id: college.key,
             name: college.val().name,
             state: college.val().state,
@@ -126,8 +126,8 @@ export class SearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges.reverse();
-        this.loadedCollegeList = colleges.reverse();
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
       });
     }
 

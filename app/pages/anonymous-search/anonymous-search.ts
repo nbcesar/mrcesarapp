@@ -22,7 +22,7 @@ export class AnonymousSearchPage {
       this.collegeData.getCollegeList().on('value', collegeList => {
         let colleges = [];
         collegeList.forEach( college => {
-          colleges.push({
+          colleges.unshift({
             id: college.key,
             name: college.val().name,
             state: college.val().state,
@@ -36,8 +36,8 @@ export class AnonymousSearchPage {
             favorite: college.val().favorite
           });
         });
-        this.collegeList = colleges.reverse();
-        this.loadedCollegeList = colleges.reverse();
+        this.collegeList = colleges;
+        this.loadedCollegeList = colleges;
       });
 
   }

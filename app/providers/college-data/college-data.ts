@@ -15,27 +15,27 @@ export class CollegeData {
 
   getCollegeList(): any {
     return this.userProfile.child(this.currentUser.uid).child('colleges')
-      .orderByChild('gradRate').limitToLast(10);
+      .orderByChild('gradRate').limitToLast(100);
   }
 
   getMoonshotList(): any {
     return this.userProfile.child(this.currentUser.uid).child('filteredColleges').child('moonshot')
-      .orderByChild('gradRate').limitToLast(10);
+      .orderByChild('gradRate').limitToLast(100);
   }
 
   getReachList(): any {
     return this.userProfile.child(this.currentUser.uid).child('filteredColleges').child('reach')
-      .orderByChild('gradRate').limitToLast(10);
+      .orderByChild('gradRate').limitToLast(100);
   }
 
   getTargetList(): any {
     return this.userProfile.child(this.currentUser.uid).child('filteredColleges').child('target')
-      .orderByChild('gradRate').limitToLast(10);
+      .orderByChild('gradRate').limitToLast(100);
   }
 
   getSafetyList(): any {
     return this.userProfile.child(this.currentUser.uid).child('filteredColleges').child('safety')
-      .orderByChild('gradRate').limitToLast(10);
+      .orderByChild('gradRate').limitToLast(100);
   }
 
   getOtherCollegeList(): any {
