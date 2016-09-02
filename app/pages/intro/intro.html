@@ -11,7 +11,7 @@
     <ion-slide class="slide">
       <div class="intro-text">
         <h3>
-          First, what's <br />your GPA?
+        FIRST <br> WHAT'S YOUR GPA
         </h3>
 
         <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list">
@@ -36,7 +36,7 @@
 
         </ion-list>
 
-        <span>{{gpaScore}}</span>
+        <span class="rangeNum">{{gpaScore}}</span>
         <ion-item *ngIf="gpaScale == '4'">
           <ion-label> GPA Score </ion-label>
           <ion-range min="1" max="4" pin="true" step="0.1" [(ngModel)]="gpaScore" secondary>
@@ -60,11 +60,10 @@
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-slide>
-
     <ion-slide class="slide">
       <div class="intro-text">
         <h3>
-          Next, tell me your highest test score
+          NEXT <br> BEST TEST SCORE?
         </h3>
 
         <ion-list radio-group [(ngModel)]="testType" class="radio-button-list">
@@ -102,7 +101,7 @@
             </ion-col>
 
             <ion-col width-20 class="small-col">
-              <span>{{actCompositeScore}}</span>
+              <span class="rangeNum">{{actCompositeScore}}</span>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -120,7 +119,7 @@
             </ion-col>
 
             <ion-col width-20 class="small-col">
-              <span>{{satVerbal}}</span>
+              <span class="rangeNum">{{satVerbal}}</span>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -138,7 +137,7 @@
             </ion-col>
 
             <ion-col width-20 class="small-col">
-              <span>{{satMath}}</span>
+              <span class="rangeNum">{{satMath}}</span>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -153,34 +152,11 @@
       </button>
     </ion-slide>
 
-    <ion-slide class="slide">
-      <div class="intro-text">
+    <ion-slide class="slide ">
+      <div class="intro-text stateRace">
         <h3>
-          Finally, select your race
+          STATE
         </h3>
-
-        <ion-list radio-group no-lines [(ngModel)]="race" class="race-list">
-          <ion-item>
-            <ion-label>Hispanic/Latino</ion-label>
-            <ion-radio checked="true" value="latino"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Black/African American</ion-label>
-            <ion-radio value="black"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Asian/Pacific Islander</ion-label>
-            <ion-radio value="asian"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Native American/First Nations</ion-label>
-            <ion-radio value="nativeAmerican"></ion-radio>
-          </ion-item>
-        </ion-list>
-
         <ion-list>
           <ion-item>
             <ion-label>Choose your State</ion-label>
@@ -238,6 +214,22 @@
             </ion-select>
           </ion-item>
         </ion-list>
+
+        <h3>RACE</h3>
+        <ion-list>
+          <ion-item>
+            <ion-label>Choose your Race</ion-label>
+            <ion-select [(ngModel)]="race">
+              <ion-option value="latino">Hispanic/Latino</ion-option>
+              <ion-option value="black">Black/African American</ion-option>
+              <ion-option value="white">White</ion-option>
+              <ion-option value="asian">Asian/Pacific Islander</ion-option>
+              <ion-option value="nativeAmerican">Native American/First Nations</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
 
@@ -251,7 +243,7 @@
     <ion-slide class="odds-slide">
       <div class="intro-text">
         <h3>
-          Calculating Odds...
+          CALCULATING ODDS...
         </h3>
 
         <ion-list no-lines class="admissibility-list">
