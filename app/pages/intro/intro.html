@@ -11,7 +11,7 @@
     <ion-slide class="slide">
       <div class="intro-text">
         <h3>
-        FIRST, WHAT'S <br> YOUR GPA?
+        FIRST <br> WHAT'S YOUR GPA
         </h3>
 
         <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list">
@@ -63,7 +63,7 @@
     <ion-slide class="slide">
       <div class="intro-text">
         <h3>
-          YOUR HIGHEST <br> TEST SCORE?
+          NEXT <br> BEST TEST SCORE?
         </h3>
 
         <ion-list radio-group [(ngModel)]="testType" class="radio-button-list">
@@ -152,39 +152,11 @@
       </button>
     </ion-slide>
 
-    <ion-slide class="slide">
-      <div class="intro-text">
+    <ion-slide class="slide ">
+      <div class="intro-text stateRace">
         <h3>
-          WHAT STATE DO YOU LIVE IN? HOW DO YOU INDENTIFY?
+          STATE
         </h3>
-
-        <ion-list radio-group no-lines [(ngModel)]="race" class="race-list">
-          <ion-item>
-            <ion-label>Hispanic/Latino</ion-label>
-            <ion-radio checked="true" value="latino"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Black/African American</ion-label>
-            <ion-radio value="black"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>White</ion-label>
-            <ion-radio value="white"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Asian/Pacific Islander</ion-label>
-            <ion-radio value="asian"></ion-radio>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Native American/First Nations</ion-label>
-            <ion-radio value="nativeAmerican"></ion-radio>
-          </ion-item>
-        </ion-list>
-
         <ion-list>
           <ion-item>
             <ion-label>Choose your State</ion-label>
@@ -242,6 +214,50 @@
             </ion-select>
           </ion-item>
         </ion-list>
+
+        <h3>RACE</h3>
+        <ion-list>
+          <ion-item>
+            <ion-label>Choose your Race</ion-label>
+            <ion-select [(ngModel)]="race">
+              <ion-option value="latino">Hispanic/Latino</ion-option>
+              <ion-option value="black">Black/African American</ion-option>
+              <ion-option value="white">White</ion-option>
+              <ion-option value="asian">Asian/Pacific Islander</ion-option>
+              <ion-option value="nativeAmerican">Native American/First Nations</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+          <!--
+          <ion-item>
+            <ion-label>Hispanic/Latino</ion-label>
+            <ion-radio checked="true" value="latino"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Black/African American</ion-label>
+            <ion-radio value="black"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>White</ion-label>
+            <ion-radio value="white"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Asian/Pacific Islander</ion-label>
+            <ion-radio value="asian"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Native American/First Nations</ion-label>
+            <ion-radio value="nativeAmerican"></ion-radio>
+          </ion-item>
+
+        -->
+
+
+
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
 
