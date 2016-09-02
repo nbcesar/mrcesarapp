@@ -18,13 +18,11 @@ export class AnonymousSearchFilteredPage {
 
   constructor(public nav: NavController, public collegeData: CollegeData,
     public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-      let loading = this.loadingCtrl.create({
-        duration: 3000,
+      this.loadingWait = this.loadingCtrl.create({
         content: "Give me a sec to think about it"
       });
-      loading.present();
+      this.loadingWait.present();
       this.searchQuery = '';
-      console.log("Not yet!");
 
       if (this.navParams.get('admissibility') == 'moonshot') {
         this.category = 'Moonshot';
@@ -47,7 +45,7 @@ export class AnonymousSearchFilteredPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
-          console.log(colleges.length);
+          this.loadingWait.dismiss();
 
         });
       } else if (this.navParams.get('admissibility') == 'reach') {
@@ -71,7 +69,7 @@ export class AnonymousSearchFilteredPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
-          console.log(colleges.length);
+          this.loadingWait.dismiss();
 
         });
       } else if (this.navParams.get('admissibility') == 'target') {
@@ -95,7 +93,7 @@ export class AnonymousSearchFilteredPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
-          console.log(colleges.length);
+          this.loadingWait.dismiss();
 
         });
       } else if (this.navParams.get('admissibility') == 'safety') {
@@ -119,7 +117,7 @@ export class AnonymousSearchFilteredPage {
           });
           this.collegeList = colleges;
           this.loadedCollegeList = colleges;
-          console.log(colleges.length);
+          this.loadingWait.dismiss();
 
         });
       }

@@ -38,7 +38,6 @@ export class AnonymousSearchPage {
         });
         this.collegeList = colleges;
         this.loadedCollegeList = colleges;
-        console.log(colleges.length);
       });
 
   }
