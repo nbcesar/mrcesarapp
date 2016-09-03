@@ -17,6 +17,7 @@ export class CollegePage {
     public collegeData: CollegeData, public alertCtrl: AlertController) {
     this.collegeId = this.navParams.get('collegeId');
     this.admissibility = this.navParams.get('admissibility');
+    this.subHeading = this.navParams.get('subHeading');
     this.favoriteCollege = this.navParams.get('favoriteCollege');
 
     this.collegeData.getCollegeDetail(this.navParams.get('collegeId')).on('value', collegeDetail => {

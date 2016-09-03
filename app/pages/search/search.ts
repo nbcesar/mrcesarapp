@@ -227,7 +227,8 @@ export class SearchPage {
     this.nav.push(CollegePage, {
       collegeId: collegeId,
       favoriteCollege: favoriteCollege,
-      admissibility: admissibility
+      admissibility: admissibility,
+      subHeading: subHeading
     });
   }
 
