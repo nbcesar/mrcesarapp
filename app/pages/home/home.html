@@ -58,11 +58,6 @@
           </span>
           <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
-            && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))">
-            your ethnicity.
-          </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
-            && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
             && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
             && userProfile?.race">
             your counselor's name.

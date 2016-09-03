@@ -553,30 +553,27 @@ export class ProfilePage {
   }
 
   updateGender(){
-    let alert = this.alertCtrl.create();
-
-    alert.addInput({
-      type: 'radio',
-      label: 'Female',
-      value: 'female',
+    let alert = this.alertCtrl.create({
+      message: "Your first name & last name",
+      inputs: [
+        {
+          name: 'gender',
+          placeholder: 'Your Gender',
+          value: this.userProfile.gender
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            this.profileData.updateGender(data.gender);
+          }
+        }
+      ]
     });
-
-    alert.addInput({
-      type: 'radio',
-      label: 'Male',
-      value: 'male',
-    });
-
-    alert.addButton('Cancel');
-    alert.addButton({
-     text: 'Save',
-     handler: data => {
-      this.profileData.updateGender(data)
-     }
-    });
-
-
-
     alert.present();
   }
 

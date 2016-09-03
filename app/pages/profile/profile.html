@@ -89,8 +89,7 @@
             Gender
           </ion-col>
           <ion-col width-50 *ngIf="userProfile?.gender">
-            <span *ngIf="userProfile?.gender == 'female'">Female</span>
-            <span *ngIf="userProfile?.gender == 'male'">Male</span>
+            {{userProfile.gender}}
           </ion-col>
           <ion-col class="placeholder-profile" *ngIf="!userProfile?.gender">
             <span>
