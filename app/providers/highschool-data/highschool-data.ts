@@ -33,10 +33,10 @@ export class HighschoolData {
 
     updates['highSchools/' + state + '/' + city + '/schoolList/' + schoolId
     + '/students/' + this.currentUser.uid] = true;
-    updates['userProfile/' + this.currentUser.uid + '/highSchool/city'] = city;
-    updates['userProfile/' + this.currentUser.uid + '/highSchool/name'] = schoolName;
-    updates['userProfile/' + this.currentUser.uid + '/highSchool/state'] = state;
-    updates['userProfile/' + this.currentUser.uid + '/highSchool/id'] = schoolId;
+    updates['userProfile/' + this.currentUser.uid + '/profileInfo/highSchool/city'] = city;
+    updates['userProfile/' + this.currentUser.uid + '/profileInfo/highSchool/name'] = schoolName;
+    updates['userProfile/' + this.currentUser.uid + '/profileInfo/highSchool/state'] = state;
+    updates['userProfile/' + this.currentUser.uid + '/profileInfo/highSchool/id'] = schoolId;
 
     return this.rootRef.update(updates);
 

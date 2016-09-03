@@ -19,7 +19,7 @@ export class ProfileData {
 
   createProfile(gpaScale: string, gpaScore: number,
     testType: string, actCompositeScore: number, satVerbal: number, satMath: number): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       id: this.currentUser.uid,
       gpaScale: gpaScale,
       gpaScore: gpaScore,
@@ -31,22 +31,22 @@ export class ProfileData {
   }
 
   getProfile(userId): any {
-    return this.userProfile.child(userId);
+    return this.userProfile.child(userId).child('profileInfo');
   }
 
   getUserProfile(): any {
-    return this.userProfile.child(this.currentUser.uid);
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo');
   }
 
   getUserState(): any {
-    return this.userProfile.child(this.currentUser.uid).child('state');
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').child('state');
   }
 
   updateName(firstName: string, lastName: string): any {
     if (!firstName) { firstName = null }
     if (!lastName) { lastName = null }
 
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       firstName: firstName,
       lastName: lastName,
     });
@@ -55,7 +55,7 @@ export class ProfileData {
   updateCounselorName(counselorName: string): any {
     if (!counselorName) { counselorName = null }
 
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       counselorName: counselorName,
     });
   }
@@ -63,7 +63,7 @@ export class ProfileData {
   updateCounselorEmail(counselorEmail: string): any {
     if (!counselorEmail) { counselorEmail = null }
 
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       counselorEmail: counselorEmail,
     });
   }
@@ -71,7 +71,7 @@ export class ProfileData {
   updateDOB(birthDate: string): any {
     if (!birthDate) { birthDate = null }
 
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       birthDate: birthDate,
     });
   }
@@ -80,32 +80,32 @@ export class ProfileData {
     return this.storageRef.child('profileSelfies').child(this.currentUser.uid)
       .child('profilePicture.png').putString(imageURL, 'base64', {contentType: 'image/png'})
         .then( snapshot => {
-        this.userProfile.child(this.currentUser.uid).update({
+        this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
           profileSelfie: snapshot.downloadURL,
         });
       });
   }
 
   updateGraduationDate(graduationDate: string = null): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       graduationDate: graduationDate,
     });
   }
 
   updateSchool(schoolName: string = null): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       highSchool: schoolName,
     });
   }
 
   updateSchoolState(highSchoolState: string = null): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       highSchoolState: highSchoolState,
     });
   }
 
   updateGPAScale(gpaScale: string = null): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       gpaScale: gpaScale,
       gpaScore: null,
       updateProfile: true
@@ -113,20 +113,20 @@ export class ProfileData {
   }
 
   updateGender(gender: string = null): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       gender: gender,
     });
   }
 
   updateGPAScore(gpaScore: string = null): any {
-    this.userProfile.child(this.currentUser.uid).update({
+    this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       gpaScore: gpaScore
     });
     return this.updateMatchProfile();
   }
 
   updateACTScore(actScore: string = null): any {
-    this.userProfile.child(this.currentUser.uid).update({
+    this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       actCompositeScore: actScore,
       satVerbal: null,
       satMath: null,
@@ -136,7 +136,7 @@ export class ProfileData {
   }
 
   updateSATScore(satVerbal: string = null, satMath: string = null): any {
-    this.userProfile.child(this.currentUser.uid).update({
+    this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       actCompositeScore: null,
       satVerbal: satVerbal,
       satMath: satMath,
@@ -146,7 +146,7 @@ export class ProfileData {
   }
 
   updateTestType(testType: string = null): any {
-    return this.userProfile.child(this.currentUser.uid).update({
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       testType: testType,
       satVerbal: null,
       satMath: null,
@@ -159,7 +159,7 @@ export class ProfileData {
     var credential = ( <any> firebase.auth.EmailAuthProvider).credential(this.currentUser.email, userPassword);
     this.currentUser.reauthenticate(credential).then(() => {
        this.currentUser.updateEmail(newEmail).then(() => {
-        this.userProfile.child(this.currentUser.uid).update({
+        this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
           email: newEmail
         });
       }, (error) => {
@@ -180,7 +180,7 @@ export class ProfileData {
   }
 
   updateRace(race: string = null): any {
-    this.userProfile.child(this.currentUser.uid).update({
+    this.userProfile.child(this.currentUser.uid).child('profileInfo').update({
       race: race,
       updateProfile: true
     });
@@ -188,7 +188,7 @@ export class ProfileData {
   }
 
   updateMatchProfile(): any {
-    return this.userProfile.child(this.currentUser.uid).child('updateProfile').set('true');
+    return this.userProfile.child(this.currentUser.uid).child('profileInfo').child('updateProfile').set('true');
   }
 
 }

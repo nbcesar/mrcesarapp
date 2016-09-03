@@ -23,7 +23,7 @@ export class AuthData {
     actCompositeScore: number = null, satVerbal: number = null, satMath: number = null,
     race: string, state: string): any {
     return this.fireAuth.signInAnonymously().then((anonymousUser) => {
-      this.userProfile.child(anonymousUser.uid).set({
+      this.userProfile.child(anonymousUser.uid).child('profileInfo').set({
         id: anonymousUser.uid,
         gpaScale: gpaScale,
         gpaScore: gpaScore,
@@ -32,7 +32,7 @@ export class AuthData {
         satVerbal: satVerbal,
         satMath: satMath,
         race: race,
-        state: state        
+        state: state
       });
     });
   }
