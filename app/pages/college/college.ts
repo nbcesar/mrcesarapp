@@ -10,15 +10,14 @@ export class CollegePage {
   college: any;
   collegeId: string;
   admissibility: string;
+  subHeading: string;
   favoriteCollege: boolean;
-  canUpdate: boolean;
 
   constructor(public nav: NavController, public navParams: NavParams,
     public collegeData: CollegeData, public alertCtrl: AlertController) {
     this.collegeId = this.navParams.get('collegeId');
     this.admissibility = this.navParams.get('admissibility');
     this.favoriteCollege = this.navParams.get('favoriteCollege');
-    this.canUpdate = this.navParams.get('canUpdate');
 
     this.collegeData.getCollegeDetail(this.navParams.get('collegeId')).on('value', collegeDetail => {
       console.log('looking for details...');
@@ -37,23 +36,11 @@ export class CollegePage {
   }
 
   removeCollegeAsFavorite() {
-    this.collegeData.removeCollegeFavorite(this.collegeId);
+    this.collegeData.removeCollegeFavorite(this.collegeId, this.admissibility, this.subHeading);
   }
 
   addCollegeAsFavorite() {
-    // If admissibility has not been calculated, alert user to complete profile
-    if (this.canUpdate == false) {
-      let alert = this.alertCtrl.create({
-        title: 'Profile is incomplete',
-        subTitle: 'Hey - complete your profile before adding schools.',
-        buttons: ['Ok']
-      });
-      alert.present();
-      this.favoriteCollege = false;
-    }
-    else {
-      this.collegeData.addCollegeFavorite(this.collegeId);
-    }
+    this.collegeData.addCollegeFavorite(this.collegeId, this.admissibility, this.subHeading);
   }
 
 }

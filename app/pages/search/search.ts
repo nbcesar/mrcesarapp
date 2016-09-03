@@ -208,41 +208,24 @@ export class SearchPage {
 
   }
 
-  addCollegeAsFavorite(college, slidingItem: ItemSliding) {
+  addCollegeAsFavorite(college, slidingItem: ItemSliding, admissibility: string, subHeading: string) {
     slidingItem.close();
-    // If admissibility has not been calculated, alert user to complete profile
-    if (college.admissibility == undefined) {
-      let alert = this.alertCtrl.create({
-        title: 'Profile is incomplete',
-        subTitle: 'Hey - complete your profile before adding schools.',
-        buttons: ['Ok']
-      });
-      alert.present();
-    }
-    else {
-      this.collegeData.addCollegeFavorite(college.id);
-      college.favorite = true;
-    }
+    this.collegeData.addCollegeFavorite(college.id, admissibility, subHeading);
+    college.favorite = true;
+    console.log("I'm inside the function for add");
   }
 
-  removeCollegeAsFavorite(college, slidingItem: ItemSliding) {
+  removeCollegeAsFavorite(college, slidingItem: ItemSliding, admissibility: string, subHeading: string) {
     slidingItem.close();
-    // Remove college from favorite
-    this.collegeData.removeCollegeFavorite(college.id);
+    this.collegeData.removeCollegeFavorite(college.id, admissibility, subHeading);
     college.favorite = false;
+    console.log("I'm inside the function for remove");
   }
 
-  goToCollege(collegeId, admissibility, favoriteCollege) {
-    let canUpdate;
-    if (typeof admissibility == 'undefined'){
-      canUpdate = false;
-    } else {
-      canUpdate = true
-    }
+  goToCollege(collegeId: string, admissibility: string, favoriteCollege: boolean, subHeading: string) {
 
     this.nav.push(CollegePage, {
       collegeId: collegeId,
-      canUpdate: canUpdate,
       favoriteCollege: favoriteCollege,
       admissibility: admissibility
     });

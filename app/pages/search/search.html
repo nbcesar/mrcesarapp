@@ -13,7 +13,7 @@
 
         <ion-item text-wrap >
 
-          <ion-grid (click)="goToCollege(college.id, college.admissibility, college.favorite)">
+          <ion-grid (click)="goToCollege(college.id, college.admissibility, college.favorite, college.subHeading)">
             <ion-row>
               <ion-col width-75 center class="college-info">
                 <h2>{{ college.displayName }}</h2>
@@ -48,11 +48,13 @@
 
         </ion-item>
         <ion-item-options side="right">
-          <button *ngIf="college.favorite" danger large (click)="removeCollegeAsFavorite(college, slidingItem)">
+          <button *ngIf="college.favorite" danger large
+            (click)="removeCollegeAsFavorite(college, slidingItem, college.admissibility, college.subHeading)">
             <ion-icon name="trash"></ion-icon>
             Remove
           </button>
-          <button *ngIf="!college.favorite" favorite large (click)="addCollegeAsFavorite(college, slidingItem)">
+          <button *ngIf="!college.favorite" favorite large
+            (click)="addCollegeAsFavorite(college, slidingItem, college.admissibility, college.subHeading)">
             <ion-icon name="checkmark-circle"></ion-icon>
             Add
           </button>

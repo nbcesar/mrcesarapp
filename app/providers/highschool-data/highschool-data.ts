@@ -28,9 +28,6 @@ export class HighschoolData {
   addSchool(state, city, schoolName, schoolId): any {
     let updates = {};
 
-    // this.fireSchool.child(state).child(city).child('schoolList').child(schoolId)
-    //   .child('students').child(this.currentUser.uid).set(true);
-
     updates['highSchools/' + state + '/' + city + '/schoolList/' + schoolId
     + '/students/' + this.currentUser.uid] = true;
     updates['userProfile/' + this.currentUser.uid + '/profileInfo/highSchool/city'] = city;

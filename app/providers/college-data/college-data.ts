@@ -52,15 +52,30 @@ export class CollegeData {
       .equalTo('other');
   }
 
-  addCollegeFavorite(collegeId: string): any {
-    return this.userProfile.child(this.currentUser.uid).child('colleges').child(collegeId).update({
-      favorite: true
-    });
+  addCollegeFavorite(collegeId: string, admissibility: string, sunyCuny: string = null): any {
+    console.log(collegeId, admissibility, sunyCuny);
+    let updates = {};
+
+    updates[this.currentUser.uid + '/colleges/' + collegeId + '/favorite'] = true;
+    updates[this.currentUser.uid + '/filteredColleges/' + admissibility + '/' + collegeId + '/favorite'] = true;
+    if (sunyCuny == 'SUNY' || sunyCuny == 'CUNY') {
+      updates[this.currentUser.uid + '/filteredColleges/' + sunyCuny + '/' + collegeId + '/favorite'] = true;
+    }
+
+    return this.userProfile.update(updates);
   }
 
-  removeCollegeFavorite(collegeId: string): any {
-    return this.userProfile.child(this.currentUser.uid).child('colleges').child(collegeId).child('favorite')
-      .set(null);
+  removeCollegeFavorite(collegeId: string, admissibility: string, sunyCuny: string = null): any {
+    console.log(collegeId, admissibility, sunyCuny);
+    let updates = {};
+
+    updates[this.currentUser.uid + '/colleges/' + collegeId + '/favorite'] = null;
+    updates[this.currentUser.uid + '/filteredColleges/' + admissibility + '/' + collegeId + '/favorite'] = null;
+    if (sunyCuny == 'SUNY' || sunyCuny == 'CUNY') {
+      updates[this.currentUser.uid + '/filteredColleges/' + sunyCuny + '/' + collegeId + '/favorite'] = null;
+    }
+
+    return this.userProfile.update(updates);
   }
 
   getFavoriteCollege(): any {

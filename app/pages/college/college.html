@@ -26,7 +26,9 @@
         <p> {{college?.city}}, {{college?.state}} </p>
       </ion-col>
       <ion-col width-20 center>
-        <ion-toggle [checked]="favoriteCollege" (ionChange)="toggleFavorite($event)"></ion-toggle>
+        <ion-toggle [checked]="favoriteCollege"
+          (ionChange)="toggleFavorite($event)">
+        </ion-toggle>
       </ion-col>
     </ion-row>
 

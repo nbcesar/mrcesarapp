@@ -70,12 +70,4 @@ export class ListPage {
     this.nav.push(ProfilePage);
   }
 
-  removeCollegeAsFavorite(collegeId, slidingItem: ItemSliding, index) {
-    slidingItem.close();
-    // Remove college from favorite
-    this.collegeData.removeCollegeFavorite(collegeId).then( () => {
-      this.moonshotList.splice(index, 1);
-    });
-  }
-
 }
