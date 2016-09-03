@@ -133,7 +133,6 @@ export class HomePage {
       if (this.userProfile.state == 'NY'){
         if (this.targetCollegeNumber == 1) {
           this.listProgress += 5;
-          console.log(this.targetCollegeNumber);
         } else if (this.targetCollegeNumber == 2) {
           this.listProgress += 10;
         } else if (this.targetCollegeNumber >= 1) {

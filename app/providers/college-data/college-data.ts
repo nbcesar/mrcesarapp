@@ -53,14 +53,12 @@ export class CollegeData {
   }
 
   addCollegeFavorite(collegeId: string, admissibility: string, sunyCuny: string = null): any {
-    console.log(collegeId, admissibility, sunyCuny);
     let updates = {};
 
     if (sunyCuny == 'SUNY' || sunyCuny == 'CUNY') {
       updates[this.currentUser.uid + '/colleges/' + collegeId + '/favorite'] = true;
       updates[this.currentUser.uid + '/filteredColleges/' + admissibility + '/' + collegeId + '/favorite'] = true;
       updates[this.currentUser.uid + '/filteredColleges/state/NY/' + collegeId + '/favorite'] = true;
-      console.log("I'm SUNY or CUNY");
     } else {
       updates[this.currentUser.uid + '/colleges/' + collegeId + '/favorite'] = true;
       updates[this.currentUser.uid + '/filteredColleges/' + admissibility + '/' + collegeId + '/favorite'] = true;
@@ -70,7 +68,6 @@ export class CollegeData {
   }
 
   removeCollegeFavorite(collegeId: string, admissibility: string, sunyCuny: string = null): any {
-    console.log(collegeId, admissibility, sunyCuny);
     let updates = {};
 
     if (sunyCuny == 'SUNY' || sunyCuny == 'CUNY') {

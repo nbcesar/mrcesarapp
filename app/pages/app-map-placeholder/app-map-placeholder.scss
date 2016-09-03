@@ -1,0 +1,25 @@
+.app-map-placeholder {
+  img {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 2em;
+  }
+
+  ion-item {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  ion-item:nth-child(even) {
+    background-color: #FFECCC;
+  }
+
+  ion-item:nth-child(odd) {
+    background-color: #C8D6AF;
+  }
+}
