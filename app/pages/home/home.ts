@@ -82,7 +82,9 @@ export class HomePage {
         }
       });
       this.moonshotCollegeNumber = moonshotColleges.length;
-      if (this.moonshotCollegeNumber >= 1) {
+      if (this.moonshotCollegeNumber >= 1 && this.userProfile.state == 'NY') {
+        this.listProgress += 15;
+      } else if (this.moonshotCollegeNumber >= 1 && this.userProfile.state !== 'NY') {
         this.listProgress += 25;
       }
     });
@@ -98,12 +100,22 @@ export class HomePage {
         }
       });
       this.reachCollegeNumber = reachColleges.length;
-      if (this.reachCollegeNumber == 1) {
-        this.listProgress += 8;
-      } else if (this.reachCollegeNumber == 2) {
-        this.listProgress += 16;
-      } else if (this.reachCollegeNumber >= 1) {
-        this.listProgress += 25;
+      if (this.userProfile.state == 'NY') {
+        if (this.reachCollegeNumber == 1) {
+          this.listProgress += 5;
+        } else if (this.reachCollegeNumber == 2) {
+          this.listProgress += 10;
+        } else if (this.reachCollegeNumber >= 1) {
+          this.listProgress += 15;
+        }
+      } else {
+        if (this.reachCollegeNumber == 1) {
+          this.listProgress += 8;
+        } else if (this.reachCollegeNumber == 2) {
+          this.listProgress += 16;
+        } else if (this.reachCollegeNumber >= 1) {
+          this.listProgress += 25;
+        }
       }
     });
 
@@ -118,13 +130,25 @@ export class HomePage {
         }
       });
       this.targetCollegeNumber = targetColleges.length;
-      if (this.targetCollegeNumber == 1) {
-        this.listProgress += 8;
-        console.log(this.targetCollegeNumber);
-      } else if (this.targetCollegeNumber == 2) {
-        this.listProgress += 16;
-      } else if (this.targetCollegeNumber >= 1) {
-        this.listProgress += 25;
+      if (this.userProfile.state == 'NY'){
+        if (this.targetCollegeNumber == 1) {
+          this.listProgress += 5;
+          console.log(this.targetCollegeNumber);
+        } else if (this.targetCollegeNumber == 2) {
+          this.listProgress += 10;
+        } else if (this.targetCollegeNumber >= 1) {
+          this.listProgress += 15;
+        }
+      } else {
+        if (this.targetCollegeNumber == 1) {
+          this.listProgress += 8;
+          console.log(this.targetCollegeNumber);
+        } else if (this.targetCollegeNumber == 2) {
+          this.listProgress += 16;
+        } else if (this.targetCollegeNumber >= 1) {
+          this.listProgress += 25;
+        }
+
       }
     });
 
@@ -139,10 +163,18 @@ export class HomePage {
         }
       });
       this.safetyCollegeNumber = safetyColleges.length;
-      if (this.safetyCollegeNumber == 1) {
-        this.listProgress += 12;
-      } else if (this.safetyCollegeNumber >= 2) {
-        this.listProgress += 25;
+      if (this.userProfile.state == 'NY') {
+        if (this.safetyCollegeNumber == 1) {
+          this.listProgress += 8;
+        } else if (this.safetyCollegeNumber >= 2) {
+          this.listProgress += 15;
+        }
+      } else {
+        if (this.safetyCollegeNumber == 1) {
+          this.listProgress += 12;
+        } else if (this.safetyCollegeNumber >= 2) {
+          this.listProgress += 25;
+        }
       }
     });
 
@@ -157,6 +189,21 @@ export class HomePage {
         }
       });
       this.cunyCollegeNumber = cunyColleges.length;
+      if (this.userProfile.state == 'NY') {
+        if (this.cunyCollegeNumber == 1) {
+          this.listProgress += 3;
+        } else if (this.cunyCollegeNumber == 2) {
+          this.listProgress += 6;
+        } else if (this.cunyCollegeNumber == 3) {
+          this.listProgress += 9;
+        } else if (this.cunyCollegeNumber == 4) {
+          this.listProgress += 12;
+        } else if (this.cunyCollegeNumber == 5) {
+          this.listProgress += 15;
+        } else if (this.cunyCollegeNumber >= 6) {
+          this.listProgress += 20;
+        }
+      }
     });
 
     this.collegeData.getSunyList().once('value').then((collegeList) => {
@@ -170,6 +217,17 @@ export class HomePage {
         }
       });
       this.sunyCollegeNumber = sunyColleges.length;
+      if (this.userProfile.state == 'NY') {
+        if (this.sunyCollegeNumber == 1) {
+          this.listProgress += 5;
+        } else if (this.sunyCollegeNumber == 2) {
+          this.listProgress += 10;
+        } else if (this.sunyCollegeNumber == 3) {
+          this.listProgress += 15;
+        } else if (this.sunyCollegeNumber >= 4) {
+          this.listProgress += 20;
+        }
+      }
     });
 
     this.appMapData.getGeneral().on('value', todoList => {
