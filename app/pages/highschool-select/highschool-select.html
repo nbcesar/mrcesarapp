@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar primary>
     <ion-title>HighschoolSelect</ion-title>
   </ion-navbar>
 
@@ -76,7 +76,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)" (ionCancel)="initializeItems()"
+  <ion-searchbar light [(ngModel)]="searchQuery" (ionInput)="getItems($event)" (ionCancel)="initializeItems()"
     (ionClear)="initializeItems()" *ngIf="showSearch"></ion-searchbar>
   <ion-list *ngIf="showList">
     <ion-item *ngFor="let school of schoolList" text-wrap>

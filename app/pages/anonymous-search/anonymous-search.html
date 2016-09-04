@@ -2,11 +2,12 @@
   <ion-navbar primary>
     <ion-title>College Search</ion-title>
   </ion-navbar>
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)"
+    [hideCancelButton]="true" (ionCancel)="initializeItems()" (ionClear)="initializeItems()">
+  </ion-searchbar>
 </ion-header>
 
 <ion-content class="anonymous-search">
-  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getItems($event)"
-    [hideCancelButton]="true" (ionCancel)="initializeItems()" (ionClear)="initializeItems()"></ion-searchbar>
 
     <ion-list *ngIf="showList">
 
