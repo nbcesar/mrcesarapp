@@ -36,10 +36,10 @@
 
         </ion-list>
 
-        <span class="rangeNum">{{gpaScore}}</span>
+        <span class="rangeNum" *ngIf="gpaScore">{{gpaScore / 10}}</span>
         <ion-item *ngIf="gpaScale == '4'">
           <ion-label> GPA Score </ion-label>
-          <ion-range min="1" max="4" pin="true" step="0.1" [(ngModel)]="gpaScore" secondary>
+          <ion-range min="10" max="40" step="1" [(ngModel)]="gpaScore" secondary>
             <ion-icon range-left small name="arrow-back"></ion-icon>
             <ion-icon range-right name="arrow-forward"></ion-icon>
           </ion-range>
@@ -47,7 +47,7 @@
 
         <ion-item *ngIf="gpaScale == '100'">
           <ion-label> GPA Score </ion-label>
-          <ion-range min="50" max="100" pin="true" step="1" [(ngModel)]="gpaScore" secondary>
+          <ion-range min="50" max="100" step="1" [(ngModel)]="gpaScore" secondary>
             <ion-icon range-left small name="arrow-back"></ion-icon>
             <ion-icon range-right name="arrow-forward"></ion-icon>
           </ion-range>

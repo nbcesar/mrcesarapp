@@ -11,7 +11,7 @@
 
     <ion-row>
       <ion-col width-25 center>
-        <img src="img/college_building.png">
+          <img src="img/college_building.png">
       </ion-col>
 
       <ion-col center>
@@ -19,10 +19,12 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col width-20 center>
-        <img src="img/{{admissibility}}_green.png" *ngIf="admissibility">
+      <ion-col width-10 center>
+        <ion-avatar>
+          <img src="img/{{admissibility}}_green.png" *ngIf="admissibility">
+        </ion-avatar>
       </ion-col>
-      <ion-col width-60 center>
+      <ion-col center>
         <p> {{college?.city}}, {{college?.state}} </p>
       </ion-col>
       <ion-col width-20 center>
