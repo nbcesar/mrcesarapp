@@ -202,7 +202,7 @@ export class AnonymousSearchFilteredPage {
 
   goToCollege() {
     let alert = this.alertCtrl.create({
-      message: "If you want to continue you'll need to provide an email and create a password",
+      message: "To continue create an account",
       buttons: [
         { text: "Cancel" },
         {

@@ -225,78 +225,78 @@
         <ion-avatar item-right>
           <img src="img/moonshot_gray.png" />
         </ion-avatar>
-        <h3>Moonshot - Add {{1 - moonshotCollegeNumber}} more</h3>
+        <h3><strong>Moonshot</strong> - Add {{1 - moonshotCollegeNumber}} more</h3>
       </ion-item>
       <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber > 0">
         <ion-avatar item-right>
           <img src="img/moonshot_green.png" />
         </ion-avatar>
-        <h3>Moonshot - <span>{{moonshotCollegeNumber}} school(s)</span></h3>
+        <h3><strong>Moonshot</strong> - {{moonshotCollegeNumber}} school(s)</h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber < 3">
         <ion-avatar item-right>
           <img src="img/reach_gray.png" />
         </ion-avatar>
-        <h3>Reach - Add {{3 - reachCollegeNumber}} more</h3>
+        <h3><strong>Reach</strong> - Add {{3 - reachCollegeNumber}} more</h3>
       </ion-item>
       <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber > 2">
         <ion-avatar item-right>
           <img src="img/reach_green.png" />
         </ion-avatar>
-        <h3>Reach: {{reachCollegeNumber}} school(s)</h3>
+        <h3><strong>Reach</strong> - {{reachCollegeNumber}} school(s)</h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber < 3">
         <ion-avatar item-right>
           <img src="img/target_gray.png" />
         </ion-avatar>
-        <h3>Target - Add {{3 - targetCollegeNumber}} more</h3>
+        <h3><strong>Target</strong> - Add {{3 - targetCollegeNumber}} more</h3>
       </ion-item>
       <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber > 2">
         <ion-avatar item-right>
           <img src="img/target_green.png" />
         </ion-avatar>
-        <h3>Target: {{targetCollegeNumber}} school(s)</h3>
+        <h3><strong>Target</strong> - {{targetCollegeNumber}} school(s)</h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber < 2">
         <ion-avatar item-right>
           <img src="img/safety_g.png" />
         </ion-avatar>
-        <h3>Safety - Add {{2 - safetyCollegeNumber}} more</h3>
+        <h3><strong>Safety</strong> - Add {{2 - safetyCollegeNumber}} more</h3>
       </ion-item>
       <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber > 1">
         <ion-avatar item-right>
           <img src="img/safety_green.png" />
         </ion-avatar>
-        <h3>Safety: {{safetyCollegeNumber}} school(s)</h3>
+        <h3><strong>Safety</strong> - {{safetyCollegeNumber}} school(s)</h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber < 6 && userProfile.state == 'NY'">
         <ion-avatar item-right>
           <img src="img/college_gray.png" />
         </ion-avatar>
-        <h3>CUNY - Add {{6 - cunyCollegeNumber}} more</h3>
+        <h3><strong>CUNY</strong> - Add {{6 - cunyCollegeNumber}} more</h3>
       </ion-item>
       <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber > 5 && userProfile.state == 'NY'">
         <ion-avatar item-right>
           <img src="img/college_green.png" />
         </ion-avatar>
-        <h3>CUNY: {{cunyCollegeNumber}} school(s)</h3>
+        <h3><strong>CUNY</strong> - {{cunyCollegeNumber}} school(s)</h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber < 4 && userProfile.state == 'NY'">
         <ion-avatar item-right>
           <img src="img/college_gray.png" />
         </ion-avatar>
-        <h3>SUNY - Add {{4 - sunyCollegeNumber}} more</h3>
+        <h3><strong>SUNY</strong> - Add {{4 - sunyCollegeNumber}} more</h3>
       </ion-item>
       <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber > 3 && userProfile.state == 'NY'">
         <ion-avatar item-right>
           <img src="img/college_green.png" />
         </ion-avatar>
-        <h3>SUNY: {{sunyCollegeNumber}} school(s)</h3>
+        <h3><strong>SUNY</strong> - {{sunyCollegeNumber}} school(s)</h3>
       </ion-item>
 
 
