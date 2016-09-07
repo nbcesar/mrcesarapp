@@ -222,36 +222,84 @@
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber < 1">
-        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
-        Moonshot - You need to pick {{1 - moonshotCollegeNumber}} school
+        <ion-avatar item-right>
+          <img src="img/moonshot_gray.png" />
+        </ion-avatar>
+        <h3>Moonshot - Add {{1 - moonshotCollegeNumber}} more</h3>
+      </ion-item>
+      <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber > 0">
+        <ion-avatar item-right>
+          <img src="img/moonshot_green.png" />
+        </ion-avatar>
+        <h3>Moonshot - <span>{{moonshotCollegeNumber}} school(s)</span></h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber < 3">
-        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
-        Reach - You need to pick {{3 - reachCollegeNumber}} more schools
+        <ion-avatar item-right>
+          <img src="img/reach_gray.png" />
+        </ion-avatar>
+        <h3>Reach - Add {{3 - reachCollegeNumber}} more</h3>
+      </ion-item>
+      <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber > 2">
+        <ion-avatar item-right>
+          <img src="img/reach_green.png" />
+        </ion-avatar>
+        <h3>Reach: {{reachCollegeNumber}} school(s)</h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber < 3">
-        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
-        Target - You need to pick {{3 - targetCollegeNumber}} more schools
+        <ion-avatar item-right>
+          <img src="img/target_gray.png" />
+        </ion-avatar>
+        <h3>Target - Add {{3 - targetCollegeNumber}} more</h3>
+      </ion-item>
+      <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber > 2">
+        <ion-avatar item-right>
+          <img src="img/target_green.png" />
+        </ion-avatar>
+        <h3>Target: {{targetCollegeNumber}} school(s)</h3>
       </ion-item>
 
       <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber < 2">
-        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
-        Safety - You need to pick {{2 - safetyCollegeNumber}} more schools
+        <ion-avatar item-right>
+          <img src="img/safety_g.png" />
+        </ion-avatar>
+        <h3>Safety - Add {{2 - safetyCollegeNumber}} more</h3>
+      </ion-item>
+      <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber > 1">
+        <ion-avatar item-right>
+          <img src="img/safety_green.png" />
+        </ion-avatar>
+        <h3>Safety: {{safetyCollegeNumber}} school(s)</h3>
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('CUNY')"
-        *ngIf="cunyCollegeNumber < 7 && userProfile.state == 'NY'">
-        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
-        CUNY - You need to pick {{6 - cunyCollegeNumber}} more schools
+      <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber < 6 && userProfile.state == 'NY'">
+        <ion-avatar item-right>
+          <img src="img/college_gray.png" />
+        </ion-avatar>
+        <h3>CUNY - Add {{6 - cunyCollegeNumber}} more</h3>
+      </ion-item>
+      <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber > 5 && userProfile.state == 'NY'">
+        <ion-avatar item-right>
+          <img src="img/college_green.png" />
+        </ion-avatar>
+        <h3>CUNY: {{cunyCollegeNumber}} school(s)</h3>
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('SUNY')"
-        *ngIf="sunyCollegeNumber < 3 && userProfile.state == 'NY'">
-        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
-        SUNY - You need to pick {{4 - sunyCollegeNumber}} more schools
+      <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber < 4 && userProfile.state == 'NY'">
+        <ion-avatar item-right>
+          <img src="img/college_gray.png" />
+        </ion-avatar>
+        <h3>SUNY - Add {{4 - sunyCollegeNumber}} more</h3>
       </ion-item>
+      <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber > 3 && userProfile.state == 'NY'">
+        <ion-avatar item-right>
+          <img src="img/college_green.png" />
+        </ion-avatar>
+        <h3>SUNY: {{sunyCollegeNumber}} school(s)</h3>
+      </ion-item>
+
+
     </ion-list>
   </ion-card>
 
