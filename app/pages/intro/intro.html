@@ -9,14 +9,12 @@
 <ion-content class="intro">
   <ion-slides #introSlider>
     <ion-slide class="slide">
-      <div class="intro-text">
+      <div class="intro-text" [class.invalid]='slideOneInvalid'>
         <h3>
         FIRST <br> WHAT'S YOUR GPA
         </h3>
-
         <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list">
-          <ion-list-header>Select a GPA Scale</ion-list-header>
-
+          <ion-list-header >Select a GPA Scale</ion-list-header>
           <ion-grid>
             <ion-row>
               <ion-col>
@@ -36,7 +34,8 @@
 
         </ion-list>
 
-        <span class="rangeNum" *ngIf="gpaScore">{{gpaScore / 10}}</span>
+        <span class="rangeNum" *ngIf="gpaScore && gpaScale == '4'">{{gpaScore / 10}}</span>
+        <span class="rangeNum" *ngIf="gpaScore && gpaScale == '100'">{{gpaScore}}</span>
         <ion-item *ngIf="gpaScale == '4'">
           <ion-label> GPA Score </ion-label>
           <ion-range min="10" max="40" step="1" [(ngModel)]="gpaScore" secondary>
@@ -61,7 +60,7 @@
       </button>
     </ion-slide>
     <ion-slide class="slide">
-      <div class="intro-text">
+      <div class="intro-text" [class.invalid]='slideTwoInvalid'>
         <h3>
           NEXT <br> BEST TEST SCORE?
         </h3>
@@ -153,7 +152,7 @@
     </ion-slide>
 
     <ion-slide class="slide ">
-      <div class="intro-text stateRace">
+      <div class="intro-text stateRace" [class.invalid]='slideThreeInvalid'>
         <h3>
           STATE
         </h3>
@@ -278,7 +277,7 @@
 
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar-odds">
-      <button light large (click)="goToAnonymousSearch()" class="final-button">
+      <button light large (click)="goToHomePage()" class="final-button">
         Go To School List
       </button>
     </ion-slide>

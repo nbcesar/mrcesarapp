@@ -17,16 +17,16 @@ export class TabsPage {
   // should be each tab's root Page
   tab1Root: any = HomePage;
   tab2Root: any = ListPage;
-  tab3Root: any;
-  tab4Root: any = SquadPlaceholderPage;
+  tab3Root: any = AppMapPage;
+  //tab4Root: any = SquadPlaceholderPage;
 
   constructor(private profileData: ProfileData) {
-    this.profileData.getUserProfile().on('value', profile => {
+    /*this.profileData.getUserProfile().on('value', profile => {
       if (profile.val().showAppMap){
         this.tab3Root = AppMapPage;
       } else {
         this.tab3Root = AppMapPlaceholderPage;
       }
-    });
+    });*/
   }
 }

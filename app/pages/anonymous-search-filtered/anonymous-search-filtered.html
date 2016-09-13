@@ -10,7 +10,7 @@
 <ion-content class="anonymous-search-filtered">
     <ion-list *ngIf="showList">
         <ion-item text-wrap *ngFor="let college of collegeList">
-          <ion-grid (click)="goToCollege()">
+          <ion-grid (click)="goToCollege()" tappable>
             <ion-row>
               <ion-col width-75 center class="college-info">
                 <h2>{{ college?.displayName }}</h2>

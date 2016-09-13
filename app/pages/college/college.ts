@@ -21,9 +21,7 @@ export class CollegePage {
     this.favoriteCollege = this.navParams.get('favoriteCollege');
 
     this.collegeData.getCollegeDetail(this.navParams.get('collegeId')).on('value', collegeDetail => {
-      console.log('looking for details...');
       this.college = collegeDetail.val();
-      console.log(this.college);
     });
 
   }

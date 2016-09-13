@@ -7,12 +7,15 @@ ion-searchbar {
       background-color: #FFECCC !important;
     }
   }
-
   ion-item-sliding:nth-child(odd) {
     ion-item {
       background-color: #C8D6AF !important;
       color: black;
     }
+  }
+
+  ion-icon {
+    color: #00AA00;
   }
 
 }
@@ -80,6 +83,7 @@ ion-searchbar {
 .college-info h2 {
   font-size: 1.25em;
   font-weight: bold;
+
 }
 
 .college-info p {

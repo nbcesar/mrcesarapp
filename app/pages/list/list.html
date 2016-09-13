@@ -53,9 +53,9 @@
 
   <div [ngSwitch]="collegeCategory" class="list-div" [class.list-div-android]="isAndroid">
     <ion-list *ngSwitchCase="'moonshot'">
-      <ion-item text-wrap no-lines *ngFor="let college of moonshotList let index=index">
+      <ion-item text-wrap no-lines *ngFor="let college of moonshotList let index=index" >
 
-        <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
+        <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)" tappable>
           <ion-row>
 
             <ion-col width-20>
@@ -72,8 +72,8 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'reach'">
-      <ion-item text-wrap no-lines *ngFor="let college of reachList let index=index">
-        <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
+      <ion-item text-wrap no-lines *ngFor="let college of reachList let index=index" >
+        <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)" tappable>
           <ion-row>
 
             <ion-col width-20>
@@ -90,8 +90,8 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'target'">
-        <ion-item text-wrap no-lines *ngFor="let college of targetList let index=index">
-          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
+        <ion-item text-wrap no-lines *ngFor="let college of targetList let index=index" >
+          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)" tappable>
             <ion-row>
 
               <ion-col width-20>
@@ -109,9 +109,8 @@
 
     <ion-list *ngSwitchCase="'safety'">
         <ion-item text-wrap no-lines *ngFor="let college of safetyList let index=index">
-          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)">
+          <ion-grid (click)="goToCollegeDetail(college.key, college.admissibility)" tappable>
             <ion-row>
-
               <ion-col width-20>
                 <img src="img/safety_green.png">
               </ion-col>
@@ -126,8 +125,8 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'other'">
-        <ion-item text-wrap no-lines *ngFor="let college of otherList let index=index">
-          <ion-grid (click)="goToCollegeDetail(college.key)">
+        <ion-item text-wrap no-lines *ngFor="let college of otherList let index=index" >
+          <ion-grid (click)="goToCollegeDetail(college.key)" tappable>
             <ion-row>
 
               <ion-col width-20>

@@ -17,64 +17,78 @@
         <img src="img/mr-cesar-face.png" class="welcome-face">
       </ion-col>
       <ion-col class="welcome-text" center>
-        <h2>Welcome back {{userProfile?.firstName}} </h2>
-        <p *ngIf="profileProgress < 100">
+        <!-- No Email -->
+        <h2 *ngIf="!userProfile?.email">Welcome to my office.</h2>
+        <p *ngIf="!userProfile?.email">
+          Add your email so you can save your work.
+        </p>
+        <!--Email header -->
+        <h2 *ngIf="userProfile?.email && !userProfile.firstName">Welcome back.</h2>
+        <h2 *ngIf="userProfile?.email && userProfile.firstName">Welcome back {{userProfile?.firstName}}.</h2>
+
+        <!-- School List !100% -->
+        <p *ngIf="userProfile?.email && listProgress < 100">
+          Create a balanced school list by selecting a category below.
+        </p>
+
+        <!-- Profile Progress !100% -->
+        <p *ngIf="listProgress == 100 && userProfile?.email && profileProgress < 100">
           Use the button below to add
-          <span *ngIf="!userProfile?.firstName">
+          <span *ngIf="listProgress == 100 && !userProfile?.firstName">
             your first name.
           </span>
-          <span *ngIf="userProfile?.firstName && !userProfile?.birthDate">
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && !userProfile?.birthDate">
             your birth date.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && !userProfile?.highSchool">
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && !userProfile?.highSchool">
             your high school.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && !userProfile?.gpaScale">
             the GPA scale you used.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && !userProfile?.gpaScore">
             your GPA score.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && !userProfile?.testType">
             which standarized test you took.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType == 'act'
             && !userProfile?.actCompositeScore">
             your ACT Composite Score.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType == 'sat'
             && !userProfile?.satMath">
             your SAT Math Score.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType == 'sat'
             && userProfile?.satMath && !userProfile?.satVerbal">
             your SAT Verbal Score.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
             && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
             && userProfile?.race">
             your counselor's name.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
             && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
             && userProfile?.race && userProfile?.counselorName">
             your counselor's email.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
             && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
             && userProfile?.race && userProfile?.counselorName && userProfile?.counselorEmail">
             your graduation date.
           </span>
-          <span *ngIf="userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
+          <span *ngIf="listProgress == 100 && userProfile?.firstName && userProfile?.birthDate && userProfile?.highSchool
             && userProfile?.gpaScale && userProfile?.gpaScore && userProfile?.testType
             && (userProfile?.actCompositeScore || (userProfile?.satMath && userProfile?.satMath))
             && userProfile?.race && userProfile?.counselorName && userProfile?.counselorEmail
@@ -83,12 +97,11 @@
           </span>
 
         </p>
-        <p *ngIf="profileProgress == 100 && listProgress < 100">
-          Finish creating a balanced school list by clicking below.
-        </p>
+
         <p *ngIf="profileProgress == 100 && listProgress == 100">
           Go to App Map and complete the missing items.
         </p>
+
       </ion-col>
     </ion-row>
 
@@ -114,86 +127,91 @@
         Profile Complete
       </ion-item>
 
+      <button (click)="goToSignUp()" ion-item *ngIf="!userProfile?.email" tappable>
+        <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
+        Email - To save your work.
+      </button>
+
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.firstName">
+        *ngIf="userProfile?.email && !userProfile?.firstName" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Enter your name
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.birthDate">
+        *ngIf="userProfile?.email && !userProfile?.birthDate" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Date of Birth
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.highSchool">
+        *ngIf="userProfile?.email && !userProfile?.highSchool" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         High School
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.gpaScale">
+        *ngIf="userProfile?.email && !userProfile?.gpaScale" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         GPA Scale
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.gpaScore">
+        *ngIf="userProfile?.email && !userProfile?.gpaScore" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         GPA Score
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.testType">
+        *ngIf="userProfile?.email && !userProfile?.testType" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Standardized Test
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="userProfile?.testType == 'act' && !userProfile?.actCompositeScore">
+        *ngIf="userProfile?.email && userProfile?.testType == 'act' && !userProfile?.actCompositeScore" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         ACT Comp. Score
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="userProfile?.testType == 'sat' && !userProfile?.satMath">
+        *ngIf="userProfile?.email && userProfile?.testType == 'sat' && !userProfile?.satMath" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         SAT Math
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="userProfile?.testType == 'sat' && !userProfile?.satVerbal">
+        *ngIf="userProfile?.email && userProfile?.testType == 'sat' && !userProfile?.satVerbal" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         SAT Verbal
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.race">
+        *ngIf="userProfile?.email && !userProfile?.race" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Race Ethnicity
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.counselorName">
+        *ngIf="userProfile?.email && !userProfile?.counselorName" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Your Counselor's Name
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.counselorEmail">
+        *ngIf="userProfile?.email && !userProfile?.counselorEmail" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Your Counselor's Email
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.graduationDate">
+        *ngIf="userProfile?.email && !userProfile?.graduationDate" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Your Graduation Date
       </button>
 
       <button (click)="goToProfile()" ion-item
-        *ngIf="!userProfile?.gender">
+        *ngIf="userProfile?.email && !userProfile?.gender" tappable>
         <ion-icon name="checkmark-circle-outline" item-right></ion-icon>
         Gender
       </button>
@@ -221,78 +239,78 @@
         School List Complete
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber < 1">
+      <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber < 1" tappable>
         <ion-avatar item-right>
           <img src="img/moonshot_gray.png" />
         </ion-avatar>
         <h3><strong>Moonshot</strong> - Add {{1 - moonshotCollegeNumber}} more</h3>
       </ion-item>
-      <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber > 0">
+      <ion-item text-wrap (click)="goToFilteredSearch('moonshot')" *ngIf="moonshotCollegeNumber > 0" tappable>
         <ion-avatar item-right>
           <img src="img/moonshot_green.png" />
         </ion-avatar>
         <h3><strong>Moonshot</strong> - {{moonshotCollegeNumber}} school(s)</h3>
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber < 3">
+      <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber < 3" tappable>
         <ion-avatar item-right>
           <img src="img/reach_gray.png" />
         </ion-avatar>
         <h3><strong>Reach</strong> - Add {{3 - reachCollegeNumber}} more</h3>
       </ion-item>
-      <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber > 2">
+      <ion-item text-wrap (click)="goToFilteredSearch('reach')" *ngIf="reachCollegeNumber > 2" tappable>
         <ion-avatar item-right>
           <img src="img/reach_green.png" />
         </ion-avatar>
         <h3><strong>Reach</strong> - {{reachCollegeNumber}} school(s)</h3>
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber < 3">
+      <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber < 3" tappable>
         <ion-avatar item-right>
           <img src="img/target_gray.png" />
         </ion-avatar>
         <h3><strong>Target</strong> - Add {{3 - targetCollegeNumber}} more</h3>
       </ion-item>
-      <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber > 2">
+      <ion-item text-wrap (click)="goToFilteredSearch('target')" *ngIf="targetCollegeNumber > 2" tappable>
         <ion-avatar item-right>
           <img src="img/target_green.png" />
         </ion-avatar>
         <h3><strong>Target</strong> - {{targetCollegeNumber}} school(s)</h3>
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber < 2">
+      <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber < 2" tappable>
         <ion-avatar item-right>
           <img src="img/safety_g.png" />
         </ion-avatar>
         <h3><strong>Safety</strong> - Add {{2 - safetyCollegeNumber}} more</h3>
       </ion-item>
-      <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber > 1">
+      <ion-item text-wrap (click)="goToFilteredSearch('safety')" *ngIf="safetyCollegeNumber > 1" tappable>
         <ion-avatar item-right>
           <img src="img/safety_green.png" />
         </ion-avatar>
         <h3><strong>Safety</strong> - {{safetyCollegeNumber}} school(s)</h3>
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber < 6 && userProfile.state == 'NY'">
+      <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber < 6 && userProfile.state == 'NY'" tappable>
         <ion-avatar item-right>
           <img src="img/college_gray.png" />
         </ion-avatar>
         <h3><strong>CUNY</strong> - Add {{6 - cunyCollegeNumber}} more</h3>
       </ion-item>
-      <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber > 5 && userProfile.state == 'NY'">
+      <ion-item text-wrap (click)="goToFilteredSearch('CUNY')" *ngIf="cunyCollegeNumber > 5 && userProfile.state == 'NY'" tappable>
         <ion-avatar item-right>
           <img src="img/college_green.png" />
         </ion-avatar>
         <h3><strong>CUNY</strong> - {{cunyCollegeNumber}} school(s)</h3>
       </ion-item>
 
-      <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber < 4 && userProfile.state == 'NY'">
+      <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber < 4 && userProfile.state == 'NY'" tappable>
         <ion-avatar item-right>
           <img src="img/college_gray.png" />
         </ion-avatar>
         <h3><strong>SUNY</strong> - Add {{4 - sunyCollegeNumber}} more</h3>
       </ion-item>
-      <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber > 3 && userProfile.state == 'NY'">
+      <ion-item text-wrap (click)="goToFilteredSearch('SUNY')" *ngIf="sunyCollegeNumber > 3 && userProfile.state == 'NY'" tappable>
         <ion-avatar item-right>
           <img src="img/college_green.png" />
         </ion-avatar>

@@ -30,7 +30,8 @@ export class MyApp {
       } else if (user.isAnonymous == true) {
         console.log("Anonymous User");
         unsubscribe();
-        this.rootPage = AnonymousSearchPage;
+        //this.rootPage = AnonymousSearchPage;
+        this.rootPage = TabsPage;
       } else if (user.isAnonymous == false) {
         console.log("Confirmed User");
         unsubscribe();

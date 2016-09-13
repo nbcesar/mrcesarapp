@@ -27,7 +27,7 @@
 
   <div [ngSwitch]="todoCategory" class="app-map-div" [class.app-map-div-android]="isAndroid">
     <ion-list *ngSwitchCase="'general'">
-      <ion-item text-wrap *ngFor="let todo of generalList" (click)="goToDetail(todo)"
+      <ion-item text-wrap *ngFor="let todo of generalList" (click)="goToDetail(todo)" tappable
          no-lines>
         <ion-row center>
           <ion-col width-10>
@@ -42,37 +42,63 @@
       </ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'apply'">
-      <ion-item text-wrap *ngFor="let todo of applyList" (click)="goToDetail(todo)"
-         no-lines>
-        <ion-row center>
-          <ion-col width-10>
-            <ion-icon *ngIf="todo.completed" ios="md-checkbox-outline" md="md-checkbox-outline" item-left></ion-icon>
-            <ion-icon *ngIf="!todo.completed" ios="md-square-outline" md="md-square-outline" item-left></ion-icon>
-          </ion-col>
-          <ion-col offset-10>
-            <h2>{{todo.title}}</h2>
-            <p>{{todo.progress?.toFixed(0) || 0}}%</p>
-          </ion-col>
-        </ion-row>
-      </ion-item>
-    </ion-list>
+    <div *ngIf="showAppMap">
+      <ion-list *ngSwitchCase="'apply'">
+        <ion-item text-wrap *ngFor="let todo of applyList" (click)="goToDetail(todo)" tappable
+          no-lines>
+          <ion-row center>
+            <ion-col width-10>
+              <ion-icon *ngIf="todo.completed" ios="md-checkbox-outline" md="md-checkbox-outline" item-left></ion-icon>
+              <ion-icon *ngIf="!todo.completed" ios="md-square-outline" md="md-square-outline" item-left></ion-icon>
+            </ion-col>
+            <ion-col offset-10>
+              <h2>{{todo.title}}</h2>
+              <p>{{todo.progress?.toFixed(0) || 0}}%</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngIf="!showAppMap">
+      <div *ngSwitchCase="'apply'">
+        <img src="img/logo.png" />
+        <h3>Coming Soon</h3>
+        <ion-list>
+          <ion-item>Follow the plan</ion-item>
+          <ion-item>Step by step instructions</ion-item>
+          <ion-item>Stay motivated</ion-item>
+        </ion-list>
+      </div>
+    </div>
 
-    <ion-list *ngSwitchCase="'finAid'">
-      <ion-item text-wrap *ngFor="let todo of aidList" (click)="goToDetail(todo)"
-         no-lines>
-        <ion-row center>
-          <ion-col width-10>
-            <ion-icon *ngIf="todo.completed" ios="md-checkbox-outline" md="md-checkbox-outline" item-left></ion-icon>
-            <ion-icon *ngIf="!todo.completed" ios="md-square-outline" md="md-square-outline" item-left></ion-icon>
-          </ion-col>
-          <ion-col offset-10>
-            <h2>{{todo.title}}</h2>
-            <p>{{todo.progress?.toFixed(0) || 0}}%</p>
-          </ion-col>
-        </ion-row>
-      </ion-item>
-    </ion-list>
+    <div *ngIf="showAppMap">
+      <ion-list *ngSwitchCase="'finAid'">
+        <ion-item text-wrap *ngFor="let todo of aidList" (click)="goToDetail(todo)" tappable
+          no-lines>
+          <ion-row center>
+            <ion-col width-10>
+              <ion-icon *ngIf="todo.completed" ios="md-checkbox-outline" md="md-checkbox-outline" item-left></ion-icon>
+              <ion-icon *ngIf="!todo.completed" ios="md-square-outline" md="md-square-outline" item-left></ion-icon>
+            </ion-col>
+            <ion-col offset-10>
+              <h2>{{todo.title}}</h2>
+              <p>{{todo.progress?.toFixed(0) || 0}}%</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngIf="!showAppMap">
+      <div *ngSwitchCase="'finAid'">
+        <img src="img/logo.png" />
+        <h3>Coming Soon</h3>
+        <ion-list>
+          <ion-item>Follow the plan</ion-item>
+          <ion-item>Step by step instructions</ion-item>
+          <ion-item>Stay motivated</ion-item>
+        </ion-list>
+      </div>
+    </div>
 
   </div>
 </ion-content>

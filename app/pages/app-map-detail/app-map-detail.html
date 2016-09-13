@@ -31,9 +31,9 @@
     <ion-list>
       <ion-item text-wrap *ngFor="let step of steps">
         <ion-icon *ngIf="step.completed" ios="md-checkbox-outline" md="md-checkbox-outline"
-          item-left (click)="clearCompleteStep(todo.category, todo.id, step.id, step)"></ion-icon>
+          item-left (click)="clearCompleteStep(todo.category, todo.id, step.id, step)" tappable></ion-icon>
         <ion-icon *ngIf="!step.completed" ios="md-square-outline" md="md-square-outline"
-          item-left (click)="completeStep(todo.category, todo.id, step.id, step)"></ion-icon>
+          item-left (click)="completeStep(todo.category, todo.id, step.id, step)" tappable></ion-icon>
         <p>{{step.name}}</p>
       </ion-item>
 

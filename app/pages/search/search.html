@@ -16,10 +16,14 @@
 
         <ion-item text-wrap >
 
-          <ion-grid (click)="goToCollege(college.id, college.admissibility, college.favorite, college.subHeading)">
+          <ion-grid (click)="goToCollege(college.id, college.admissibility, college.favorite, college.subHeading)" tappable>
             <ion-row>
               <ion-col width-75 center class="college-info">
-                <h2>{{ college.displayName }}</h2>
+                <h2>
+                  {{ college.displayName }}
+                  <ion-icon *ngIf="college.favorite" secondary name="checkmark-circle" item-right
+                  class="complete-icon"></ion-icon>
+                </h2>
                 <p>{{ college.subHeading }} </p>
                 <p>{{ college.city }}, {{ college.state }}</p>
               </ion-col>
@@ -71,6 +75,7 @@
         Interested in a school, search for it above
       </p>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+
     </div>
 
 

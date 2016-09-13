@@ -204,7 +204,7 @@ export class SearchPage {
       }
     });
 
-    console.log(q, this.collegeList.length);
+    //console.log(q, this.collegeList.length);
 
   }
 
@@ -212,14 +212,14 @@ export class SearchPage {
     slidingItem.close();
     this.collegeData.addCollegeFavorite(college.id, admissibility, subHeading);
     college.favorite = true;
-    console.log("I'm inside the function for add");
+    //console.log("I'm inside the function for add");
   }
 
   removeCollegeAsFavorite(college, slidingItem: ItemSliding, admissibility: string, subHeading: string) {
     slidingItem.close();
     this.collegeData.removeCollegeFavorite(college.id, admissibility, subHeading);
     college.favorite = false;
-    console.log("I'm inside the function for remove");
+    //console.log("I'm inside the function for remove");
   }
 
   goToCollege(collegeId: string, admissibility: string, favoriteCollege: boolean, subHeading: string) {

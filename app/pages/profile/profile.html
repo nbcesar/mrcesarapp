@@ -10,7 +10,7 @@
 <ion-content class="profile">
   <ion-row>
     <ion-col class="profile_img">
-      <img [src]="profileImage || mrCesarLogo" (click)="takeSelfie()">
+      <img [src]="profileImage || mrCesarLogo" (click)="takeSelfie()" tappable>
     </ion-col>
   </ion-row>
 
@@ -19,7 +19,7 @@
       Personal Information
     </ion-list-header>
 
-    <ion-item (click)="updateName()">
+    <ion-item (click)="updateName()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -43,7 +43,8 @@
         [(ngModel)]="birthDate" (ionChange)="updateDOB(birthDate)"></ion-datetime>
     </ion-item>
 
-    <ion-item (click)="updateEmail()">
+
+    <ion-item> <!--(click)="updateEmail()"-->
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -61,7 +62,8 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item (click)="updateRace()">
+
+    <ion-item (click)="updateRace()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -82,7 +84,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item (click)="updateGender()">
+    <ion-item (click)="updateGender()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -100,6 +102,7 @@
       </ion-grid>
     </ion-item>
 
+    <!--
     <ion-item (click)="updatePassword()">
       <ion-grid>
         <ion-row>
@@ -114,7 +117,7 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-
+  -->
   </ion-list>
 
   <ion-list>
@@ -122,7 +125,7 @@
       High School Information
     </ion-list-header>
 
-    <ion-item (click)="updateSchool()">
+    <ion-item (click)="updateSchool()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -164,7 +167,7 @@
         [(ngModel)]="graduationDate" (ionChange)="updateGraduationDate(graduationDate)"></ion-datetime>
     </ion-item>
 
-    <ion-item (click)="updateCounselorName()">
+    <ion-item (click)="updateCounselorName()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -182,7 +185,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item (click)="updateCounselorEmail()">
+    <ion-item (click)="updateCounselorEmail()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -207,7 +210,7 @@
       Academic Information
     </ion-list-header>
 
-    <ion-item (click)="updateGPAScale()">
+    <ion-item (click)="updateGPAScale()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -226,7 +229,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item (click)="updateGPAScore()">
+    <ion-item (click)="updateGPAScore()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -244,7 +247,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item (click)="updateTestType()">
+    <ion-item (click)="updateTestType()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -263,7 +266,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item *ngIf="userProfile?.testType == 'act'" (click)="updateACTScore()">
+    <ion-item *ngIf="userProfile?.testType == 'act'" (click)="updateACTScore()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -281,7 +284,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item *ngIf="userProfile?.testType == 'sat'" (click)="updateSATScore()">
+    <ion-item *ngIf="userProfile?.testType == 'sat'" (click)="updateSATScore()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>
@@ -299,7 +302,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item *ngIf="userProfile?.testType == 'sat'" (click)="updateSATScore()">
+    <ion-item *ngIf="userProfile?.testType == 'sat'" (click)="updateSATScore()" tappable>
       <ion-grid>
         <ion-row>
           <ion-col width-50>

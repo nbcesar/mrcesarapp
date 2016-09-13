@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
+import { SignupPage } from '../signup/signup';
 import { ProfilePage } from '../profile/profile';
 import { ProfileData } from '../../providers/profile-data/profile-data';
 import { CollegeData } from '../../providers/college-data/college-data';
@@ -26,11 +27,11 @@ export class HomePage {
   applyCompletedSteps: number;
   aidSteps: number;
   aidCompletedSteps: number;
-
+  loading: any;
 
    constructor(public nav: NavController, public profileData: ProfileData,
-    public collegeData: CollegeData, public appMapData: AppMapData) {
-
+    public collegeData: CollegeData, public appMapData: AppMapData,
+    public navParams: NavParams, public loadingCtrl: LoadingController) {
 
   }
 
@@ -65,7 +66,6 @@ export class HomePage {
       if (this.userProfile.counselorName) {this.profileProgress += 8;}
       if (this.userProfile.gender) {this.profileProgress += 4;}
       if (this.userProfile.graduationDate) {this.profileProgress += 8;}
-
 
     }, (error) => {
       console.log(error);
@@ -283,6 +283,10 @@ export class HomePage {
       admissibility: admissibility,
       showList: true
     });
+  }
+
+  goToSignUp() {
+    this.nav.push(SignupPage);
   }
 
 }

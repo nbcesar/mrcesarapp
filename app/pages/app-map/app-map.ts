@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SearchPage } from '../search/search';
 import { ProfilePage } from '../profile/profile';
 import { AppMapDetailPage } from '../app-map-detail/app-map-detail';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, Platform, LoadingController } from 'ionic-angular';
 import { AppMapData } from '../../providers/app-map-data/app-map-data';
 
 @Component({
@@ -16,8 +16,12 @@ export class AppMapPage {
   generalList: any = [];
   applyList: any = [];
   aidList: any = [];
+  showAppMap: boolean = false;
+  loading: any;
 
-  constructor(public nav: NavController, platform: Platform, public appMapData: AppMapData) {
+  constructor(public nav: NavController, platform: Platform,
+    public appMapData: AppMapData, public loadingCtrl: LoadingController) {
+
     this.nav = nav;
     this.isAndroid = platform.is('android');
     this.isWindows = platform.is('windows');
@@ -38,6 +42,7 @@ export class AppMapPage {
     });
 
     this.appMapData.getApply().on('value', todoList => {
+      if (todoList.val().showList) this.showAppMap = true;
       this.applyList = [];
       todoList.forEach( todo => {
         this.applyList.push({
@@ -53,6 +58,7 @@ export class AppMapPage {
     });
 
     this.appMapData.getFinAid().on('value', todoList => {
+      if (todoList.val().showList) this.showAppMap = true;
       this.aidList = [];
       todoList.forEach( todo => {
         this.aidList.push({

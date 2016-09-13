@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Storage, LocalStorage, Platform, ItemSliding } from 'ionic-angular';
+import { NavController, Storage, LocalStorage, Platform, ItemSliding, LoadingController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
 import { ProfilePage } from '../profile/profile';
 import { CollegePage } from '../college/college';
@@ -21,8 +21,11 @@ export class ListPage {
   public collegeCategory: string = 'moonshot';
   isAndroid: boolean = false;
   isWindows: boolean = false;
+  loading: any;
 
-  constructor(public nav: NavController, platform: Platform, public collegeData: CollegeData) {
+  constructor(public nav: NavController, platform: Platform,
+    public collegeData: CollegeData, public loadingCtrl: LoadingController) {
+
     this.isAndroid = platform.is('android');
     this.isWindows = platform.is('windows');
     this.local = new Storage(LocalStorage);
@@ -49,11 +52,11 @@ export class ListPage {
       this.targetList = targetList;
       this.safetyList = safetyList;
       this.otherList = otherList;
-
     });
   }
 
   goToCollegeDetail(collegeId, admissibility){
+    console.log('getting detail');
     this.nav.push(CollegePage, {
       collegeId: collegeId,
       admissibility: admissibility,

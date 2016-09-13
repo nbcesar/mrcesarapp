@@ -12,7 +12,7 @@
     <ion-list *ngIf="showList">
 
         <ion-item text-wrap *ngFor="let college of collegeList">
-          <ion-grid (click)="goToCollege()">
+          <ion-grid (click)="goToCollege()" tappable>
             <ion-row>
               <ion-col width-75 center class="college-info">
                 <h2>{{ college.displayName }}</h2>
@@ -50,42 +50,42 @@
     </div>
 
     <ion-list padding class="admissibility-list" *ngIf="!showList">
-      <ion-item (click)="goToFilteredList('moonshot')">
+      <ion-item (click)="goToFilteredList('moonshot')" tappable>
         <ion-avatar item-left>
           <img src="img/moonshot_green.png">
         </ion-avatar>
         <h2>Moonshot</h2>
       </ion-item>
 
-      <ion-item (click)="goToFilteredList('reach')">
+      <ion-item (click)="goToFilteredList('reach')" tappable>
         <ion-avatar item-left>
           <img src="img/reach_green.png">
         </ion-avatar>
         <h2>Reach</h2>
       </ion-item>
 
-      <ion-item (click)="goToFilteredList('target')">
+      <ion-item (click)="goToFilteredList('target')" tappable>
         <ion-avatar item-left>
           <img src="img/target_green.png">
         </ion-avatar>
         <h2>Target</h2>
       </ion-item>
 
-      <ion-item (click)="goToFilteredList('safety')">
+      <ion-item (click)="goToFilteredList('safety')" tappable>
         <ion-avatar item-left>
           <img src="img/safety_green.png">
         </ion-avatar>
         <h2>Safety</h2>
       </ion-item>
 
-      <ion-item (click)="goToFilteredList('CUNY')" *ngIf="userState == 'NY'">
+      <ion-item (click)="goToFilteredList('CUNY')" *ngIf="userState == 'NY'" tappable>
         <ion-avatar item-left>
           <img src="img/college_green.png">
         </ion-avatar>
         <h2>CUNY</h2>
       </ion-item>
 
-      <ion-item (click)="goToFilteredList('SUNY')" *ngIf="userState == 'NY'">
+      <ion-item (click)="goToFilteredList('SUNY')" *ngIf="userState == 'NY'" tappable>
         <ion-avatar item-left>
           <img src="img/college_green.png">
         </ion-avatar>
