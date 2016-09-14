@@ -239,7 +239,7 @@
       </button>
     </ion-slide>
 
-    <ion-slide class="odds-slide">
+    <ion-slide class="odds-slide" *ngIf="showOdds">
       <div class="intro-text">
         <h3>
           CALCULATING ODDS...
@@ -277,7 +277,7 @@
 
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar-odds">
-      <button light large (click)="goToHomePage()" class="final-button">
+      <button light large (click)="goToHomePage()" class="final-button" *ngIf="showButton">
         Go To School List
       </button>
     </ion-slide>

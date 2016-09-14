@@ -1,4 +1,4 @@
-import {NavController, LoadingController, Slides} from 'ionic-angular';
+import {NavController, LoadingController, AlertController, Slides} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {AnonymousSearchPage} from '../anonymous-search/anonymous-search';
 import { TabsPage } from '../tabs/tabs';
@@ -14,7 +14,6 @@ import * as firebase from 'firebase';
 export class IntroPage {
   @ViewChild('introSlider') slider: Slides;
 
-  public isAnonymous: boolean = false;
   public gpaScale: string;
   public gpaScore: number;
   public testType: string;
@@ -23,16 +22,19 @@ export class IntroPage {
   public satMath: number;
   public race: string;
   public state: string;
+  public showOdds: boolean = false;
+  public showButton: boolean = false;
 
   public slideOneInvalid: boolean = false;
   public slideTwoInvalid: boolean = false;
   public slideThreeInvalid: boolean = false;
 
+  public loading: any;
+
   constructor(public nav: NavController, public authData: AuthData,
-    public loadingCtrl: LoadingController) {}
+    public loadingCtrl: LoadingController, public alertCtrl: AlertController) {}
 
   nextSlide(){
-    // this.slider.update();
     this.slider.slideNext();
   }
 
@@ -61,36 +63,29 @@ export class IntroPage {
     else {
       this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
         this.actCompositeScore, this.satVerbal, this.satMath, this.race, this.state).then((authData) => {
-          nextSlide;
+          this.showOdds = true;
+          this.showButton = true;
+          this.loading.dismiss().then(() => {
+            this.nextSlide();
+          })
         }, (error) => {
-          console.log(error);
+          this.showOdds = false;
+          this.showButton = false;
+
+          let alert = this.alertCtrl.create({
+            title: 'Oh no, something went wrong :(',
+            subTitle: error.message,
+            buttons: ['OK']
+          });
+          alert.present();
         });
 
-        let loading = this.loadingCtrl.create({
-          content: "Calculating odds...",
-          duration: 3000
+        this.loading = this.loadingCtrl.create({
+          content: "Calculating odds..."
+          // duration: 3000,
         });
-        loading.present();
+        this.loading.present();
     }
-
-    /* // Old version
-    if (this.authData.currentUser()){
-      nextSlide;
-    } else {
-      this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
-        this.actCompositeScore, this.satVerbal, this.satMath, this.race, this.state).then((authData) => {
-          nextSlide;
-        }, (error) => {
-          console.log(error);
-        });
-
-        let loading = this.loadingCtrl.create({
-          content: "Calculating odds...",
-          duration: 4000
-        });
-        loading.present();
-    }
-    */
 
   }
 
