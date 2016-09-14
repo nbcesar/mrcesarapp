@@ -62,6 +62,7 @@ export class IntroPage {
       this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
         this.actCompositeScore, this.satVerbal, this.satMath, this.race, this.state).then((authData) => {
           nextSlide;
+          console.log(this.authData);
         }, (error) => {
           console.log(error);
         });
