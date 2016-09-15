@@ -21,9 +21,15 @@ export class SignupPage {
   }
 
   signupUser(){
+    let loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+    });
+    loading.present();
+
     this.authData.linkAccount(this.signupForm.value.email, this.signupForm.value.password).then(() => {
       this.nav.setRoot(TabsPage);
     }, (error) => {
+      loading.dismiss();
       var errorMessage: string;
       switch (error.code) {
         case "auth/email-already-in-use":
@@ -50,9 +56,6 @@ export class SignupPage {
     });
 
 
-    let loading = this.loadingCtrl.create({
-      dismissOnPageChange: true,
-    });
-    loading.present();
+
   }
 }

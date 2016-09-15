@@ -22,7 +22,6 @@ export class IntroPage {
   public satMath: number;
   public race: string;
   public state: string;
-  public showOdds: boolean = false;
   public showButton: boolean = false;
 
   public slideOneInvalid: boolean = false;
@@ -32,46 +31,55 @@ export class IntroPage {
   public loading: any;
 
   constructor(public nav: NavController, public authData: AuthData,
-    public loadingCtrl: LoadingController, public alertCtrl: AlertController) {}
+    public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+
+    }
 
   nextSlide(){
     this.slider.slideNext();
   }
 
-  createAnonymousUser(){
-    let nextSlide = this.slider.slideNext();
+  onSlideChanged() {
+    let currentIndex = this.slider.getActiveIndex();
+    let previousIndex = this.slider.getPreviousIndex();
 
-    // validate all intro data. If missing, go to that slideNext
+    if (previousIndex == 1 && currentIndex == 2) {
+      if (!this.gpaScale || !this.gpaScore) {
+        this.slideOneInvalid = true;
+        this.slider.slideTo(1,500);
+      }
+      else {
+        this.slideOneInvalid = false;
+      }
+    }
+    else if (previousIndex == 2 && currentIndex == 3) {
+      if (!this.testType || (!this.actCompositeScore && (!this.satVerbal || !this.satMath))) {
+        this.slideTwoInvalid = true;
+        this.slider.slideTo(2,500);
+      }
+      else {
+        this.slideTwoInvalid = false;
+      }
+    }
+    else if (previousIndex == 3 && currentIndex == 4) {
+      if (!this.state || !this.race) {
+        this.slideThreeInvalid = true;
+        this.slider.slideTo(3,500);
+      }
+      else { // at last slide and validated
+        this.slideThreeInvalid = false;
+      
+        this.loading = this.loadingCtrl.create({
+          content: "Calculating odds..."
+        });
+        this.loading.present();
 
-    // missing slideOne
-    if (!this.gpaScale || !this.gpaScore) {
-      console.log(this.gpaScale, this.gpaScore);
-      this.slideOneInvalid = true;
-      this.slider.slideTo(0,500);
-    }
-    // missing slideTwo
-    else if (!this.testType || (!this.actCompositeScore && (!this.satVerbal || !this.satMath))) {
-      this.slideTwoInvalid = true;
-      this.slider.slideTo(1,500);
-    }
-    // missing slideThree
-    else if (!this.state || !this.race) {
-      this.slideThreeInvalid = true;
-      this.slider.slideTo(2,500);
-    }
-    // all fields entered
-    else {
-      this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType,
-        this.actCompositeScore, this.satVerbal, this.satMath, this.race, this.state).then((authData) => {
-          this.showOdds = true;
+        // create anonymousUser
+        this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType, this.actCompositeScore, this.satVerbal, this.satMath, this.race, this.state).then((authData) => {
+          this.loading.dismiss();
           this.showButton = true;
-          this.loading.dismiss().then(() => {
-            this.nextSlide();
-          })
         }, (error) => {
-          this.showOdds = false;
-          this.showButton = false;
-
+          this.loading.dismiss();
           let alert = this.alertCtrl.create({
             title: 'Oh no, something went wrong :(',
             subTitle: error.message,
@@ -79,14 +87,8 @@ export class IntroPage {
           });
           alert.present();
         });
-
-        this.loading = this.loadingCtrl.create({
-          content: "Calculating odds..."
-          // duration: 3000,
-        });
-        this.loading.present();
+      }
     }
-
   }
 
   goToAnonymousSearch(){

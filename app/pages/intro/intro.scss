@@ -35,10 +35,17 @@ ion-slide .intro-text {
   text-align: center;
 }
 
+.intro-text h2 {
+  padding-top: 16px;
+  font-size: 2em;
+  margin: 0 16px;
+  color: #222;
+}
 .intro-text h3 {
   padding-top: 16px;
   font-size: 1.5em;
   margin: 0 16px;
+  color: #383838;
 }
 
 .intro-text h4 {
@@ -66,11 +73,18 @@ ion-slide .mr-cesar-avatar {
   top: 380px;
 }
 
+.left-col {
+  border-right: 2px black solid;
+}
+
 .radio-button-list {
   margin-top: 10px;
   margin-bottom: 0;
 }
 
+ion-label {
+  font-size: 1.25em;
+}
 .act-score {
   margin-top: 36px;
 }
@@ -139,18 +153,20 @@ ion-slide .mr-cesar-avatar {
     margin-top: 0;
 
     h3 {
-      padding-top: 15px;
-      font-size: 1.3em;
+      padding-top: 10px;
+      font-size: 1em;
+      font-weight: bold;
     }
 
     h2 {
       font-weight: bold;
+      font-size: 1.25em;
     }
 
     ion-item {
       ion-avatar {
-        margin-top: 4px;
-        margin-bottom: 4px;
+        margin-top: 0;
+        margin-bottom: 0;
       }
     }
   }

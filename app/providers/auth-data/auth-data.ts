@@ -25,7 +25,6 @@ export class AuthData {
 
     if (gpaScale == '4') gpaScore = gpaScore / 10;
     return this.fireAuth.signInAnonymously().then((anonymousUser) => {
-      console.log(anonymousUser);
       this.userProfile.child(anonymousUser.uid).child('profileInfo').set({
         id: anonymousUser.uid,
         gpaScale: gpaScale,

@@ -7,17 +7,37 @@
 </ion-header>
 
 <ion-content class="intro">
-  <ion-slides #introSlider>
+  <ion-slides #introSlider (ionDidChange)="onSlideChanged()" >
+
+    <ion-slide class="slide">
+      <div class="intro-text">
+        <h2>
+          HELLO, MY NAME IS MR. CESAR!
+        </h2>
+        <br>
+        <h3>
+          I am going to help you build a balanced college list.
+        </h3>
+        <h3>
+          But first, I need to get to know you.
+        </h3>
+      </div>
+      <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
+      <button fab primary fab-bottom fab-right (click)="nextSlide()" class="intro-button">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
     <ion-slide class="slide">
       <div class="intro-text" [class.invalid]='slideOneInvalid'>
         <h3>
-        FIRST <br> WHAT'S YOUR GPA
+        WHAT'S YOUR GPA
         </h3>
-        <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list">
+        <ion-list radio-group [(ngModel)]="gpaScale" class="radio-button-list" no-lines>
           <ion-list-header >Select a GPA Scale</ion-list-header>
           <ion-grid>
             <ion-row>
-              <ion-col>
+              <ion-col class="left-col">
                 <ion-item>
                   <ion-label>100</ion-label>
                   <ion-radio value="100" ></ion-radio>
@@ -25,7 +45,7 @@
               </ion-col>
               <ion-col>
                 <ion-item>
-                  <ion-label>4.0</ion-label>
+                  <ion-label>4.0</ion-label><br>
                   <ion-radio value="4" ></ion-radio>
                 </ion-item>
               </ion-col>
@@ -36,6 +56,7 @@
 
         <span class="rangeNum" *ngIf="gpaScore && gpaScale == '4'">{{gpaScore / 10}}</span>
         <span class="rangeNum" *ngIf="gpaScore && gpaScale == '100'">{{gpaScore}}</span>
+
         <ion-item *ngIf="gpaScale == '4'">
           <ion-label> GPA Score </ion-label>
           <ion-range min="10" max="40" step="1" [(ngModel)]="gpaScore" secondary>
@@ -52,17 +73,18 @@
           </ion-range>
         </ion-item>
 
+
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
 
-      <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
+      <button primary fab fab-bottom fab-right (click)="nextSlide()" class="intro-button">
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-slide>
     <ion-slide class="slide">
       <div class="intro-text" [class.invalid]='slideTwoInvalid'>
         <h3>
-          NEXT <br> BEST TEST SCORE?
+          BEST TEST SCORE?
         </h3>
 
         <ion-list radio-group [(ngModel)]="testType" class="radio-button-list">
@@ -70,7 +92,7 @@
 
           <ion-grid>
             <ion-row>
-              <ion-col>
+              <ion-col class="left-col">
                 <ion-item>
                   <ion-label>ACT</ion-label>
                   <ion-radio value="act" ></ion-radio>
@@ -146,7 +168,7 @@
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
 
-      <button light fab fab-bottom fab-right clear (click)="nextSlide()" class="intro-button">
+      <button primary fab fab-bottom fab-right (click)="nextSlide()" class="intro-button">
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-slide>
@@ -232,53 +254,57 @@
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar">
 
-      <button light fab fab-bottom fab-right clear
+      <button primary fab fab-bottom fab-right
+        (click)="nextSlide()" class="intro-button">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+      <!--<button primary fab fab-bottom fab-right
         (click)="createAnonymousUser(gpaScale, gpaScore, testType, actCompositeScore, satVerbal,
           satMath, race)" class="intro-button">
         <ion-icon name="arrow-forward"></ion-icon>
-      </button>
+      </button>-->
     </ion-slide>
 
-    <ion-slide class="odds-slide" *ngIf="showOdds">
+    <ion-slide class="odds-slide">
       <div class="intro-text">
-        <h3>
+        <h2>
           CALCULATING ODDS...
-        </h3>
+        </h2>
 
         <ion-list no-lines class="admissibility-list">
           <ion-item>
             <ion-avatar item-left>
               <img src="img/moonshot_green.png">
             </ion-avatar>
-            <h2>Moonshot</h2>
+            <h3>Moonshot</h3>
           </ion-item>
 
           <ion-item>
             <ion-avatar item-left>
               <img src="img/reach_green.png">
             </ion-avatar>
-            <h2>Reach</h2>
+            <h3>Reach</h3>
           </ion-item>
 
           <ion-item>
             <ion-avatar item-left>
               <img src="img/target_green.png">
             </ion-avatar>
-            <h2>Target</h2>
+            <h3>Target</h3>
           </ion-item>
 
           <ion-item>
             <ion-avatar item-left>
               <img src="img/safety_green.png">
             </ion-avatar>
-            <h2>Safety</h2>
+            <h3>Safety</h3>
           </ion-item>
         </ion-list>
 
       </div>
       <img src="img/mr-cesar-face.png" class="mr-cesar-avatar-odds">
-      <button light large (click)="goToHomePage()" class="final-button" *ngIf="showButton">
-        Go To School List
+      <button large primary (click)="goToHomePage()" class="final-button" *ngIf="showButton">
+        Get Started
       </button>
     </ion-slide>
 
