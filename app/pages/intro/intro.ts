@@ -30,6 +30,8 @@ export class IntroPage {
 
   public loading: any;
 
+  public oddsMessage: string = 'CALCULATING ODDS';
+
   constructor(public nav: NavController, public authData: AuthData,
     public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
 
@@ -68,7 +70,7 @@ export class IntroPage {
       }
       else { // at last slide and validated
         this.slideThreeInvalid = false;
-      
+
         this.loading = this.loadingCtrl.create({
           content: "Calculating odds..."
         });
@@ -77,6 +79,7 @@ export class IntroPage {
         // create anonymousUser
         this.authData.createAnonymousUser(this.gpaScale, this.gpaScore, this.testType, this.actCompositeScore, this.satVerbal, this.satMath, this.race, this.state).then((authData) => {
           this.loading.dismiss();
+          this.oddsMessage = "All set!";
           this.showButton = true;
         }, (error) => {
           this.loading.dismiss();
