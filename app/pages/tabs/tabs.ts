@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HomePage } from '../home/home';
 import { ListPage } from '../list/list';
-import { SquadPlaceholderPage } from '../squad-placeholder/squad-placeholder';
+import { SquadPage } from '../squad/squad';
 import { AppMapPlaceholderPage } from '../app-map-placeholder/app-map-placeholder';
 import { AppMapPage } from '../app-map/app-map';
 
@@ -18,7 +18,7 @@ export class TabsPage {
   tab1Root: any = HomePage;
   tab2Root: any = ListPage;
   tab3Root: any = AppMapPage;
-  //tab4Root: any = SquadPlaceholderPage;
+  tab4Root: any = SquadPage;
 
   constructor(private profileData: ProfileData) {
     /*this.profileData.getUserProfile().on('value', profile => {
